@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alchemy Deck - Oracle of Transformation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(135deg, #1a1612 0%, #2a2420 50%, #1a1612 100%);
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', serif;
+      color: #e8e0d5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .ouroboros {
+      width: 120px;
+      height: 120px;
+      border: 3px solid #d4af37;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .ouroboros::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 50%;
+    }
+
+    .ouroboros::after {
+      content: '~';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      color: #d4af37;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #d4af37;
+      letter-spacing: 0.15em;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(212, 175, 55, 0.7);
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      color: #c4b8a8;
+    }
+
+    .cards-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .card-type {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 12px 15px;
+      border-radius: 6px;
+    }
+
+    .card-type strong {
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    .card-type span {
+      display: block;
+      font-size: 0.9rem;
+      color: #a89888;
+      margin-top: 4px;
+    }
+
+    .cta {
+      display: inline-block;
+      background: #d4af37;
+      color: #1a1612;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      padding: 15px 40px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s;
+      margin-bottom: 20px;
+    }
+
+    .cta:hover {
+      background: #e5c048;
+    }
+
+    .source {
+      font-size: 0.9rem;
+      color: #8b7355;
+      margin-top: 40px;
+    }
+
+    .source a {
+      color: #d4af37;
+    }
+
+    .quote {
+      font-style: italic;
+      color: rgba(212, 175, 55, 0.6);
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .quote-author {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="ouroboros"></div>
+
+    <h1>ALCHEMY DECK</h1>
+    <p class="subtitle">Oracle of Transformation</p>
+
+    <p class="description">
+      An oracle deck for contemplating transformation, drawn from the Western alchemical tradition.
+      34 oracle cards plus 5 prompt cards for spreads and AI-assisted interpretation.
+    </p>
+
+    <div class="cards-summary">
+      <div class="card-type">
+        <strong>STAGES</strong>
+        <span>Nigredo, Albedo, Citrinitas, Rubedo</span>
+      </div>
+      <div class="card-type">
+        <strong>OPERATIONS</strong>
+        <span>The 7 alchemical processes</span>
+      </div>
+      <div class="card-type">
+        <strong>ELEMENTS</strong>
+        <span>Fire, Water, Air, Earth, Quintessence</span>
+      </div>
+      <div class="card-type">
+        <strong>PRINCIPLES</strong>
+        <span>Sulphur, Mercury, Salt</span>
+      </div>
+      <div class="card-type">
+        <strong>VESSELS</strong>
+        <span>Athanor, Alembic, Crucible, Retort</span>
+      </div>
+      <div class="card-type">
+        <strong>SAGES</strong>
+        <span>Hermes, Paracelsus, Boehme...</span>
+      </div>
+      <div class="card-type">
+        <strong>ARCANA</strong>
+        <span>Prima Materia, Lapis, Ouroboros...</span>
+      </div>
+      <div class="card-type">
+        <strong>PROMPTS</strong>
+        <span>Spreads & AI interpretation</span>
+      </div>
+    </div>
+
+    <a href="print.html" class="cta">Print Your Deck</a>
+
+    <p class="source">
+      Quotes from primary sources at <a href="https://sourcelibrary.org">sourcelibrary.org</a>
+    </p>
+
+    <p class="quote">
+      "Fire purifies all fixed things, and by fire they are perfected."
+      <span class="quote-author">—Sendivogius, New Chemical Light (1628)</span>
+    </p>
+  </div>
+</body>
+</html>
