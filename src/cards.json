@@ -1,0 +1,464 @@
+{
+  "meta": {
+    "name": "Alchemy Deck",
+    "version": "1.0.0",
+    "description": "An oracle deck for contemplating transformation, drawn from the Western alchemical tradition and primary sources at sourcelibrary.org",
+    "card_count": 39,
+    "oracle_cards": 34,
+    "prompt_cards": 5,
+    "source": "https://sourcelibrary.org"
+  },
+
+  "stages": [
+    {
+      "id": "stage-01",
+      "name": "Nigredo",
+      "subtitle": "Blackening",
+      "color": "#1a1a1a",
+      "description": "The dark night. Putrefaction, death of the old form, facing the shadow. Something must die for transformation to begin.",
+      "keywords": ["death", "shadow", "putrefaction", "darkness", "descent"],
+      "question": "What needs to die? What shadow must you face?",
+      "quote": "The beginning of our work is in the blackness.",
+      "symbols": ["raven", "skull", "black sun", "tomb"]
+    },
+    {
+      "id": "stage-02",
+      "name": "Albedo",
+      "subtitle": "Whitening",
+      "color": "#f0f0f0",
+      "description": "The washing. Purification, clarity emerging from chaos. The dawn after the dark night. Innocence regained through ordeal.",
+      "keywords": ["purification", "clarity", "washing", "dawn", "reflection"],
+      "question": "What is being purified? What clarity is emerging?",
+      "quote": "Just as water washes and purifies all imperfect things which are not fixed.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)",
+      "symbols": ["white dove", "moon", "silver", "lily"]
+    },
+    {
+      "id": "stage-03",
+      "name": "Citrinitas",
+      "subtitle": "Yellowing",
+      "color": "#f5c542",
+      "description": "The dawning. Solar consciousness rising, wisdom emerging. The transitional moment between purification and completion.",
+      "keywords": ["awakening", "wisdom", "transition", "solar", "dawn"],
+      "question": "What wisdom is dawning? What is coming into consciousness?",
+      "quote": "Whatever exists was initially most perfect with God, and in time likewise reverts to the same perfection.",
+      "quote_source": "Drebbel, Two Treatises (1628)",
+      "symbols": ["sunrise", "yellow rose", "gold dawn", "awakening"]
+    },
+    {
+      "id": "stage-04",
+      "name": "Rubedo",
+      "subtitle": "Reddening",
+      "color": "#c41e3a",
+      "description": "The completion. The red stone, the philosopher's stone achieved. Integration of all that was separated. The work accomplished.",
+      "keywords": ["completion", "integration", "wholeness", "achievement", "red"],
+      "question": "What is being completed? What wholeness is possible?",
+      "quote": "Fire purifies all fixed things and by fire they are perfected.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)",
+      "symbols": ["phoenix", "red king", "sun", "rose"]
+    }
+  ],
+
+  "operations": [
+    {
+      "id": "op-01",
+      "name": "Calcination",
+      "subtitle": "Burning",
+      "color": "#ff6b35",
+      "description": "Reduction by fire. The ego burned away, attachments reduced to ash. Destruction that clears the ground for new growth.",
+      "keywords": ["fire", "reduction", "ego-death", "clearing", "ash"],
+      "question": "What must be burned away? What attachments need releasing?",
+      "quote": "All impurities and pollutions of things are purified by fire.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)"
+    },
+    {
+      "id": "op-02",
+      "name": "Dissolution",
+      "subtitle": "Dissolving",
+      "color": "#4a90d9",
+      "description": "Breaking down in water. Emotional flooding, letting structures dissolve. Surrendering rigid forms to the flow.",
+      "keywords": ["water", "surrender", "emotion", "flow", "letting-go"],
+      "question": "What structures need to dissolve? Where must you surrender?",
+      "quote": "Water joins together everything that is dissolved.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)"
+    },
+    {
+      "id": "op-03",
+      "name": "Separation",
+      "subtitle": "Discerning",
+      "color": "#9b59b6",
+      "description": "Sorting and discerning. Distinguishing the valuable from the worthless, the essential from the accidental.",
+      "keywords": ["discernment", "sorting", "distinction", "choice", "clarity"],
+      "question": "What must be separated? What distinction needs making?",
+      "quote": "Fire separates everything that is joined.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)"
+    },
+    {
+      "id": "op-04",
+      "name": "Conjunction",
+      "subtitle": "Uniting",
+      "color": "#e91e63",
+      "description": "The marriage of opposites. Bringing together what was separated. Union of sun and moon, masculine and feminine, conscious and unconscious.",
+      "keywords": ["union", "marriage", "integration", "opposites", "synthesis"],
+      "question": "What opposites seek union? What must be joined?",
+      "quote": "From two comes one, and no further.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)"
+    },
+    {
+      "id": "op-05",
+      "name": "Fermentation",
+      "subtitle": "Inspiring",
+      "color": "#8bc34a",
+      "description": "New life from decay. The vital spark entering dead matter. Inspiration, enthusiasm, spiritual quickening.",
+      "keywords": ["inspiration", "vitality", "quickening", "spirit", "life"],
+      "question": "What new life is fermenting? What inspiration is arising?",
+      "quote": "Nature gives motion, motion excites air, air excites fire, and fire causes all seed to mature.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)"
+    },
+    {
+      "id": "op-06",
+      "name": "Distillation",
+      "subtitle": "Refining",
+      "color": "#00bcd4",
+      "description": "Extracting the essence. Rising and falling, purifying through repetition. Getting to the heart of the matter.",
+      "keywords": ["essence", "refinement", "purity", "repetition", "ascent"],
+      "question": "What is the essence? What needs further refinement?",
+      "quote": "It is first necessary to purify it, and remove the combustible oil, as much as possible; then to distill it.",
+      "quote_source": "Drebbel, Two Treatises (1628)"
+    },
+    {
+      "id": "op-07",
+      "name": "Coagulation",
+      "subtitle": "Manifesting",
+      "color": "#795548",
+      "description": "Making solid. The spiritual made material, the vision made real. Incarnation of the work into lasting form.",
+      "keywords": ["manifestation", "solidifying", "incarnation", "form", "completion"],
+      "question": "What is ready to manifest? How does spirit become matter?",
+      "quote": "According to the disposition of the matrix, or place, various things are produced in the earth.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)"
+    }
+  ],
+
+  "elements": [
+    {
+      "id": "elem-01",
+      "name": "Fire",
+      "subtitle": "Will",
+      "color": "#e63946",
+      "glyph": "triangle pointing up",
+      "description": "The active, transforming principle. Will, passion, destruction and creation. That which changes everything it touches.",
+      "keywords": ["will", "transformation", "passion", "action", "energy"],
+      "question": "Where is the fire? What needs transforming action?",
+      "quote": "Fire purifies all fixed things and by fire they are perfected.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)",
+      "quality": "hot and dry"
+    },
+    {
+      "id": "elem-02",
+      "name": "Water",
+      "subtitle": "Emotion",
+      "color": "#457b9d",
+      "glyph": "triangle pointing down",
+      "description": "The receptive, dissolving principle. Emotion, intuition, the unconscious. That which flows and finds its level.",
+      "keywords": ["emotion", "intuition", "flow", "depth", "receptivity"],
+      "question": "What are the feelings? What needs to flow?",
+      "quote": "Water washes and purifies all imperfect things which are not fixed.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)",
+      "quality": "cold and wet"
+    },
+    {
+      "id": "elem-03",
+      "name": "Air",
+      "subtitle": "Thought",
+      "color": "#a8dadc",
+      "glyph": "triangle up with line",
+      "description": "The mediating, communicating principle. Thought, breath, speech. That which connects and carries.",
+      "keywords": ["thought", "communication", "breath", "connection", "movement"],
+      "question": "What thoughts are present? What needs communicating?",
+      "quote": "Motion excites air, air excites fire.",
+      "quote_source": "Sendivogius, New Chemical Light (1628)",
+      "quality": "hot and wet"
+    },
+    {
+      "id": "elem-04",
+      "name": "Earth",
+      "subtitle": "Body",
+      "color": "#606c38",
+      "glyph": "triangle down with line",
+      "description": "The grounding, manifesting principle. Body, matter, the material world. That which gives form and stability.",
+      "keywords": ["body", "matter", "grounding", "form", "stability"],
+      "question": "What is the material reality? What needs grounding?",
+      "quote": "What comes from earth, returns to earth.",
+      "quote_source": "Drebbel, Two Treatises (1628)",
+      "quality": "cold and dry"
+    },
+    {
+      "id": "elem-05",
+      "name": "Quintessence",
+      "subtitle": "Spirit",
+      "color": "#6c5ce7",
+      "glyph": "eight-pointed star",
+      "description": "The fifth element, the heavenly substance. Spirit pervading all things, the divine spark, that which transcends the four.",
+      "keywords": ["spirit", "transcendence", "divine", "perfection", "essence"],
+      "question": "What is the spiritual dimension? What transcends?",
+      "quote": "The Quintessence is an eternal, immutable, incombustible thing, like the invincible heaven, perfect in all the elements.",
+      "quote_source": "Drebbel, Two Treatises (1628)"
+    }
+  ],
+
+  "principles": [
+    {
+      "id": "prin-01",
+      "name": "Sulphur",
+      "subtitle": "Soul",
+      "color": "#ffd166",
+      "description": "The combustible principle. Soul, desire, the fiery seed. That which burns and gives life.",
+      "keywords": ["soul", "desire", "combustion", "life-force", "passion"],
+      "question": "What does the soul desire? What animates this situation?",
+      "correspondence": "Sun, Gold, Masculine"
+    },
+    {
+      "id": "prin-02",
+      "name": "Mercury",
+      "subtitle": "Spirit",
+      "color": "#c0c0c0",
+      "description": "The volatile principle. Spirit, messenger, the fluid that connects. That which moves between realms.",
+      "keywords": ["spirit", "volatility", "messenger", "fluidity", "connection"],
+      "question": "What is the spirit of this? What message is being carried?",
+      "quote": "He is the true living Mercurius, not called living because he becomes a base metal, but he is living because in him alone life is found.",
+      "quote_source": "Hellwig, Curious Physics (1714)",
+      "correspondence": "Mercury (planet), Quicksilver, Androgyne"
+    },
+    {
+      "id": "prin-03",
+      "name": "Salt",
+      "subtitle": "Body",
+      "color": "#dfe6e9",
+      "description": "The fixed principle. Body, crystallization, preservation. That which holds form and remains.",
+      "keywords": ["body", "fixity", "preservation", "form", "crystallization"],
+      "question": "What is the body of this? What form does it take?",
+      "quote": "The Sun is fire, salt, and base.",
+      "quote_source": "Paracelsus, Book of Meteors (1566)",
+      "correspondence": "Earth, Cube, Feminine"
+    }
+  ],
+
+  "vessels": [
+    {
+      "id": "vessel-01",
+      "name": "Athanor",
+      "subtitle": "The Furnace",
+      "color": "#d35400",
+      "description": "The slow-burning furnace. Sustained heat over time. Patience, constancy, the long work.",
+      "keywords": ["patience", "sustained-effort", "constancy", "slow-burning", "endurance"],
+      "question": "What requires sustained attention? Where is patience needed?"
+    },
+    {
+      "id": "vessel-02",
+      "name": "Alembic",
+      "subtitle": "The Still",
+      "color": "#3498db",
+      "description": "The vessel of distillation. Separation and purification. Rising vapor, falling essence.",
+      "keywords": ["purification", "separation", "ascent", "essence", "clarity"],
+      "question": "What needs distilling? How to extract the essence?"
+    },
+    {
+      "id": "vessel-03",
+      "name": "Crucible",
+      "subtitle": "The Test",
+      "color": "#7f8c8d",
+      "description": "The vessel of trial. Where substances are tested by fire. Containment under pressure and heat.",
+      "keywords": ["trial", "testing", "containment", "pressure", "strength"],
+      "question": "What is being tested? What must withstand the fire?"
+    },
+    {
+      "id": "vessel-04",
+      "name": "Retort",
+      "subtitle": "The Return",
+      "color": "#27ae60",
+      "description": "The vessel of circulation. What rises must fall, what goes out returns. The cycle of reflection.",
+      "keywords": ["circulation", "return", "cycle", "reflection", "integration"],
+      "question": "What needs to circulate? What must return to its source?"
+    }
+  ],
+
+  "sages": [
+    {
+      "id": "sage-01",
+      "name": "Hermes",
+      "subtitle": "Trismegistus",
+      "color": "#9b59b6",
+      "description": "The thrice-great. Legendary founder of alchemy. 'As above, so below.' The unity of all things.",
+      "keywords": ["correspondence", "unity", "foundation", "mystery", "as-above-so-below"],
+      "question": "How does the macrocosm mirror the microcosm?",
+      "quote": "As above, so below.",
+      "source_books": ["Pymander"]
+    },
+    {
+      "id": "sage-02",
+      "name": "Paracelsus",
+      "subtitle": "The Physician",
+      "color": "#e74c3c",
+      "description": "Nature as the great teacher. Medicine and poison, dose and balance. The body as laboratory.",
+      "keywords": ["medicine", "nature", "balance", "healing", "practice"],
+      "question": "What does nature teach here? What is the medicine?",
+      "quote": "The art of Nature teaches to bring forth nothing more from the fruits than Fire, Salt, and Base.",
+      "quote_source": "Paracelsus, Book of Meteors (1566)",
+      "source_books": ["Astronomica et astrologica", "Das Buch Meteororum"]
+    },
+    {
+      "id": "sage-03",
+      "name": "Boehme",
+      "subtitle": "The Mystic",
+      "color": "#8e44ad",
+      "description": "The cobbler who saw into the heart of nature. Divine spark in all things. The aurora of the soul.",
+      "keywords": ["mysticism", "vision", "divine-spark", "aurora", "inner-light"],
+      "question": "What is the divine spark here? What vision is possible?",
+      "source_books": ["Aurora (Morgenröte im Aufgang)"]
+    },
+    {
+      "id": "sage-04",
+      "name": "Ficino",
+      "subtitle": "The Translator",
+      "color": "#3498db",
+      "description": "Translator of Plato and Hermes. The soul's journey through the spheres. Beauty as path to the divine.",
+      "keywords": ["soul", "beauty", "translation", "neoplatonism", "harmony"],
+      "question": "What is the soul's journey here? Where is the beauty?",
+      "quote": "Pleasure is a certain perfection of apprehension itself.",
+      "quote_source": "Ficino, On Pleasure",
+      "source_books": ["Epistolae", "De Voluptate"]
+    },
+    {
+      "id": "sage-05",
+      "name": "Sendivogius",
+      "subtitle": "The Adept",
+      "color": "#2ecc71",
+      "description": "The new light. Practical alchemist who wrote clearly. Nature's hidden operations revealed.",
+      "keywords": ["practice", "clarity", "nature", "revelation", "new-light"],
+      "question": "What does practical wisdom say? What is the clear path?",
+      "quote": "Nothing grows or achieves perfection without a seed.",
+      "source_books": ["Novum lumen chymicum"]
+    },
+    {
+      "id": "sage-06",
+      "name": "Agrippa",
+      "subtitle": "The Magus",
+      "color": "#1abc9c",
+      "description": "Three books of occult philosophy. The hidden forces of nature, the power of symbols and correspondences.",
+      "keywords": ["magic", "correspondences", "symbols", "hidden-forces", "philosophy"],
+      "question": "What hidden forces are at work? What correspondences apply?",
+      "source_books": ["De occulta philosophia"]
+    }
+  ],
+
+  "arcana": [
+    {
+      "id": "arc-01",
+      "name": "Prima Materia",
+      "subtitle": "First Matter",
+      "color": "#2c3e50",
+      "description": "The raw material. Chaos before creation, potential before form. The base substance from which all arises.",
+      "keywords": ["potential", "chaos", "beginning", "raw-material", "source"],
+      "question": "What is the raw material? What potential lies unformed?",
+      "quote": "The Prima Materia is a divine mist issuing from God's Paradise.",
+      "quote_source": "Hellwig, Curious Physics (1714)"
+    },
+    {
+      "id": "arc-02",
+      "name": "Lapis",
+      "subtitle": "The Stone",
+      "color": "#c0392b",
+      "description": "The philosopher's stone. The goal of the great work. That which transforms lead to gold, mortal to immortal.",
+      "keywords": ["goal", "perfection", "transformation", "achievement", "gold"],
+      "question": "What is the goal? What would complete the work?",
+      "quote": "The Philosopher's Stone is praised by Hermes in the Emerald Tablet.",
+      "quote_source": "Hellwig, Curious Physics (1714)"
+    },
+    {
+      "id": "arc-03",
+      "name": "Ouroboros",
+      "subtitle": "Eternal Return",
+      "color": "#16a085",
+      "description": "The serpent eating its tail. Self-sufficiency, eternal cycles, that which contains its own beginning and end.",
+      "keywords": ["cycle", "self-sufficiency", "eternity", "wholeness", "return"],
+      "question": "What cycle is completing? What contains its own renewal?"
+    },
+    {
+      "id": "arc-04",
+      "name": "Rebis",
+      "subtitle": "The Double",
+      "color": "#e91e63",
+      "description": "The two-thing. Androgyne, hermaphrodite. Union of king and queen, sun and moon, in one body.",
+      "keywords": ["union", "androgyne", "duality-resolved", "wholeness", "integration"],
+      "question": "What dualities seek resolution? What would integration look like?"
+    },
+    {
+      "id": "arc-05",
+      "name": "Elixir",
+      "subtitle": "The Medicine",
+      "color": "#9b59b6",
+      "description": "The drinkable gold. Universal medicine, that which heals all ailments. The stone in liquid form.",
+      "keywords": ["healing", "medicine", "restoration", "vitality", "cure"],
+      "question": "What is the medicine needed? What would heal this?"
+    }
+  ],
+
+  "prompts": [
+    {
+      "id": "prompt-01",
+      "name": "The Great Work",
+      "type": "spread",
+      "description": "A 4-card spread mapping your situation to the alchemical stages",
+      "layout": [
+        {"position": 1, "name": "Nigredo", "meaning": "What must die or be faced"},
+        {"position": 2, "name": "Albedo", "meaning": "What is being purified"},
+        {"position": 3, "name": "Citrinitas", "meaning": "What wisdom is emerging"},
+        {"position": 4, "name": "Rubedo", "meaning": "What completion is possible"}
+      ],
+      "instructions": "Shuffle the oracle cards. Draw four cards, placing them left to right. Read each card through the lens of its position's alchemical stage."
+    },
+    {
+      "id": "prompt-02",
+      "name": "The Crucible",
+      "type": "spread",
+      "description": "A 3-card spread for times of transformation",
+      "layout": [
+        {"position": 1, "name": "Dissolving", "meaning": "What is breaking down"},
+        {"position": 2, "name": "Emerging", "meaning": "What is taking form"},
+        {"position": 3, "name": "Catalyst", "meaning": "What accelerates the change"}
+      ],
+      "instructions": "Focus on a situation in flux. Draw three cards. The first shows what's dissolving, the second what's emerging, the third what catalyzes the transformation."
+    },
+    {
+      "id": "prompt-03",
+      "name": "As Above, So Below",
+      "type": "spread",
+      "description": "A 2-card spread for seeing correspondences",
+      "layout": [
+        {"position": 1, "name": "Above", "meaning": "The spiritual/mental dimension"},
+        {"position": 2, "name": "Below", "meaning": "The material/physical dimension"}
+      ],
+      "instructions": "Draw two cards. The first represents the higher/inner dimension, the second the lower/outer. Consider how they mirror and inform each other."
+    },
+    {
+      "id": "prompt-04",
+      "name": "Single Draw",
+      "type": "practice",
+      "description": "Daily contemplation with one card",
+      "instructions": "Each morning, shuffle and draw one card. Sit with its image and question. Throughout the day, notice where its themes appear. In the evening, journal what you observed.",
+      "questions": [
+        "What aspect of transformation is present today?",
+        "What does this card ask me to notice?",
+        "Where did I see this energy today?"
+      ]
+    },
+    {
+      "id": "prompt-05",
+      "name": "AI Interpretation",
+      "type": "guide",
+      "description": "How to use AI to interpret your spread",
+      "instructions": "Photograph your card spread, or list the cards drawn and their positions. Share with an AI assistant along with your question. The AI can help you explore the symbolism, find connections, and generate insights you might not see alone.",
+      "example_prompt": "I drew these cards from an alchemical oracle deck:\n\n1. [Card name] in the Nigredo position (what must die)\n2. [Card name] in the Albedo position (what is purified)\n3. [Card name] in the Citrinitas position (what wisdom emerges)\n4. [Card name] in the Rubedo position (what completion is possible)\n\nMy question was about [your situation].\n\nPlease help me interpret this spread, drawing on alchemical symbolism and the transformation process."
+    }
+  ]
+}
