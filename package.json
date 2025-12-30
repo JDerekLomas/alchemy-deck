@@ -1,0 +1,20 @@
+{
+  "name": "alchemy-deck",
+  "version": "1.0.0",
+  "description": "Oracle deck for transformation based on alchemical tradition",
+  "type": "module",
+  "scripts": {
+    "generate": "node src/generate-images.js",
+    "dev": "npx serve docs"
+  },
+  "keywords": [
+    "alchemy",
+    "oracle",
+    "tarot",
+    "transformation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "replicate": "^0.25.2"
+  }
+}
