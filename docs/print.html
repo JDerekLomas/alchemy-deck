@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Alchemy Deck - Print Sheet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <style>
     @page {
       size: letter;
@@ -94,14 +94,14 @@
       height: 4.75in;
       border-radius: 0.125in;
       overflow: hidden;
-      background: #1a1612;
+      background: #0d0a08;
       display: flex;
       flex-direction: column;
       border: 1px solid #3d3530;
     }
 
     .card .artwork {
-      height: 2.8in;
+      height: 2.75in;
       overflow: hidden;
       background: linear-gradient(135deg, #2a2420 0%, #1a1612 100%);
       display: flex;
@@ -122,40 +122,42 @@
     }
 
     .card .text-panel {
-      padding: 8px 10px 5px;
-      border-top: 2px solid rgba(212, 175, 55, 0.4);
+      padding: 10px 12px 6px;
+      border-top: 2px solid rgba(212, 175, 55, 0.5);
     }
 
     .card .category {
       font-family: 'Cinzel', serif;
-      font-size: 8px;
+      font-size: 7px;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .card .title {
       font-family: 'Cinzel', serif;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: #fff;
       line-height: 1.1;
+      letter-spacing: 0.02em;
     }
 
     .card .subtitle {
       font-family: 'Cormorant Garamond', serif;
       font-size: 11px;
       font-style: italic;
-      color: rgba(255,255,255,0.7);
-      margin-top: 1px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 2px;
+      letter-spacing: 0.02em;
     }
 
     .card .prompt-area {
-      padding: 6px 10px;
-      font-size: 10px;
-      line-height: 1.4;
-      color: #fff;
+      padding: 8px 12px;
+      font-size: 9.5px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.92);
       flex: 1;
       overflow: hidden;
       font-family: 'Cormorant Garamond', serif;
@@ -163,79 +165,57 @@
     }
 
     .card .quote {
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       color: #d4af37;
-      font-size: 9px;
-      padding: 5px 10px;
-      border-top: 1px solid rgba(212, 175, 55, 0.3);
-      line-height: 1.3;
+      font-size: 8px;
+      padding: 6px 12px 8px;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      line-height: 1.35;
+      letter-spacing: 0.01em;
     }
 
-    /* Category-colored panels - Alchemical palette */
-
-    /* Stages - Deep purples to reds for transformation journey */
-    .card.stage .text-panel,
-    .card.stage .prompt-area { background: linear-gradient(to bottom, #2d1f3d, #1f1629); }
+    /* Category colors */
+    .card.stage .text-panel, .card.stage .prompt-area { background: linear-gradient(to bottom, #2d1f3d, #1f1629); }
     .card.stage .category { color: #c084fc; }
-    .card.stage.nigredo .text-panel,
-    .card.stage.nigredo .prompt-area { background: linear-gradient(to bottom, #1a1a1a, #0d0d0d); }
+    .card.stage.nigredo .text-panel, .card.stage.nigredo .prompt-area { background: linear-gradient(to bottom, #1a1a1a, #0d0d0d); }
     .card.stage.nigredo .category { color: #666; }
-    .card.stage.albedo .text-panel,
-    .card.stage.albedo .prompt-area { background: linear-gradient(to bottom, #3d3d3d, #2a2a2a); }
+    .card.stage.albedo .text-panel, .card.stage.albedo .prompt-area { background: linear-gradient(to bottom, #3d3d3d, #2a2a2a); }
     .card.stage.albedo .category { color: #e0e0e0; }
-    .card.stage.citrinitas .text-panel,
-    .card.stage.citrinitas .prompt-area { background: linear-gradient(to bottom, #4d4020, #3d3018); }
+    .card.stage.citrinitas .text-panel, .card.stage.citrinitas .prompt-area { background: linear-gradient(to bottom, #4d4020, #3d3018); }
     .card.stage.citrinitas .category { color: #f5c542; }
-    .card.stage.rubedo .text-panel,
-    .card.stage.rubedo .prompt-area { background: linear-gradient(to bottom, #4d1a20, #3d1018); }
+    .card.stage.rubedo .text-panel, .card.stage.rubedo .prompt-area { background: linear-gradient(to bottom, #4d1a20, #3d1018); }
     .card.stage.rubedo .category { color: #e63946; }
 
-    /* Operations - Warm active tones */
-    .card.operation .text-panel,
-    .card.operation .prompt-area { background: linear-gradient(to bottom, #4d2a10, #3d2008); }
+    .card.operation .text-panel, .card.operation .prompt-area { background: linear-gradient(to bottom, #4d2a10, #3d2008); }
     .card.operation .category { color: #ff8c42; }
 
-    /* Elements - Nature tones */
-    .card.element .text-panel,
-    .card.element .prompt-area { background: linear-gradient(to bottom, #1a3d3a, #132d2b); }
+    .card.element .text-panel, .card.element .prompt-area { background: linear-gradient(to bottom, #1a3d3a, #132d2b); }
     .card.element .category { color: #4ecdc4; }
-    .card.element.fire .text-panel,
-    .card.element.fire .prompt-area { background: linear-gradient(to bottom, #4d1a1a, #3d1313); }
+    .card.element.fire .text-panel, .card.element.fire .prompt-area { background: linear-gradient(to bottom, #4d1a1a, #3d1313); }
     .card.element.fire .category { color: #e63946; }
-    .card.element.water .text-panel,
-    .card.element.water .prompt-area { background: linear-gradient(to bottom, #1a2a4d, #132039); }
+    .card.element.water .text-panel, .card.element.water .prompt-area { background: linear-gradient(to bottom, #1a2a4d, #132039); }
     .card.element.water .category { color: #457b9d; }
-    .card.element.air .text-panel,
-    .card.element.air .prompt-area { background: linear-gradient(to bottom, #2a3d4d, #1f2f3d); }
+    .card.element.air .text-panel, .card.element.air .prompt-area { background: linear-gradient(to bottom, #2a3d4d, #1f2f3d); }
     .card.element.air .category { color: #a8dadc; }
-    .card.element.earth .text-panel,
-    .card.element.earth .prompt-area { background: linear-gradient(to bottom, #2d3d1a, #1f2d13); }
+    .card.element.earth .text-panel, .card.element.earth .prompt-area { background: linear-gradient(to bottom, #2d3d1a, #1f2d13); }
     .card.element.earth .category { color: #606c38; }
-    .card.element.quintessence .text-panel,
-    .card.element.quintessence .prompt-area { background: linear-gradient(to bottom, #2d1f4d, #1f1639); }
+    .card.element.quintessence .text-panel, .card.element.quintessence .prompt-area { background: linear-gradient(to bottom, #2d1f4d, #1f1639); }
     .card.element.quintessence .category { color: #6c5ce7; }
 
-    /* Principles - Metallic tones */
-    .card.principle .text-panel,
-    .card.principle .prompt-area { background: linear-gradient(to bottom, #4a3d10, #3d3008); }
+    .card.principle .text-panel, .card.principle .prompt-area { background: linear-gradient(to bottom, #4a3d10, #3d3008); }
     .card.principle .category { color: #ffd166; }
 
-    /* Vessels - Earthy tones */
-    .card.vessel .text-panel,
-    .card.vessel .prompt-area { background: linear-gradient(to bottom, #3d2a1a, #2d1f13); }
+    .card.vessel .text-panel, .card.vessel .prompt-area { background: linear-gradient(to bottom, #3d2a1a, #2d1f13); }
     .card.vessel .category { color: #d4a574; }
 
-    /* Sages - Scholarly blues and purples */
-    .card.sage .text-panel,
-    .card.sage .prompt-area { background: linear-gradient(to bottom, #1a2a3d, #131f2d); }
+    .card.sage .text-panel, .card.sage .prompt-area { background: linear-gradient(to bottom, #1a2a3d, #131f2d); }
     .card.sage .category { color: #60a5fa; }
 
-    /* Arcana - Deep mystical tones */
-    .card.arcana .text-panel,
-    .card.arcana .prompt-area { background: linear-gradient(to bottom, #3d1a3d, #2d132d); }
+    .card.arcana .text-panel, .card.arcana .prompt-area { background: linear-gradient(to bottom, #3d1a3d, #2d132d); }
     .card.arcana .category { color: #e879f9; }
 
-    /* Card back - Alchemical design */
+    /* Card back */
     .card-back {
       width: 2.75in;
       height: 4.75in;
@@ -275,7 +255,6 @@
       text-align: center;
     }
 
-    /* Ouroboros symbol */
     .card-back .ouroboros {
       width: 0.8in;
       height: 0.8in;
@@ -409,453 +388,440 @@
     </div>
   </div>
 
-  <!-- Page 1: Stages (4) + Operations (5) -->
+  <!-- Page 1: Stages + Operations -->
   <div class="page">
-    <!-- STAGES -->
     <div class="card stage nigredo">
-      <div class="artwork"><img src="cards/stage-01.png" alt="Nigredo" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/stage-01.png" alt="Nigredo"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Nigredo</div>
         <div class="subtitle">Blackening</div>
       </div>
-      <div class="prompt-area">The dark night. What must die for transformation to begin? What shadow must you face?</div>
-      <div class="quote">"I am black, white, yellow, and red." —Maier, Atalanta Fugiens</div>
+      <div class="prompt-area">Ravens circle a black sun. The old form dies in the vessel. What must you face in the darkness? What shadow holds the seed of change?</div>
+      <div class="quote">"I am black, white, yellow, and red." —Maier</div>
     </div>
 
     <div class="card stage albedo">
-      <div class="artwork"><img src="cards/stage-02.png" alt="Albedo" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/stage-02.png" alt="Albedo"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Albedo</div>
         <div class="subtitle">Whitening</div>
       </div>
-      <div class="prompt-area">The washing. What is being purified? What clarity is emerging from chaos?</div>
-      <div class="quote">"Water washes and purifies all imperfect things." —Sendivogius</div>
+      <div class="prompt-area">A white dove emerges from darkness. The blackened matter is washed to silver-white. What clarity is emerging? What is being purified?</div>
+      <div class="quote">"Water purifies all imperfect things." —Sendivogius</div>
     </div>
 
     <div class="card stage citrinitas">
-      <div class="artwork"><img src="cards/stage-03.png" alt="Citrinitas" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/stage-03.png" alt="Citrinitas"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Citrinitas</div>
         <div class="subtitle">Yellowing</div>
       </div>
-      <div class="prompt-area">The dawning. What wisdom is emerging? What is coming into consciousness?</div>
+      <div class="prompt-area">Golden light breaks over the horizon. The white matter yellows as consciousness stirs. What wisdom is dawning? What first light do you glimpse?</div>
       <div class="quote">"The vulture cries: I am white and black, yellow and red." —Maier</div>
     </div>
 
     <div class="card stage rubedo">
-      <div class="artwork"><img src="cards/stage-04.png" alt="Rubedo" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/stage-04.png" alt="Rubedo"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Rubedo</div>
         <div class="subtitle">Reddening</div>
       </div>
-      <div class="prompt-area">The completion. What wholeness is possible? What is being integrated?</div>
-      <div class="quote">"Fire purifies all fixed things and by fire they are perfected." —Sendivogius</div>
+      <div class="prompt-area">Phoenix rises from flames. Sun and moon unite in sacred marriage. The red stone is born. What wholeness is possible? What is ready to be complete?</div>
+      <div class="quote">"The fixed becomes volatile; the volatile, fixed." —Khunrath</div>
     </div>
+  </div>
 
-    <!-- OPERATIONS -->
+  <!-- Page 2: Operations -->
+  <div class="page">
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-01.png" alt="Calcination" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-01.png" alt="Calcination"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Calcination</div>
         <div class="subtitle">Burning</div>
       </div>
-      <div class="prompt-area">Reduction by fire. What must be burned away? What attachments need releasing?</div>
-      <div class="quote">"All impurities of things are purified by fire." —Sendivogius</div>
+      <div class="prompt-area">Fierce flames reduce matter to white ash. The ego's shell cracks open in the fire. What must be burned away? What attachments need releasing?</div>
+      <div class="quote">"All impurities are purified by fire." —Sendivogius</div>
     </div>
 
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-02.png" alt="Dissolution" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-02.png" alt="Dissolution"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Dissolution</div>
         <div class="subtitle">Dissolving</div>
       </div>
-      <div class="prompt-area">Breaking down in water. What structures need to dissolve? Where must you surrender?</div>
-      <div class="quote">"Water joins together everything that is dissolved." —Sendivogius</div>
+      <div class="prompt-area">Ash dissolves into dark waters. Rigid structures melt away. Where must you surrender control? What emotions need to flow?</div>
+      <div class="quote">"Water joins together everything dissolved." —Sendivogius</div>
     </div>
 
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-03.png" alt="Separation" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-03.png" alt="Separation"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Separation</div>
         <div class="subtitle">Discerning</div>
       </div>
-      <div class="prompt-area">Sorting and discerning. What must be separated? What distinction needs making?</div>
+      <div class="prompt-area">A sword divides light from dark. Eagle rises, toad sinks. What must be separated? What distinction needs making?</div>
       <div class="quote">"Fire separates everything that is joined." —Sendivogius</div>
     </div>
 
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-04.png" alt="Conjunction" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-04.png" alt="Conjunction"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Conjunction</div>
         <div class="subtitle">Uniting</div>
       </div>
-      <div class="prompt-area">Marriage of opposites. What opposites seek union? What must be joined?</div>
-      <div class="quote">"The fixed and volatile are united into one." —Khunrath</div>
+      <div class="prompt-area">King and Queen embrace. Sun and moon merge into one. Opposites unite in the vessel. What seeks integration within you?</div>
+      <div class="quote">"The animated spirit is joined to the body." —Khunrath</div>
     </div>
+  </div>
 
+  <!-- Page 3: Operations + Elements -->
+  <div class="page">
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-05.png" alt="Fermentation" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-05.png" alt="Fermentation"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Fermentation</div>
         <div class="subtitle">Inspiring</div>
       </div>
-      <div class="prompt-area">New life from decay. What new life is fermenting? What inspiration is arising?</div>
-      <div class="quote">"Nature gives motion, motion excites air, air excites fire." —Sendivogius</div>
+      <div class="prompt-area">The peacock's tail shimmers with iridescent colors. Decay births new life. What inspiration is arising from crisis? What new growth stirs?</div>
+      <div class="quote">"Nature gives motion, motion excites fire." —Sendivogius</div>
     </div>
-  </div>
 
-  <!-- Page 2: Operations (2) + Elements (5) + Principles (2) -->
-  <div class="page">
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-06.png" alt="Distillation" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-06.png" alt="Distillation"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Distillation</div>
         <div class="subtitle">Refining</div>
       </div>
-      <div class="prompt-area">Extracting essence. What is the essence? What needs further refinement?</div>
-      <div class="quote">"The spirit is sublimed and the body remains below." —Khunrath</div>
+      <div class="prompt-area">Vapors rise through the alembic, condense, fall, rise again. Repeated cycles of refinement. What essence needs extracting?</div>
+      <div class="quote">"The tincture represents the Soul." —Drebbel</div>
     </div>
 
     <div class="card operation">
-      <div class="artwork"><img src="cards/op-07.png" alt="Coagulation" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/op-07.png" alt="Coagulation"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Coagulation</div>
         <div class="subtitle">Manifesting</div>
       </div>
-      <div class="prompt-area">Making solid. What is ready to manifest? How does spirit become matter?</div>
-      <div class="quote">"According to the matrix, various things are produced." —Sendivogius</div>
+      <div class="prompt-area">The distilled essence crystallizes into solid form. Spirit becomes matter. The Stone manifests. What is ready to take form?</div>
+      <div class="quote">"Let it slowly coagulate in a warm place." —Drebbel</div>
     </div>
 
-    <!-- ELEMENTS -->
     <div class="card element fire">
-      <div class="artwork"><img src="cards/elem-01.png" alt="Fire" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/elem-01.png" alt="Fire"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Fire</div>
         <div class="subtitle">Will</div>
       </div>
-      <div class="prompt-area">The transforming principle. Where is the fire? What needs transforming action?</div>
-      <div class="quote">"Fire purifies all fixed things." —Sendivogius</div>
+      <div class="prompt-area">Roaring flames, the salamander dancing within. The upward-pointing triangle. Where is the fire needed? What calls for transforming action?</div>
+      <div class="quote">"Fire acts in wonderful hidden ways." —Sendivogius</div>
     </div>
+  </div>
 
+  <!-- Page 4: Elements -->
+  <div class="page">
     <div class="card element water">
-      <div class="artwork"><img src="cards/elem-02.png" alt="Water" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/elem-02.png" alt="Water"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Water</div>
         <div class="subtitle">Emotion</div>
       </div>
-      <div class="prompt-area">The dissolving principle. What are the feelings? What needs to flow?</div>
-      <div class="quote">"Water washes and purifies all imperfect things." —Sendivogius</div>
+      <div class="prompt-area">Flowing streams, the undine spirit moving in depths. The downward-pointing triangle. What feelings need acknowledgment? What seeks to flow?</div>
+      <div class="quote">"Water purifies all imperfect things." —Sendivogius</div>
     </div>
 
     <div class="card element air">
-      <div class="artwork"><img src="cards/elem-03.png" alt="Air" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/elem-03.png" alt="Air"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Air</div>
         <div class="subtitle">Thought</div>
       </div>
-      <div class="prompt-area">The communicating principle. What thoughts are present? What needs communicating?</div>
+      <div class="prompt-area">Swirling winds, sylphs in flight. The triangle with crossbar. What thoughts need expression? What communication is required?</div>
       <div class="quote">"Motion excites air, air excites fire." —Sendivogius</div>
     </div>
 
     <div class="card element earth">
-      <div class="artwork"><img src="cards/elem-04.png" alt="Earth" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/elem-04.png" alt="Earth"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Earth</div>
         <div class="subtitle">Body</div>
       </div>
-      <div class="prompt-area">The grounding principle. What is the material reality? What needs grounding?</div>
+      <div class="prompt-area">Mountains and caves, crystals growing in darkness. The inverted triangle with crossbar. What is the material reality? What needs grounding?</div>
       <div class="quote">"Earth receives the Tincture." —Sendivogius</div>
     </div>
 
     <div class="card element quintessence">
-      <div class="artwork"><img src="cards/elem-05.png" alt="Quintessence" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/elem-05.png" alt="Quintessence"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Quintessence</div>
         <div class="subtitle">Spirit</div>
       </div>
-      <div class="prompt-area">The fifth element. What is the spiritual dimension? What transcends?</div>
-      <div class="quote">"The Quintessence is eternal, immutable, perfect in all elements." —Drebbel</div>
+      <div class="prompt-area">Starry cosmos, spiraling galaxy, celestial light beyond the four. The eternal, unchanging essence. What transcends? What is the spiritual core?</div>
+      <div class="quote">"The Quintessence is eternal, immutable." —Drebbel</div>
     </div>
+  </div>
 
-    <!-- PRINCIPLES -->
+  <!-- Page 5: Principles + Vessels -->
+  <div class="page">
     <div class="card principle">
-      <div class="artwork"><img src="cards/prin-01.png" alt="Sulphur" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/prin-01.png" alt="Sulphur"></div>
       <div class="text-panel">
         <div class="category">Principle</div>
         <div class="title">Sulphur</div>
         <div class="subtitle">Soul</div>
       </div>
-      <div class="prompt-area">The combustible principle. What does the soul desire? What animates this?</div>
-      <div class="quote">"Fire separates, purifies, digests, and colors." —Sendivogius</div>
+      <div class="prompt-area">Burning sun, golden flames, the solar king. The combustible principle, what gives life and desire. What does the soul want? What animates this?</div>
+      <div class="quote">"Sulphur, Salt, Mercury—the three Prima Materia." —Paracelsus</div>
     </div>
-  </div>
 
-  <!-- Page 3: Principles (2) + Vessels (4) + Sages (3) -->
-  <div class="page">
     <div class="card principle">
-      <div class="artwork"><img src="cards/prin-02.png" alt="Mercury" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/prin-02.png" alt="Mercury"></div>
       <div class="text-panel">
         <div class="category">Principle</div>
         <div class="title">Mercury</div>
         <div class="subtitle">Spirit</div>
       </div>
-      <div class="prompt-area">The volatile principle. What message is being carried? What moves between realms?</div>
-      <div class="quote">"He is the true living Mercurius." —Hellwig</div>
+      <div class="prompt-area">Winged messenger, caduceus staff, quicksilver flowing. What moves between realms? What message is being carried? Where is the mediating force?</div>
+      <div class="quote">"From living quicksilver comes the prima materia." —Rosicrucian MS</div>
     </div>
 
     <div class="card principle">
-      <div class="artwork"><img src="cards/prin-03.png" alt="Salt" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/prin-03.png" alt="Salt"></div>
       <div class="text-panel">
         <div class="category">Principle</div>
         <div class="title">Salt</div>
         <div class="subtitle">Body</div>
       </div>
-      <div class="prompt-area">The fixed principle. What is the body of this? What form does it take?</div>
+      <div class="prompt-area">White crystals, the cubic stone, what remains after fire. The fixed principle, the body that contains spirit. What is the form? What structure holds this?</div>
       <div class="quote">"The Sun is fire, salt, and base." —Paracelsus</div>
     </div>
 
-    <!-- VESSELS -->
     <div class="card vessel">
-      <div class="artwork"><img src="cards/vessel-01.png" alt="Athanor" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/vessel-01.png" alt="Athanor"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Athanor</div>
         <div class="subtitle">The Furnace</div>
       </div>
-      <div class="prompt-area">Sustained heat over time. What requires sustained attention? Where is patience needed?</div>
-      <div class="quote">"With one Athanor furnace; and one fire." —Khunrath, Amphitheater</div>
+      <div class="prompt-area">Tower oven with steady, patient flame. The egg-shaped vessel maintains constant heat over time. What requires sustained attention? Where is patience the path?</div>
+      <div class="quote">"With one Athanor furnace; and one fire." —Khunrath</div>
     </div>
+  </div>
 
+  <!-- Page 6: Vessels + Sages -->
+  <div class="page">
     <div class="card vessel">
-      <div class="artwork"><img src="cards/vessel-02.png" alt="Alembic" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/vessel-02.png" alt="Alembic"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Alembic</div>
         <div class="subtitle">The Still</div>
       </div>
-      <div class="prompt-area">The vessel of distillation. What needs distilling? How to extract the essence?</div>
-      <div class="quote">"Distillation is the purification of liquids." —Rosicrucian MS</div>
+      <div class="prompt-area">Glass apparatus with curved head where vapors rise and condense. Drops of pure essence collect. What needs distilling? How to extract what matters?</div>
+      <div class="quote">"Extract tincture from the cucurbit." —Drebbel</div>
     </div>
 
     <div class="card vessel">
-      <div class="artwork"><img src="cards/vessel-03.png" alt="Crucible" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/vessel-03.png" alt="Crucible"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Crucible</div>
         <div class="subtitle">The Test</div>
       </div>
-      <div class="prompt-area">The vessel of trial. What is being tested? What must withstand the fire?</div>
-      <div class="quote">"Reveal the eternal gold of the human soul." —Hilarionus</div>
+      <div class="prompt-area">Ceramic pot glowing red in fierce flame. Matter is tested, proved, transformed. What is being tested? What must withstand the fire?</div>
+      <div class="quote">"The body dies, turns black, reduced to ashes." —Khunrath</div>
     </div>
 
     <div class="card vessel">
-      <div class="artwork"><img src="cards/vessel-04.png" alt="Retort" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/vessel-04.png" alt="Retort"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Retort</div>
         <div class="subtitle">The Return</div>
       </div>
-      <div class="prompt-area">The vessel of circulation. What needs to circulate? What must return to its source?</div>
-      <div class="quote">"It always begins there where it ends." —Hermes</div>
+      <div class="prompt-area">Bent-neck flask returns condensed vapors to the body. The pelican feeding its young. What must circulate? What returns to source?</div>
+      <div class="quote">"It begins where it ends." —Hermes</div>
     </div>
 
-    <!-- SAGES -->
     <div class="card sage">
-      <div class="artwork"><img src="cards/sage-01.png" alt="Hermes" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/sage-01.png" alt="Hermes"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Hermes</div>
         <div class="subtitle">Trismegistus</div>
       </div>
-      <div class="prompt-area">The thrice-great. How does the macrocosm mirror the microcosm?</div>
-      <div class="quote">"Man bore the image of his father, for God delighted in his own form." —Pymander</div>
+      <div class="prompt-area">Thrice-Great Hermes. The Emerald Tablet, the ibis, pyramids at dawn. As above, so below. How does the macrocosm mirror the microcosm?</div>
+      <div class="quote">"Man bore the image of his father." —Pymander</div>
     </div>
+  </div>
 
+  <!-- Page 7: Sages -->
+  <div class="page">
     <div class="card sage">
-      <div class="artwork"><img src="cards/sage-02.png" alt="Paracelsus" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/sage-02.png" alt="Paracelsus"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Paracelsus</div>
         <div class="subtitle">The Physician</div>
       </div>
-      <div class="prompt-area">Nature as teacher. What does nature teach here? What is the medicine?</div>
-      <div class="quote">"These three are Prima Materia, like God, namely Materia Prima." —Paracelsus</div>
+      <div class="prompt-area">Swiss physician-alchemist with sword Azoth at his side. Nature is the teacher. What does nature teach here? What is the medicine needed?</div>
+      <div class="quote">"These three are Prima Materia, like God." —Paracelsus</div>
     </div>
-  </div>
 
-  <!-- Page 4: Sages (4) + Arcana (5) -->
-  <div class="page">
     <div class="card sage">
-      <div class="artwork"><img src="cards/sage-03.png" alt="Boehme" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/sage-03.png" alt="Boehme"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Boehme</div>
         <div class="subtitle">The Mystic</div>
       </div>
-      <div class="prompt-area">Divine spark in all things. What is the divine spark here? What vision is possible?</div>
-      <div class="quote">"Heaven is the Firmament, the Sea of Fire, from the 7 Spirits." —Böhme, Aurora</div>
+      <div class="prompt-area">German shoemaker-mystic. Divine vision broke through while mending shoes. Aurora, the dawn light. What is the divine spark here?</div>
+      <div class="quote">"Heaven is the Sea of Fire, from the 7 Spirits." —Aurora</div>
     </div>
 
     <div class="card sage">
-      <div class="artwork"><img src="cards/sage-04.png" alt="Ficino" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/sage-04.png" alt="Ficino"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Ficino</div>
         <div class="subtitle">The Translator</div>
       </div>
-      <div class="prompt-area">The soul's journey. What is the soul's path here? Where is the beauty?</div>
-      <div class="quote">"Hermes Trismegistus attempted to eradicate this stain from souls." —Ficino</div>
+      <div class="prompt-area">Florentine philosopher who brought Hermes to the Renaissance. The Platonic Academy, lyre music, candlelight over ancient texts. Where is beauty leading?</div>
+      <div class="quote">"Hermes attempted to eradicate this stain from souls." —On Pleasure</div>
     </div>
 
     <div class="card sage">
-      <div class="artwork"><img src="cards/sage-05.png" alt="Sendivogius" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/sage-05.png" alt="Sendivogius"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Sendivogius</div>
         <div class="subtitle">The Adept</div>
       </div>
-      <div class="prompt-area">The new light. What does practical wisdom say? What is the clear path?</div>
-      <div class="quote">"Nothing achieves perfection without a seed."</div>
+      <div class="prompt-area">Polish adept-diplomat with practical laboratory wisdom. Understood nature's secret fire. What does practical wisdom say? What is the clear path?</div>
+      <div class="quote">"Fire acts in wonderful hidden ways." —New Chemical Light</div>
     </div>
+  </div>
 
+  <!-- Page 8: Sages + Arcana -->
+  <div class="page">
     <div class="card sage">
-      <div class="artwork"><img src="cards/sage-06.png" alt="Agrippa" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/sage-06.png" alt="Agrippa"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Agrippa</div>
         <div class="subtitle">The Magus</div>
       </div>
-      <div class="prompt-area">Hidden philosophy. What hidden forces are at work? What correspondences apply?</div>
-      <div class="quote">"Whence come the hidden virtues of things." —Agrippa</div>
+      <div class="prompt-area">German polymath. Three Books of Occult Philosophy. Pentagram, celestial correspondences. What hidden forces are at work? What correspondences apply?</div>
+      <div class="quote">"God impresses the seal of Ideas upon Intelligences." —Occult Philosophy</div>
     </div>
 
-    <!-- ARCANA -->
     <div class="card arcana">
-      <div class="artwork"><img src="cards/arc-01.png" alt="Prima Materia" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/arc-01.png" alt="Prima Materia"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Prima Materia</div>
         <div class="subtitle">First Matter</div>
       </div>
-      <div class="prompt-area">Chaos before creation. What is the raw material? What potential lies unformed?</div>
+      <div class="prompt-area">Chaos before creation, the cosmic egg floating in dark waters. Formless potential, raw material of the Great Work. What potential lies unformed?</div>
       <div class="quote">"The Prima Materia is a divine mist." —Hellwig</div>
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><img src="cards/arc-02.png" alt="Lapis" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/arc-02.png" alt="Lapis"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Lapis</div>
         <div class="subtitle">The Stone</div>
       </div>
-      <div class="prompt-area">The philosopher's stone. What is the goal? What would complete the work?</div>
-      <div class="quote">"The fixed becomes volatile; the volatile, fixed; a new World established." —Khunrath</div>
+      <div class="prompt-area">Radiant red stone, ruby crystal glowing with inner fire. Transmutes lead to gold, heals all disease. The perfected self. What would complete the work?</div>
+      <div class="quote">"He is praised in the Emerald Tablet... the living fire." —Hellwig</div>
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><img src="cards/arc-03.png" alt="Ouroboros" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/arc-03.png" alt="Ouroboros"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Ouroboros</div>
         <div class="subtitle">Eternal Return</div>
       </div>
-      <div class="prompt-area">The serpent eating its tail. What cycle is completing? What contains its own renewal?</div>
-      <div class="quote">"It always begins there where it ends." —Hermes</div>
+      <div class="prompt-area">Dragon in eternal circle, scales shifting from light to dark. End becomes beginning. Self-renewal through self-consumption. What cycle is completing?</div>
+      <div class="quote">"It begins where it ends." —Hermes</div>
     </div>
+  </div>
 
+  <!-- Page 9: Arcana + Prompt Cards -->
+  <div class="page">
     <div class="card arcana">
-      <div class="artwork"><img src="cards/arc-04.png" alt="Rebis" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/arc-04.png" alt="Rebis"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Rebis</div>
         <div class="subtitle">The Double</div>
       </div>
-      <div class="prompt-area">Union of sun and moon. What dualities seek resolution? What would integration look like?</div>
-      <div class="quote">"He wished to create, and fell to the sphere of generation." —Hermes</div>
+      <div class="prompt-area">Hermaphrodite figure, two heads on one body, sun and moon crowning left and right. Perfect union of opposites. What dualities seek resolution?</div>
+      <div class="quote">"Man bore the image of his father." —Pymander</div>
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><img src="cards/arc-05.png" alt="Elixir" onerror="this.style.display='none'"></div>
+      <div class="artwork"><img src="cards/arc-05.png" alt="Elixir"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Elixir</div>
         <div class="subtitle">The Medicine</div>
       </div>
-      <div class="prompt-area">Universal medicine. What is the medicine needed? What would heal this?</div>
-      <div class="quote">"The true Elixir results from Sun and Mercury through the Quintessence." —Rosicrucian MS</div>
+      <div class="prompt-area">Golden liquid in a crystal vial, glowing with life. Panacea, the drinkable gold. Universal medicine for body and soul. What healing is needed?</div>
+      <div class="quote">"The tincture heals all diseases... represents the Soul." —Drebbel</div>
     </div>
-  </div>
 
-  <!-- Page 5: Prompt Cards -->
-  <div class="page">
     <div class="prompt-card">
       <div class="prompt-title">THE GREAT WORK</div>
-      <div class="prompt-text">
-        A 4-card spread mapping transformation
-      </div>
+      <div class="prompt-text">A 4-card spread mapping transformation</div>
       <div class="spread-positions">
         <div class="position"><span class="position-num">1.</span> Nigredo — What must die or be faced</div>
         <div class="position"><span class="position-num">2.</span> Albedo — What is being purified</div>
         <div class="position"><span class="position-num">3.</span> Citrinitas — What wisdom emerges</div>
         <div class="position"><span class="position-num">4.</span> Rubedo — What completion is possible</div>
       </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">
-        Draw four cards. Read each through its position's alchemical stage.
-      </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
-        "The dawn breaks, the breakthrough-maker of the innermost birth reveals himself." —Böhme
-      </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">Draw four cards. Read each through its position's alchemical stage.</div>
     </div>
 
     <div class="prompt-card">
       <div class="prompt-title">THE CRUCIBLE</div>
-      <div class="prompt-text">
-        A 3-card spread for times of transformation
-      </div>
+      <div class="prompt-text">A 3-card spread for times of transformation</div>
       <div class="spread-positions">
         <div class="position"><span class="position-num">1.</span> Dissolving — What is breaking down</div>
         <div class="position"><span class="position-num">2.</span> Emerging — What is taking form</div>
         <div class="position"><span class="position-num">3.</span> Catalyst — What accelerates change</div>
       </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">
-        Focus on a situation in flux. Draw three cards for the transformation dynamics.
-      </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
-        "When gold matures, it gives seed or tincture." —Sendivogius
-      </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">Focus on a situation in flux. Draw three cards for transformation dynamics.</div>
     </div>
+  </div>
 
+  <!-- Page 10: Prompt Cards -->
+  <div class="page">
     <div class="prompt-card">
       <div class="prompt-title">AS ABOVE, SO BELOW</div>
-      <div class="prompt-text">
-        A 2-card spread for correspondences
-      </div>
+      <div class="prompt-text">A 2-card spread for correspondences</div>
       <div class="spread-positions">
         <div class="position"><span class="position-num">1.</span> Above — The spiritual/mental dimension</div>
         <div class="position"><span class="position-num">2.</span> Below — The material/physical dimension</div>
       </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">
-        Draw two cards. Consider how they mirror and inform each other.
-      </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
-        "Man is from heaven and earth, upon upper and lower creatures." —Paracelsus
-      </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">Draw two cards. Consider how they mirror and inform each other.</div>
     </div>
 
     <div class="prompt-card">
@@ -868,9 +834,6 @@
         <strong>Day:</strong> Notice where its themes appear in your experience.
         <br><br>
         <strong>Evening:</strong> Journal what you observed. What transformation is present?
-      </div>
-      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
-        "What I say to you, I say to all: watch." —Böhme
       </div>
     </div>
 
@@ -891,65 +854,70 @@
         <br><br>
         Help me interpret this spread using alchemical symbolism and the transformation process."
       </div>
-      <div class="prompt-text" style="margin-top: 6px; font-size: 7px; font-style: italic; color: #d4af37;">
-        "Our knowledge is piecework, and not at once perfect." —Böhme
-      </div>
     </div>
 
-    <!-- Empty slots -->
-    <div style="width: 2.5in; height: 3.5in;"></div>
-    <div style="width: 2.5in; height: 3.5in;"></div>
-    <div style="width: 2.5in; height: 3.5in;"></div>
-    <div style="width: 2.5in; height: 3.5in;"></div>
+    <!-- Empty slot -->
+    <div style="width: 2.75in; height: 4.75in;"></div>
   </div>
 
-  <!-- Page 6: Card Backs (9) -->
+  <!-- Card Backs Pages -->
   <div class="page">
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
   </div>
 
-  <!-- Page 7: Card Backs (9) -->
   <div class="page">
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
   </div>
 
-  <!-- Page 8: Card Backs (9) -->
   <div class="page">
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
-    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
   </div>
 
-  <!-- Page 9: Card Backs (remaining) -->
   <div class="page">
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+  </div>
+
+  <div class="page">
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+  </div>
+
+  <div class="page">
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+  </div>
+
+  <div class="page">
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+  </div>
+
+  <div class="page">
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+    <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
+  </div>
+
+  <div class="page">
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
     <div class="card-back"><div class="pattern"></div><div class="border-outer"></div><div class="border-inner"></div><div class="center"><div class="ouroboros"></div><div class="back-title">ALCHEMY DECK</div><div class="back-subtitle">Oracle of Transformation</div></div></div>
