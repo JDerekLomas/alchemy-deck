@@ -10,14 +10,14 @@
 
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
-      background: #1a1a2e;
+      background: #2a2420;
       color: #eee;
       min-height: 100vh;
       padding: 20px;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -59,7 +59,7 @@
       align-items: flex-start;
     }
 
-    /* === CARD STYLES (matching print.html) === */
+    /* === CARD STYLES (EXACTLY matching print.html) === */
     .card-wrapper {
       flex: 0 0 auto;
     }
@@ -74,10 +74,10 @@
       flex-direction: column;
       border: 1px solid #3d3530;
       box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      transform: scale(1.4);
+      transform: scale(1.5);
       transform-origin: top left;
-      margin-bottom: 80px;
-      margin-right: 80px;
+      margin-bottom: 100px;
+      margin-right: 100px;
     }
 
     .card .artwork {
@@ -108,7 +108,6 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 2px;
-      color: #d4af37;
     }
 
     .card .title {
@@ -124,74 +123,130 @@
       font-size: 11px;
       font-style: italic;
       color: rgba(255,255,255,0.7);
-      margin-bottom: 5px;
+      margin-top: 1px;
     }
 
     .card .prompt-area {
-      font-family: 'Cormorant Garamond', serif;
+      padding: 6px 10px;
       font-size: 10px;
       line-height: 1.4;
       color: #fff;
+      flex: 1;
+      overflow: hidden;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
-      padding: 6px 8px;
-      background: rgba(212, 175, 55, 0.08);
-      border-radius: 4px;
-      margin-bottom: 5px;
     }
 
     .card .quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 9px;
-      color: #d4af37;
       font-style: italic;
+      color: #d4af37;
+      font-size: 9px;
+      padding: 5px 10px;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
       line-height: 1.3;
     }
 
-    /* Category colors */
-    .card.stage .category { color: #8b4513; }
-    .card.operation .category { color: #cd853f; }
-    .card.element .category { color: #4a7c59; }
-    .card.principle .category { color: #6b4c9a; }
-    .card.vessel .category { color: #8b7355; }
-    .card.sage .category { color: #c9a959; }
-    .card.arcana .category { color: #b8860b; }
+    /* Category-colored panels - EXACTLY matching print.html */
+    /* Stages */
+    .card.stage .text-panel,
+    .card.stage .prompt-area { background: linear-gradient(to bottom, #2d1f3d, #1f1629); }
+    .card.stage .category { color: #c084fc; }
+    .card.stage.nigredo .text-panel,
+    .card.stage.nigredo .prompt-area { background: linear-gradient(to bottom, #1a1a1a, #0d0d0d); }
+    .card.stage.nigredo .category { color: #666; }
+    .card.stage.albedo .text-panel,
+    .card.stage.albedo .prompt-area { background: linear-gradient(to bottom, #3d3d3d, #2a2a2a); }
+    .card.stage.albedo .category { color: #e0e0e0; }
+    .card.stage.citrinitas .text-panel,
+    .card.stage.citrinitas .prompt-area { background: linear-gradient(to bottom, #4d4020, #3d3018); }
+    .card.stage.citrinitas .category { color: #f5c542; }
+    .card.stage.rubedo .text-panel,
+    .card.stage.rubedo .prompt-area { background: linear-gradient(to bottom, #4d1a20, #3d1018); }
+    .card.stage.rubedo .category { color: #e63946; }
+
+    /* Operations */
+    .card.operation .text-panel,
+    .card.operation .prompt-area { background: linear-gradient(to bottom, #4d2a10, #3d2008); }
+    .card.operation .category { color: #ff8c42; }
+
+    /* Elements */
+    .card.element .text-panel,
+    .card.element .prompt-area { background: linear-gradient(to bottom, #1a3d3a, #132d2b); }
+    .card.element .category { color: #4ecdc4; }
+    .card.element.fire .text-panel,
+    .card.element.fire .prompt-area { background: linear-gradient(to bottom, #4d1a1a, #3d1313); }
+    .card.element.fire .category { color: #e63946; }
+    .card.element.water .text-panel,
+    .card.element.water .prompt-area { background: linear-gradient(to bottom, #1a2a4d, #132039); }
+    .card.element.water .category { color: #457b9d; }
+    .card.element.air .text-panel,
+    .card.element.air .prompt-area { background: linear-gradient(to bottom, #2a3d4d, #1f2f3d); }
+    .card.element.air .category { color: #a8dadc; }
+    .card.element.earth .text-panel,
+    .card.element.earth .prompt-area { background: linear-gradient(to bottom, #2d3d1a, #1f2d13); }
+    .card.element.earth .category { color: #606c38; }
+    .card.element.quintessence .text-panel,
+    .card.element.quintessence .prompt-area { background: linear-gradient(to bottom, #2d1f4d, #1f1639); }
+    .card.element.quintessence .category { color: #6c5ce7; }
+
+    /* Principles */
+    .card.principle .text-panel,
+    .card.principle .prompt-area { background: linear-gradient(to bottom, #4a3d10, #3d3008); }
+    .card.principle .category { color: #ffd166; }
+
+    /* Vessels */
+    .card.vessel .text-panel,
+    .card.vessel .prompt-area { background: linear-gradient(to bottom, #3d2a1a, #2d1f13); }
+    .card.vessel .category { color: #d4a574; }
+
+    /* Sages */
+    .card.sage .text-panel,
+    .card.sage .prompt-area { background: linear-gradient(to bottom, #1a2a3d, #131f2d); }
+    .card.sage .category { color: #60a5fa; }
+
+    /* Arcana */
+    .card.arcana .text-panel,
+    .card.arcana .prompt-area { background: linear-gradient(to bottom, #3d1a3d, #2d132d); }
+    .card.arcana .category { color: #e879f9; }
 
     /* === RATING PANEL === */
     .rating-panel {
       flex: 1;
+      max-width: 600px;
     }
 
     .rating-section {
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 20px;
+      padding: 20px;
+      margin-bottom: 15px;
     }
 
     .rating-section h3 {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       color: #d4af37;
       font-family: 'Cinzel', serif;
+      font-size: 1rem;
     }
 
     .rating-buttons {
       display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 15px;
     }
 
     .rating-btn {
       flex: 1;
-      padding: 20px;
+      padding: 15px;
       border: 2px solid #444;
       background: transparent;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
     }
 
     .rating-btn:hover {
@@ -204,8 +259,8 @@
       background: rgba(212, 175, 55, 0.1);
     }
 
-    .rating-btn .emoji { font-size: 2.5rem; }
-    .rating-btn .label { color: #aaa; font-size: 0.85rem; }
+    .rating-btn .emoji { font-size: 2rem; }
+    .rating-btn .label { color: #aaa; font-size: 0.8rem; }
     .rating-btn.selected .label { color: #d4af37; }
 
     .rating-btn.thumbs-up.selected { border-color: #4ade80; background: rgba(74, 222, 128, 0.1); }
@@ -215,23 +270,43 @@
     .rating-btn.thumbs-down.selected { border-color: #f87171; background: rgba(248, 113, 113, 0.1); }
     .rating-btn.thumbs-down.selected .label { color: #f87171; }
 
-    .comment-section label {
+    /* Prompt sections */
+    .prompt-section {
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .prompt-section label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #888;
+      font-size: 0.85rem;
+    }
+
+    .prompt-section .current-prompt {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: #aaa;
+      line-height: 1.4;
+      background: rgba(0,0,0,0.3);
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
     }
 
     textarea {
       width: 100%;
-      padding: 15px;
+      padding: 10px;
       border: 2px solid #444;
       background: #222;
       color: #eee;
-      border-radius: 8px;
+      border-radius: 6px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.9rem;
       resize: vertical;
-      min-height: 100px;
+      min-height: 80px;
     }
 
     textarea:focus {
@@ -241,6 +316,11 @@
 
     textarea::placeholder { color: #666; }
 
+    textarea.prompt-edit {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+    }
+
     .nav-buttons {
       display: flex;
       gap: 15px;
@@ -248,7 +328,7 @@
     }
 
     .nav-btn {
-      padding: 15px 40px;
+      padding: 12px 30px;
       border: none;
       border-radius: 8px;
       font-size: 1rem;
@@ -272,20 +352,20 @@
 
     .filter-buttons {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 20px;
       flex-wrap: wrap;
       justify-content: center;
     }
 
     .filter-btn {
-      padding: 8px 16px;
+      padding: 6px 14px;
       border: 1px solid #444;
       background: transparent;
       color: #888;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .filter-btn.active {
@@ -294,8 +374,8 @@
     }
 
     .summary-section {
-      margin-top: 40px;
-      padding: 30px;
+      margin-top: 30px;
+      padding: 25px;
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
     }
@@ -303,29 +383,30 @@
     .summary-section h2 {
       color: #d4af37;
       font-family: 'Cinzel', serif;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
     }
 
     .summary-stats {
       display: flex;
-      gap: 30px;
-      margin-bottom: 20px;
+      gap: 25px;
+      margin-bottom: 15px;
     }
 
     .stat { text-align: center; }
-    .stat-number { font-size: 2rem; font-weight: bold; }
-    .stat-label { color: #888; font-size: 0.9rem; }
+    .stat-number { font-size: 1.8rem; font-weight: bold; }
+    .stat-label { color: #888; font-size: 0.85rem; }
     .stat.good .stat-number { color: #4ade80; }
     .stat.meh .stat-number { color: #fbbf24; }
     .stat.bad .stat-number { color: #f87171; }
 
     .export-btn {
-      padding: 15px 30px;
+      padding: 12px 25px;
       background: #d4af37;
       color: #1a1a2e;
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
       font-family: 'Cinzel', serif;
@@ -334,26 +415,29 @@
     .keyboard-hint {
       text-align: center;
       color: #666;
-      font-size: 0.8rem;
-      margin-top: 20px;
+      font-size: 0.75rem;
+      margin-top: 15px;
     }
 
     .keyboard-hint kbd {
       background: #333;
-      padding: 2px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
-      margin: 0 3px;
+      margin: 0 2px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .review-area {
         flex-direction: column;
         align-items: center;
       }
       .card {
-        transform: scale(1.2);
-        margin-bottom: 60px;
+        transform: scale(1.3);
+        margin-bottom: 80px;
         margin-right: 0;
+      }
+      .rating-panel {
+        max-width: 100%;
       }
     }
   </style>
@@ -410,9 +494,19 @@
             </button>
           </div>
 
-          <div class="comment-section">
-            <label>Comments / Improvement suggestions:</label>
-            <textarea id="commentInput" placeholder="e.g., 'Image too dark', 'Quote doesn't fit theme', 'Text hard to read'..."></textarea>
+          <div class="prompt-section">
+            <label>Current Image Prompt:</label>
+            <div class="current-prompt" id="currentPrompt"></div>
+          </div>
+
+          <div class="prompt-section">
+            <label>Revised Prompt (edit to improve):</label>
+            <textarea id="revisedPrompt" class="prompt-edit" placeholder="Edit the prompt above to improve the image..."></textarea>
+          </div>
+
+          <div class="prompt-section">
+            <label>Comments / Notes:</label>
+            <textarea id="commentInput" placeholder="e.g., 'Image too dark', 'Quote doesn't fit theme'..."></textarea>
           </div>
         </div>
 
@@ -448,41 +542,260 @@
   </div>
 
   <script>
+    const BASE_STYLE = "Detailed alchemical engraving illustration, hand-tinted with muted earth tones and gold accents, copper and sepia coloring, mystical Renaissance style, intricate linework, esoteric symbolism, aged parchment texture, high detail, centered composition with clear borders, print-ready quality, no text or letters";
+
     const cards = [
-      { id: "stage-01", type: "stage", category: "Stage", title: "Nigredo", subtitle: "Blackening", prompt: "The dark night. What must die for transformation to begin? What shadow must you face?", quote: '"Let it be digested to blackness." —Drebbel' },
-      { id: "stage-02", type: "stage", category: "Stage", title: "Albedo", subtitle: "Whitening", prompt: "The washing. What is being purified? What clarity is emerging from chaos?", quote: '"Water washes and purifies all imperfect things." —Sendivogius' },
-      { id: "stage-03", type: "stage", category: "Stage", title: "Citrinitas", subtitle: "Yellowing", prompt: "The dawning. What wisdom is emerging? What is coming into consciousness?", quote: '"The dawn breaks, the breakthrough-maker reveals himself." —Böhme' },
-      { id: "stage-04", type: "stage", category: "Stage", title: "Rubedo", subtitle: "Reddening", prompt: "The completion. What wholeness is possible? What is being integrated?", quote: '"Fire purifies all fixed things and by fire they are perfected." —Sendivogius' },
-      { id: "op-01", type: "operation", category: "Operation", title: "Calcination", subtitle: "Burning", prompt: "Reduction by fire. What must be burned away? What attachments need releasing?", quote: '"All impurities of things are purified by fire." —Sendivogius' },
-      { id: "op-02", type: "operation", category: "Operation", title: "Dissolution", subtitle: "Dissolving", prompt: "Breaking down in water. What structures need to dissolve? Where must you surrender?", quote: '"Water joins together everything that is dissolved." —Sendivogius' },
-      { id: "op-03", type: "operation", category: "Operation", title: "Separation", subtitle: "Discerning", prompt: "Sorting and discerning. What must be separated? What distinction needs making?", quote: '"Fire separates everything that is joined." —Sendivogius' },
-      { id: "op-04", type: "operation", category: "Operation", title: "Conjunction", subtitle: "Uniting", prompt: "Marriage of opposites. What opposites seek union? What must be joined?", quote: '"Water joins together everything that is dissolved." —Sendivogius' },
-      { id: "op-05", type: "operation", category: "Operation", title: "Fermentation", subtitle: "Inspiring", prompt: "New life from decay. What new life is fermenting? What inspiration is arising?", quote: '"Nature gives motion, motion excites air, air excites fire." —Sendivogius' },
-      { id: "op-06", type: "operation", category: "Operation", title: "Distillation", subtitle: "Refining", prompt: "Extracting essence. What is the essence? What needs further refinement?", quote: '"It is necessary to purify it... then to distill it." —Drebbel' },
-      { id: "op-07", type: "operation", category: "Operation", title: "Coagulation", subtitle: "Manifesting", prompt: "Making solid. What is ready to manifest? How does spirit become matter?", quote: '"According to the matrix, various things are produced." —Sendivogius' },
-      { id: "elem-01", type: "element", category: "Element", title: "Fire", subtitle: "Will", prompt: "The transforming principle. Where is the fire? What needs transforming action?", quote: '"Fire purifies all fixed things." —Sendivogius' },
-      { id: "elem-02", type: "element", category: "Element", title: "Water", subtitle: "Emotion", prompt: "The dissolving principle. What are the feelings? What needs to flow?", quote: '"Water washes and purifies all imperfect things." —Sendivogius' },
-      { id: "elem-03", type: "element", category: "Element", title: "Air", subtitle: "Thought", prompt: "The communicating principle. What thoughts are present? What needs communicating?", quote: '"Motion excites air, air excites fire." —Sendivogius' },
-      { id: "elem-04", type: "element", category: "Element", title: "Earth", subtitle: "Body", prompt: "The grounding principle. What is the material reality? What needs grounding?", quote: '"Earth receives the Tincture." —Sendivogius' },
-      { id: "elem-05", type: "element", category: "Element", title: "Quintessence", subtitle: "Spirit", prompt: "The fifth element. What is the spiritual dimension? What transcends?", quote: '"The Quintessence is eternal, immutable, perfect in all elements." —Drebbel' },
-      { id: "prin-01", type: "principle", category: "Principle", title: "Sulphur", subtitle: "Soul", prompt: "The combustible principle. What does the soul desire? What animates this?", quote: '"Fire separates, purifies, digests, and colors." —Sendivogius' },
-      { id: "prin-02", type: "principle", category: "Principle", title: "Mercury", subtitle: "Spirit", prompt: "The volatile principle. What message is being carried? What moves between realms?", quote: '"He is the true living Mercurius." —Hellwig' },
-      { id: "prin-03", type: "principle", category: "Principle", title: "Salt", subtitle: "Body", prompt: "The fixed principle. What is the body of this? What form does it take?", quote: '"The Sun is fire, salt, and base." —Paracelsus' },
-      { id: "vessel-01", type: "vessel", category: "Vessel", title: "Athanor", subtitle: "The Furnace", prompt: "Sustained heat over time. What requires sustained attention? Where is patience needed?", quote: '"Apply a gentle fire, increasing by degrees." —Rosicrucian MS' },
-      { id: "vessel-02", type: "vessel", category: "Vessel", title: "Alembic", subtitle: "The Still", prompt: "The vessel of distillation. What needs distilling? How to extract the essence?", quote: '"Distillation is the purification of liquids." —Rosicrucian MS' },
-      { id: "vessel-03", type: "vessel", category: "Vessel", title: "Crucible", subtitle: "The Test", prompt: "The vessel of trial. What is being tested? What must withstand the fire?", quote: '"Reveal the eternal gold of the human soul." —Hilarionus' },
-      { id: "vessel-04", type: "vessel", category: "Vessel", title: "Retort", subtitle: "The Return", prompt: "The vessel of circulation. What needs to circulate? What must return to its source?", quote: '"It always begins there where it ends." —Hermes' },
-      { id: "sage-01", type: "sage", category: "Sage", title: "Hermes", subtitle: "Trismegistus", prompt: "The thrice-great. How does the macrocosm mirror the microcosm?", quote: '"Man bore the image of his father." —Pymander' },
-      { id: "sage-02", type: "sage", category: "Sage", title: "Paracelsus", subtitle: "The Physician", prompt: "Nature as teacher. What does nature teach here? What is the medicine?", quote: '"The art of Nature teaches." —Book of Meteors' },
-      { id: "sage-03", type: "sage", category: "Sage", title: "Boehme", subtitle: "The Mystic", prompt: "Divine spark in all things. What is the divine spark here? What vision is possible?", quote: '"The soul is a spark of the divine air." —Khunrath' },
-      { id: "sage-04", type: "sage", category: "Sage", title: "Ficino", subtitle: "The Translator", prompt: "The soul\'s journey. What is the soul\'s path here? Where is the beauty?", quote: '"Pleasure is perfection of apprehension itself." —On Pleasure' },
-      { id: "sage-05", type: "sage", category: "Sage", title: "Sendivogius", subtitle: "The Adept", prompt: "The new light. What does practical wisdom say? What is the clear path?", quote: '"Nothing achieves perfection without a seed."' },
-      { id: "sage-06", type: "sage", category: "Sage", title: "Agrippa", subtitle: "The Magus", prompt: "Hidden philosophy. What hidden forces are at work? What correspondences apply?", quote: '"Whence come the hidden virtues of things." —Agrippa' },
-      { id: "arc-01", type: "arcana", category: "Arcana", title: "Prima Materia", subtitle: "First Matter", prompt: "Chaos before creation. What is the raw material? What potential lies unformed?", quote: '"The Prima Materia is a divine mist." —Hellwig' },
-      { id: "arc-02", type: "arcana", category: "Arcana", title: "Lapis", subtitle: "The Stone", prompt: "The philosopher\'s stone. What is the goal? What would complete the work?", quote: '"Praised by Hermes in the Emerald Tablet." —Hellwig' },
-      { id: "arc-03", type: "arcana", category: "Arcana", title: "Ouroboros", subtitle: "Eternal Return", prompt: "The serpent eating its tail. What cycle is completing? What contains its own renewal?", quote: '"It always begins there where it ends." —Hermes' },
-      { id: "arc-04", type: "arcana", category: "Arcana", title: "Rebis", subtitle: "The Double", prompt: "Union of sun and moon. What dualities seek resolution? What would integration look like?", quote: '"He wished to create, and fell to the sphere of generation." —Hermes' },
-      { id: "arc-05", type: "arcana", category: "Arcana", title: "Elixir", subtitle: "The Medicine", prompt: "Universal medicine. What is the medicine needed? What would heal this?", quote: '"Medicine heals the body, music the spirit, theology the soul." —Ficino' }
+      // STAGES - The Four Stages of the Magnum Opus
+      {
+        id: "stage-01", type: "stage", subtype: "nigredo",
+        category: "Stage", title: "Nigredo", subtitle: "Blackening",
+        prompt: "The dark night. What must die for transformation to begin? What shadow must you face?",
+        quote: '"I am black, white, yellow, and red." —Maier, Atalanta Fugiens',
+        imagePrompt: "Blackening stage of alchemy, dark ravens, decomposing matter, black sun, shadowy cauldron with dark smoke, skull and bones, death and putrefaction symbolism"
+      },
+      {
+        id: "stage-02", type: "stage", subtype: "albedo",
+        category: "Stage", title: "Albedo", subtitle: "Whitening",
+        prompt: "The washing. What is being purified? What clarity is emerging from chaos?",
+        quote: '"Water washes and purifies all imperfect things." —Sendivogius, New Chemical Light',
+        imagePrompt: "Whitening stage of alchemy, white dove, lunar symbolism, silver moon, purified white substance in vessel, pearl, snow white rose, washing and cleansing"
+      },
+      {
+        id: "stage-03", type: "stage", subtype: "citrinitas",
+        category: "Stage", title: "Citrinitas", subtitle: "Yellowing",
+        prompt: "The dawning. What wisdom is emerging? What is coming into consciousness?",
+        quote: '"The vulture cries: I am white and black, yellow and red." —Maier',
+        imagePrompt: "Yellowing stage of alchemy, golden dawn rising, solar symbolism, yellow sulfur, awakening consciousness, golden light breaking through, sunrise over alchemical landscape"
+      },
+      {
+        id: "stage-04", type: "stage", subtype: "rubedo",
+        category: "Stage", title: "Rubedo", subtitle: "Reddening",
+        prompt: "The completion. What wholeness is possible? What is being integrated?",
+        quote: '"Fire purifies all fixed things and by fire they are perfected." —Sendivogius',
+        imagePrompt: "Reddening stage of alchemy, phoenix rising from flames, red stone, completion of the great work, royal marriage of sun and moon, red rose, blood red elixir"
+      },
+
+      // OPERATIONS - The Seven Alchemical Operations
+      {
+        id: "op-01", type: "operation",
+        category: "Operation", title: "Calcination", subtitle: "Burning",
+        prompt: "Reduction by fire. What must be burned away? What attachments need releasing?",
+        quote: '"All impurities of things are purified by fire." —Sendivogius',
+        imagePrompt: "Alchemical calcination, fierce flames burning matter to white ash, fire consuming base materials, salamander in flames, burning crucible"
+      },
+      {
+        id: "op-02", type: "operation",
+        category: "Operation", title: "Dissolution", subtitle: "Dissolving",
+        prompt: "Breaking down in water. What structures need to dissolve? Where must you surrender?",
+        quote: '"Water joins together everything that is dissolved." —Sendivogius',
+        imagePrompt: "Alchemical dissolution, matter dissolving in water, tears and rain, moon reflected in pool, sea serpent, watery depths, dissolution of form"
+      },
+      {
+        id: "op-03", type: "operation",
+        category: "Operation", title: "Separation", subtitle: "Discerning",
+        prompt: "Sorting and discerning. What must be separated? What distinction needs making?",
+        quote: '"Fire separates everything that is joined." —Sendivogius',
+        imagePrompt: "Alchemical separation, sword dividing light and dark, eagle and toad separating, filter and strainer, wheat from chaff, discernment"
+      },
+      {
+        id: "op-04", type: "operation",
+        category: "Operation", title: "Conjunction", subtitle: "Uniting",
+        prompt: "Marriage of opposites. What opposites seek union? What must be joined?",
+        quote: '"The fixed and volatile are united into one." —Khunrath',
+        imagePrompt: "Alchemical conjunction, sacred marriage, king and queen uniting, sun and moon joining, hermaphrodite, chemical wedding, two becoming one"
+      },
+      {
+        id: "op-05", type: "operation",
+        category: "Operation", title: "Fermentation", subtitle: "Inspiring",
+        prompt: "New life from decay. What new life is fermenting? What inspiration is arising?",
+        quote: '"Nature gives motion, motion excites air, air excites fire." —Sendivogius',
+        imagePrompt: "Alchemical fermentation, peacock tail colors, rotting fruit giving rise to new life, bacteria and yeast, bubbling ferment, inspiration arising"
+      },
+      {
+        id: "op-06", type: "operation",
+        category: "Operation", title: "Distillation", subtitle: "Refining",
+        prompt: "Extracting essence. What is the essence? What needs further refinement?",
+        quote: '"The spirit is sublimed and the body remains below." —Khunrath',
+        imagePrompt: "Alchemical distillation, alembic with rising vapors, condensing spirit, dew drops, eagle ascending, purified essence rising"
+      },
+      {
+        id: "op-07", type: "operation",
+        category: "Operation", title: "Coagulation", subtitle: "Manifesting",
+        prompt: "Making solid. What is ready to manifest? How does spirit become matter?",
+        quote: '"According to the matrix, various things are produced." —Sendivogius',
+        imagePrompt: "Alchemical coagulation, philosopher's stone forming, crystallization, solid gold emerging, phoenix egg, manifested perfection"
+      },
+
+      // ELEMENTS - The Five Elements
+      {
+        id: "elem-01", type: "element", subtype: "fire",
+        category: "Element", title: "Fire", subtitle: "Will",
+        prompt: "The transforming principle. Where is the fire? What needs transforming action?",
+        quote: '"Fire separates, purifies, digests, and colors." —Sendivogius',
+        imagePrompt: "Elemental fire, roaring flames, salamander, triangle pointing up, solar rays, burning torch, transformative fire, volcanic"
+      },
+      {
+        id: "elem-02", type: "element", subtype: "water",
+        category: "Element", title: "Water", subtitle: "Emotion",
+        prompt: "The dissolving principle. What are the feelings? What needs to flow?",
+        quote: '"Water washes and purifies all imperfect things." —Sendivogius',
+        imagePrompt: "Elemental water, flowing streams, undine water spirit, triangle pointing down, lunar tides, fish and waves, dissolving waters"
+      },
+      {
+        id: "elem-03", type: "element", subtype: "air",
+        category: "Element", title: "Air", subtitle: "Thought",
+        prompt: "The communicating principle. What thoughts are present? What needs communicating?",
+        quote: '"Motion excites air, air excites fire." —Sendivogius',
+        imagePrompt: "Elemental air, swirling winds, sylph air spirit, birds in flight, clouds and sky, breath of life, intellectual clarity"
+      },
+      {
+        id: "elem-04", type: "element", subtype: "earth",
+        category: "Element", title: "Earth", subtitle: "Body",
+        prompt: "The grounding principle. What is the material reality? What needs grounding?",
+        quote: '"Earth receives the Tincture." —Sendivogius',
+        imagePrompt: "Elemental earth, fertile soil, gnome earth spirit, mountains and caves, crystals growing, roots and stones, material foundation"
+      },
+      {
+        id: "elem-05", type: "element", subtype: "quintessence",
+        category: "Element", title: "Quintessence", subtitle: "Spirit",
+        prompt: "The fifth element. What is the spiritual dimension? What transcends?",
+        quote: '"The Quintessence is eternal, immutable, perfect in all elements." —Drebbel',
+        imagePrompt: "Fifth element quintessence, starry cosmos, spiraling galaxy, divine light, ethereal spirit, transcendent essence, celestial sphere"
+      },
+
+      // PRINCIPLES - The Tria Prima
+      {
+        id: "prin-01", type: "principle",
+        category: "Principle", title: "Sulphur", subtitle: "Soul",
+        prompt: "The combustible principle. What does the soul desire? What animates this?",
+        quote: '"Fire, Sulphur; Salt, Balsam; Mercury, the three called Prima Materia." —Paracelsus',
+        imagePrompt: "Alchemical sulphur principle, burning sun, masculine fire, active soul force, golden flames, combustible spirit, solar king"
+      },
+      {
+        id: "prin-02", type: "principle",
+        category: "Principle", title: "Mercury", subtitle: "Spirit",
+        prompt: "The volatile principle. What message is being carried? What moves between realms?",
+        quote: '"From living quicksilver comes the prima materia." —Rosicrucian MS',
+        imagePrompt: "Alchemical mercury principle, winged messenger, caduceus staff, quicksilver flowing, volatile spirit, hermaphrodite, mediating force"
+      },
+      {
+        id: "prin-03", type: "principle",
+        category: "Principle", title: "Salt", subtitle: "Body",
+        prompt: "The fixed principle. What is the body of this? What form does it take?",
+        quote: '"The Sun is fire, salt, and base." —Paracelsus, Book of Meteors',
+        imagePrompt: "Alchemical salt principle, crystalline cube, fixed body, material form, white salt crystals, foundation stone, preserved form"
+      },
+
+      // VESSELS - Alchemical Apparatus
+      {
+        id: "vessel-01", type: "vessel",
+        category: "Vessel", title: "Athanor", subtitle: "The Furnace",
+        prompt: "Sustained heat over time. What requires sustained attention? Where is patience needed?",
+        quote: '"With one Athanor furnace; and one fire." —Khunrath, Amphitheater',
+        imagePrompt: "Alchemical athanor furnace, tower furnace with sustained flame, philosophical egg inside, patient fire, brick oven, steady heat"
+      },
+      {
+        id: "vessel-02", type: "vessel",
+        category: "Vessel", title: "Alembic", subtitle: "The Still",
+        prompt: "The vessel of distillation. What needs distilling? How to extract the essence?",
+        quote: '"The spirit is sublimed from the body." —Khunrath',
+        imagePrompt: "Alchemical alembic still, glass distillation apparatus, condensing head, vapor rising and falling, drop of essence, copper still"
+      },
+      {
+        id: "vessel-03", type: "vessel",
+        category: "Vessel", title: "Crucible", subtitle: "The Test",
+        prompt: "The vessel of trial. What is being tested? What must withstand the fire?",
+        quote: '"The body is corrupted, dies, turns black, reduced to ashes." —Khunrath',
+        imagePrompt: "Alchemical crucible, melting pot in fierce fire, molten gold, testing vessel, trial by fire, ceramic pot glowing red"
+      },
+      {
+        id: "vessel-04", type: "vessel",
+        category: "Vessel", title: "Retort", subtitle: "The Return",
+        prompt: "The vessel of circulation. What needs to circulate? What must return to its source?",
+        quote: '"It always begins there where it ends." —Hermes, Pymander',
+        imagePrompt: "Alchemical retort vessel, bent-neck flask, circulating vapors, pelican vessel, philosophical circulation, returning to source"
+      },
+
+      // SAGES - Alchemical Masters
+      {
+        id: "sage-01", type: "sage",
+        category: "Sage", title: "Hermes", subtitle: "Trismegistus",
+        prompt: "The thrice-great. How does the macrocosm mirror the microcosm?",
+        quote: '"Man bore the image of his father, for God delighted in his own form." —Pymander',
+        imagePrompt: "Hermes Trismegistus, Egyptian-Greek sage, emerald tablet, ibis bird, caduceus, pyramids, thrice-great master, as above so below"
+      },
+      {
+        id: "sage-02", type: "sage",
+        category: "Sage", title: "Paracelsus", subtitle: "The Physician",
+        prompt: "Nature as teacher. What does nature teach here? What is the medicine?",
+        quote: '"These three are Prima Materia, like God, namely Materia Prima." —Book of Meteors',
+        imagePrompt: "Paracelsus the physician, Renaissance doctor, sword Azoth, medical herbs, alchemical medicine, natural philosophy, healing arts"
+      },
+      {
+        id: "sage-03", type: "sage",
+        category: "Sage", title: "Boehme", subtitle: "The Mystic",
+        prompt: "Divine spark in all things. What is the divine spark here? What vision is possible?",
+        quote: '"Heaven is the Firmament, the Sea of Fire, from the 7 Spirits of Nature." —Aurora',
+        imagePrompt: "Jacob Boehme mystic, shoemaker sage, divine vision, aurora dawn light, mystical eye, theosophical symbols, spiritual illumination"
+      },
+      {
+        id: "sage-04", type: "sage",
+        category: "Sage", title: "Ficino", subtitle: "The Translator",
+        prompt: "The soul's journey. What is the soul's path here? Where is the beauty?",
+        quote: '"Hermes Trismegistus attempted to eradicate this stain from souls." —On Pleasure',
+        imagePrompt: "Marsilio Ficino, Florentine philosopher, translating ancient texts, lyre music, platonic academy, Renaissance humanism, beauty and soul"
+      },
+      {
+        id: "sage-05", type: "sage",
+        category: "Sage", title: "Sendivogius", subtitle: "The Adept",
+        prompt: "The new light. What does practical wisdom say? What is the clear path?",
+        quote: '"Nature gives motion, motion excites air, air excites fire." —New Chemical Light',
+        imagePrompt: "Michael Sendivogius, Polish alchemist, new chemical light, practical laboratory, philosophical mercury, adept in robes, transmutation"
+      },
+      {
+        id: "sage-06", type: "sage",
+        category: "Sage", title: "Agrippa", subtitle: "The Magus",
+        prompt: "Hidden philosophy. What hidden forces are at work? What correspondences apply?",
+        quote: '"Whence come the hidden virtues of things." —Three Books of Occult Philosophy',
+        imagePrompt: "Cornelius Agrippa, occult philosopher, three books of magic, pentagram, celestial correspondences, hidden wisdom, magical arts"
+      },
+
+      // ARCANA - Sacred Mysteries
+      {
+        id: "arc-01", type: "arcana",
+        category: "Arcana", title: "Prima Materia", subtitle: "First Matter",
+        prompt: "Chaos before creation. What is the raw material? What potential lies unformed?",
+        quote: '"The Prima Materia is a divine mist, issuing from God\'s Paradise." —Hellwig',
+        imagePrompt: "Prima materia first matter, chaotic void, unformed potential, cosmic egg, dark waters of creation, primordial chaos, divine mist"
+      },
+      {
+        id: "arc-02", type: "arcana",
+        category: "Arcana", title: "Lapis", subtitle: "The Stone",
+        prompt: "The philosopher's stone. What is the goal? What would complete the work?",
+        quote: '"The fixed becomes volatile; the volatile, fixed; a new World established." —Khunrath',
+        imagePrompt: "Philosopher's stone lapis, radiant red stone, perfect gem, transmuting gold, completed work, ruby crystal, ultimate achievement"
+      },
+      {
+        id: "arc-03", type: "arcana",
+        category: "Arcana", title: "Ouroboros", subtitle: "Eternal Return",
+        prompt: "The serpent eating its tail. What cycle is completing? What contains its own renewal?",
+        quote: '"It always begins there where it ends." —Hermes, Pymander',
+        imagePrompt: "Ouroboros serpent, dragon eating its tail, eternal cycle, infinity symbol, self-renewal, beginning and end united, cosmic snake"
+      },
+      {
+        id: "arc-04", type: "arcana",
+        category: "Arcana", title: "Rebis", subtitle: "The Double",
+        prompt: "Union of sun and moon. What dualities seek resolution? What would integration look like?",
+        quote: '"He wished to create, and fell to the sphere of generation." —Pymander',
+        imagePrompt: "Rebis double nature, hermaphrodite figure, sun and moon united, male and female merged, two-headed being, perfect union"
+      },
+      {
+        id: "arc-05", type: "arcana",
+        category: "Arcana", title: "Elixir", subtitle: "The Medicine",
+        prompt: "Universal medicine. What is the medicine needed? What would heal this?",
+        quote: '"The true Elixir results from Sun and Mercury through the Quintessence." —Rosicrucian MS',
+        imagePrompt: "Elixir of life, golden liquid in vessel, universal medicine, panacea, immortality potion, healing draught, perfected tincture"
+      }
     ];
 
     let currentIndex = 0;
@@ -497,6 +810,8 @@
     const cardSubtitle = document.getElementById('cardSubtitle');
     const cardPrompt = document.getElementById('cardPrompt');
     const cardQuote = document.getElementById('cardQuote');
+    const currentPromptEl = document.getElementById('currentPrompt');
+    const revisedPromptEl = document.getElementById('revisedPrompt');
     const commentInput = document.getElementById('commentInput');
     const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
@@ -542,6 +857,7 @@
         cardSubtitle.textContent = '';
         cardPrompt.textContent = 'Try a different filter.';
         cardQuote.textContent = '';
+        currentPromptEl.textContent = '';
         return;
       }
 
@@ -549,7 +865,9 @@
       const review = reviews[card.id] || {};
 
       // Update card class for category color
-      cardElement.className = `card ${card.type}`;
+      let cardClass = `card ${card.type}`;
+      if (card.subtype) cardClass += ` ${card.subtype}`;
+      cardElement.className = cardClass;
 
       cardImage.src = `cards/${card.id}.png`;
       cardImage.alt = card.title;
@@ -558,6 +876,11 @@
       cardSubtitle.textContent = card.subtitle;
       cardPrompt.textContent = card.prompt;
       cardQuote.textContent = card.quote;
+
+      // Show current and revised prompts
+      const fullPrompt = `${BASE_STYLE}, ${card.imagePrompt}`;
+      currentPromptEl.textContent = fullPrompt;
+      revisedPromptEl.value = review.revisedPrompt || '';
       commentInput.value = review.comment || '';
 
       document.querySelectorAll('.rating-btn').forEach(btn => {
@@ -579,16 +902,18 @@
       if (!reviews[card.id]) reviews[card.id] = {};
       reviews[card.id].rating = rating;
       reviews[card.id].comment = commentInput.value;
+      reviews[card.id].revisedPrompt = revisedPromptEl.value;
       reviews[card.id].timestamp = new Date().toISOString();
       localStorage.setItem('alchemyDeckReviews', JSON.stringify(reviews));
       updateDisplay();
       updateFilterCounts();
     }
 
-    function saveComment() {
+    function saveInputs() {
       const card = filteredCards[currentIndex];
       if (!reviews[card.id]) reviews[card.id] = {};
       reviews[card.id].comment = commentInput.value;
+      reviews[card.id].revisedPrompt = revisedPromptEl.value;
       localStorage.setItem('alchemyDeckReviews', JSON.stringify(reviews));
     }
 
@@ -605,6 +930,7 @@
     function exportReviews() {
       const exportData = {
         exported: new Date().toISOString(),
+        baseStyle: BASE_STYLE,
         summary: {
           total: cards.length,
           approved: Object.values(reviews).filter(r => r.rating === 'up').length,
@@ -612,7 +938,11 @@
           rejected: Object.values(reviews).filter(r => r.rating === 'down').length,
           unreviewed: cards.filter(c => !reviews[c.id]?.rating).length
         },
-        cards: cards.map(card => ({ ...card, review: reviews[card.id] || { rating: null, comment: '' } }))
+        cards: cards.map(card => ({
+          ...card,
+          fullPrompt: `${BASE_STYLE}, ${card.imagePrompt}`,
+          review: reviews[card.id] || { rating: null, comment: '', revisedPrompt: '' }
+        }))
       };
       const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
@@ -623,15 +953,16 @@
 
     document.querySelectorAll('.rating-btn').forEach(btn => btn.addEventListener('click', () => saveReview(btn.dataset.rating)));
     document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-    commentInput.addEventListener('blur', saveComment);
-    prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; updateDisplay(); } });
-    nextBtn.addEventListener('click', () => { if (currentIndex < filteredCards.length - 1) { currentIndex++; updateDisplay(); } });
+    commentInput.addEventListener('blur', saveInputs);
+    revisedPromptEl.addEventListener('blur', saveInputs);
+    prevBtn.addEventListener('click', () => { saveInputs(); if (currentIndex > 0) { currentIndex--; updateDisplay(); } });
+    nextBtn.addEventListener('click', () => { saveInputs(); if (currentIndex < filteredCards.length - 1) { currentIndex++; updateDisplay(); } });
     document.getElementById('exportBtn').addEventListener('click', exportReviews);
 
     document.addEventListener('keydown', (e) => {
-      if (e.target === commentInput) return;
-      if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; updateDisplay(); }
-      else if (e.key === 'ArrowRight' && currentIndex < filteredCards.length - 1) { currentIndex++; updateDisplay(); }
+      if (e.target === commentInput || e.target === revisedPromptEl) return;
+      if (e.key === 'ArrowLeft' && currentIndex > 0) { saveInputs(); currentIndex--; updateDisplay(); }
+      else if (e.key === 'ArrowRight' && currentIndex < filteredCards.length - 1) { saveInputs(); currentIndex++; updateDisplay(); }
       else if (e.key === '1') saveReview('up');
       else if (e.key === '2') saveReview('meh');
       else if (e.key === '3') saveReview('down');
