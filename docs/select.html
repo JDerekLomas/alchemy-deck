@@ -172,6 +172,11 @@
 
     .v1 .version-tag { background: #6366f1; }
     .v2 .version-tag { background: #10b981; }
+    .v3 .version-tag { background: #f59e0b; }
+
+    .versions.three-versions .version img {
+      height: 280px;
+    }
 
     .actions {
       position: fixed;
@@ -271,19 +276,25 @@
         </div>
         <div class="stat">
           <div class="stat-num" id="v1Count">0</div>
-          <div class="stat-label">Version 1</div>
+          <div class="stat-label">V1</div>
         </div>
         <div class="stat">
           <div class="stat-num" id="v2Count">0</div>
-          <div class="stat-label">Version 2</div>
+          <div class="stat-label">V2</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="v3Count">0</div>
+          <div class="stat-label">V3</div>
         </div>
       </div>
 
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All (34)</button>
         <button class="filter-btn" data-filter="unselected">Unselected</button>
-        <button class="filter-btn" data-filter="v1">Version 1</button>
-        <button class="filter-btn" data-filter="v2">Version 2</button>
+        <button class="filter-btn" data-filter="v1">V1</button>
+        <button class="filter-btn" data-filter="v2">V2</button>
+        <button class="filter-btn" data-filter="v3">V3</button>
+        <button class="filter-btn" data-filter="hasV3">Has V3</button>
       </div>
     </header>
 
@@ -336,9 +347,13 @@
 
     // Version paths
     const versions = {
-      v1: { path: "../assets/deck-artwork/", label: "V1: Original (Dec 30)", tag: "Original" },
-      v2: { path: "cards/", label: "V2: Research-Informed (Jan 1)", tag: "New" }
+      v1: { path: "cards-v1/", label: "V1: Original (Dec 30)", tag: "V1" },
+      v2: { path: "cards/", label: "V2: Research (Jan 1)", tag: "V2" },
+      v3: { path: "cards-v3/", label: "V3: Fixed Style", tag: "V3" }
     };
+
+    // Cards with V3 versions (regenerated with better prompts)
+    const hasV3 = ['stage-02', 'op-04'];
 
     let selections = JSON.parse(localStorage.getItem('alchemyDeckSelections') || '{}');
     let currentFilter = 'all';
@@ -353,6 +368,10 @@
         filtered = cards.filter(c => selections[c.id] === 'v1');
       } else if (currentFilter === 'v2') {
         filtered = cards.filter(c => selections[c.id] === 'v2');
+      } else if (currentFilter === 'v3') {
+        filtered = cards.filter(c => selections[c.id] === 'v3');
+      } else if (currentFilter === 'hasV3') {
+        filtered = cards.filter(c => hasV3.includes(c.id));
       }
 
       if (filtered.length === 0) {
@@ -360,7 +379,9 @@
         return;
       }
 
-      grid.innerHTML = filtered.map(card => `
+      grid.innerHTML = filtered.map(card => {
+        const showV3 = hasV3.includes(card.id);
+        return `
         <div class="card-compare" data-id="${card.id}">
           <div class="card-header">
             <div>
@@ -368,7 +389,7 @@
               <div class="card-title">${card.title}</div>
             </div>
           </div>
-          <div class="versions">
+          <div class="versions ${showV3 ? 'three-versions' : ''}">
             <div class="version v1 ${selections[card.id] === 'v1' ? 'selected' : ''}" onclick="selectVersion('${card.id}', 'v1')">
               <span class="version-tag">${versions.v1.tag}</span>
               <img src="${versions.v1.path}${card.id}.png" alt="${card.title} V1" loading="lazy">
@@ -379,9 +400,16 @@
               <img src="${versions.v2.path}${card.id}.png" alt="${card.title} V2" loading="lazy">
               <div class="version-label">${versions.v2.label}</div>
             </div>
+            ${showV3 ? `
+            <div class="version v3 ${selections[card.id] === 'v3' ? 'selected' : ''}" onclick="selectVersion('${card.id}', 'v3')">
+              <span class="version-tag">${versions.v3.tag}</span>
+              <img src="${versions.v3.path}${card.id}.png" alt="${card.title} V3" loading="lazy">
+              <div class="version-label">${versions.v3.label}</div>
+            </div>
+            ` : ''}
           </div>
         </div>
-      `).join('');
+      `}).join('');
     }
 
     function selectVersion(cardId, version) {
@@ -399,10 +427,12 @@
       const selected = Object.keys(selections).length;
       const v1 = Object.values(selections).filter(v => v === 'v1').length;
       const v2 = Object.values(selections).filter(v => v === 'v2').length;
+      const v3 = Object.values(selections).filter(v => v === 'v3').length;
 
       document.getElementById('selectedCount').textContent = selected;
       document.getElementById('v1Count').textContent = v1;
       document.getElementById('v2Count').textContent = v2;
+      document.getElementById('v3Count').textContent = v3;
       document.getElementById('progressFill').style.width = `${(selected / 34) * 100}%`;
     }
 
