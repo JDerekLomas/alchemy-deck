@@ -400,6 +400,61 @@
       font-family: 'Cinzel', serif;
     }
 
+    .submit-section {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .name-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #333;
+      background: #1a1a1a;
+      color: #eee;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .name-input:focus {
+      outline: none;
+      border-color: #d4af37;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .button-row .export-btn {
+      flex: 1;
+    }
+
+    .submit-btn {
+      background: #4ade80 !important;
+    }
+
+    .submit-btn:hover {
+      background: #22c55e !important;
+    }
+
+    .submit-btn:disabled {
+      background: #666 !important;
+      cursor: not-allowed;
+    }
+
+    .submit-status {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .submit-status.success { color: #4ade80; }
+    .submit-status.error { color: #f87171; }
+    .submit-status.loading { color: #fbbf24; }
+
     .keyboard-hint {
       text-align: center;
       color: #555;
@@ -525,7 +580,14 @@
           <div class="stat-label">Rejected</div>
         </div>
       </div>
-      <button class="export-btn" id="exportBtn">Export Review Data</button>
+      <div class="submit-section">
+        <input type="text" id="reviewerName" placeholder="Your name" class="name-input">
+        <div class="button-row">
+          <button class="export-btn" id="exportBtn">Export JSON</button>
+          <button class="export-btn submit-btn" id="submitBtn">Submit Review</button>
+        </div>
+        <div id="submitStatus" class="submit-status"></div>
+      </div>
     </div>
   </div>
 
@@ -1012,6 +1074,67 @@
       a.click();
     }
 
+    // Google Sheets submission
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwYourScriptIdHere/exec'; // Replace with your Apps Script URL
+
+    async function submitToSheets() {
+      const nameInput = document.getElementById('reviewerName');
+      const submitBtn = document.getElementById('submitBtn');
+      const statusEl = document.getElementById('submitStatus');
+
+      const name = nameInput.value.trim();
+      if (!name) {
+        statusEl.textContent = 'Please enter your name';
+        statusEl.className = 'submit-status error';
+        return;
+      }
+
+      const reviewedCount = Object.keys(reviews).filter(k => reviews[k].rating).length;
+      if (reviewedCount === 0) {
+        statusEl.textContent = 'Please review at least one card';
+        statusEl.className = 'submit-status error';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusEl.textContent = 'Submitting...';
+      statusEl.className = 'submit-status loading';
+
+      const data = {
+        reviewer: name,
+        timestamp: new Date().toISOString(),
+        summary: {
+          approved: Object.values(reviews).filter(r => r.rating === 'up').length,
+          needsWork: Object.values(reviews).filter(r => r.rating === 'meh').length,
+          rejected: Object.values(reviews).filter(r => r.rating === 'down').length
+        },
+        reviews: Object.entries(reviews).map(([id, r]) => ({
+          id,
+          rating: r.rating,
+          comment: r.comment || ''
+        })).filter(r => r.rating)
+      };
+
+      try {
+        const response = await fetch(SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Required for Apps Script
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        // no-cors means we can't read response, but if no error, assume success
+        statusEl.textContent = 'Submitted successfully!';
+        statusEl.className = 'submit-status success';
+      } catch (err) {
+        statusEl.textContent = 'Error submitting. Try Export JSON instead.';
+        statusEl.className = 'submit-status error';
+        console.error(err);
+      } finally {
+        submitBtn.disabled = false;
+      }
+    }
+
     document.querySelectorAll('.rating-btn').forEach(btn => btn.addEventListener('click', () => saveReview(btn.dataset.rating)));
     document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
     commentInput.addEventListener('blur', saveInputs);
@@ -1019,6 +1142,7 @@
     prevBtn.addEventListener('click', () => { saveInputs(); if (currentIndex > 0) { currentIndex--; updateDisplay(); } });
     nextBtn.addEventListener('click', () => { saveInputs(); if (currentIndex < filteredCards.length - 1) { currentIndex++; updateDisplay(); } });
     document.getElementById('exportBtn').addEventListener('click', exportReviews);
+    document.getElementById('submitBtn').addEventListener('click', submitToSheets);
 
     document.addEventListener('keydown', (e) => {
       if (e.target === commentInput || e.target === revisedPromptEl) return;
