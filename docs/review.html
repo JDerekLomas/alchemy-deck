@@ -1074,10 +1074,11 @@
       a.click();
     }
 
-    // Google Sheets submission
-    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwYourScriptIdHere/exec'; // Replace with your Apps Script URL
+    // Supabase submission
+    const SUPABASE_URL = 'https://gtgltxaixpnclilmkshj.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0Z2x0eGFpeHBuY2xpbG1rc2hqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyMjQ4NzksImV4cCI6MjA4MDgwMDg3OX0.2LaOhUrz4_QpLyhS-Q1CnK0MTxDu8_TPJ_JDGdxCh_E';
 
-    async function submitToSheets() {
+    async function submitToSupabase() {
       const nameInput = document.getElementById('reviewerName');
       const submitBtn = document.getElementById('submitBtn');
       const statusEl = document.getElementById('submitStatus');
@@ -1102,12 +1103,9 @@
 
       const data = {
         reviewer: name,
-        timestamp: new Date().toISOString(),
-        summary: {
-          approved: Object.values(reviews).filter(r => r.rating === 'up').length,
-          needsWork: Object.values(reviews).filter(r => r.rating === 'meh').length,
-          rejected: Object.values(reviews).filter(r => r.rating === 'down').length
-        },
+        approved_count: Object.values(reviews).filter(r => r.rating === 'up').length,
+        needs_work_count: Object.values(reviews).filter(r => r.rating === 'meh').length,
+        rejected_count: Object.values(reviews).filter(r => r.rating === 'down').length,
         reviews: Object.entries(reviews).map(([id, r]) => ({
           id,
           rating: r.rating,
@@ -1116,16 +1114,24 @@
       };
 
       try {
-        const response = await fetch(SHEETS_URL, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/alchemy_reviews`, {
           method: 'POST',
-          mode: 'no-cors', // Required for Apps Script
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Prefer': 'return=minimal'
+          },
           body: JSON.stringify(data)
         });
 
-        // no-cors means we can't read response, but if no error, assume success
-        statusEl.textContent = 'Submitted successfully!';
-        statusEl.className = 'submit-status success';
+        if (response.ok) {
+          statusEl.textContent = 'Submitted successfully!';
+          statusEl.className = 'submit-status success';
+        } else {
+          const err = await response.text();
+          throw new Error(err);
+        }
       } catch (err) {
         statusEl.textContent = 'Error submitting. Try Export JSON instead.';
         statusEl.className = 'submit-status error';
@@ -1142,7 +1148,7 @@
     prevBtn.addEventListener('click', () => { saveInputs(); if (currentIndex > 0) { currentIndex--; updateDisplay(); } });
     nextBtn.addEventListener('click', () => { saveInputs(); if (currentIndex < filteredCards.length - 1) { currentIndex++; updateDisplay(); } });
     document.getElementById('exportBtn').addEventListener('click', exportReviews);
-    document.getElementById('submitBtn').addEventListener('click', submitToSheets);
+    document.getElementById('submitBtn').addEventListener('click', submitToSupabase);
 
     document.addEventListener('keydown', (e) => {
       if (e.target === commentInput || e.target === revisedPromptEl) return;
