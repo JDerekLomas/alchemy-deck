@@ -532,6 +532,45 @@
   <script>
     const BASE_STYLE = "Detailed alchemical engraving illustration, hand-tinted with muted earth tones and gold accents, copper and sepia coloring, mystical Renaissance style, intricate linework, esoteric symbolism, aged parchment texture, high detail, centered composition, no text or letters";
 
+    // Selected image versions from user review (2026-01-01)
+    // v1 = cards-v1/, v2 = cards/, v3 = cards-v3/
+    const selectedVersions = {
+      "stage-01": "cards",        // v2
+      "stage-02": "cards-v3",     // v3
+      "stage-03": "cards-v1",     // v1
+      "stage-04": "cards",        // v2
+      "op-01": "cards-v1",        // v1
+      "op-02": "cards-v1",        // v1
+      "op-03": "cards",           // v2
+      "op-04": "cards-v3",        // v3
+      "op-05": "cards",           // v2
+      "op-06": "cards",           // v2
+      "op-07": "cards",           // v2
+      "elem-01": "cards-v1",      // v1
+      "elem-02": "cards-v1",      // v1
+      "elem-03": "cards",         // v2
+      "elem-04": "cards-v1",      // v1
+      "elem-05": "cards",         // v2
+      "prin-01": "cards",         // v2
+      "prin-02": "cards",         // v2
+      "prin-03": "cards",         // v2
+      "vessel-01": "cards",       // v2
+      "vessel-02": "cards",       // v2
+      "vessel-03": "cards",       // v2
+      "vessel-04": "cards",       // v2
+      "sage-01": "cards",         // v2
+      "sage-02": "cards",         // v2
+      "sage-03": "cards",         // v2
+      "sage-04": "cards",         // v2
+      "sage-05": "cards-v1",      // v1
+      "sage-06": "cards",         // v2
+      "arc-01": "cards",          // v2
+      "arc-02": "cards",          // v2
+      "arc-03": "cards",          // v2
+      "arc-04": "cards",          // v2
+      "arc-05": "cards"           // v2
+    };
+
     const cards = [
       // STAGES
       {
@@ -890,7 +929,8 @@
       if (card.subtype) cardClass += ` ${card.subtype}`;
       cardElement.className = cardClass;
 
-      cardImage.src = `cards/${card.id}.png`;
+      const imageFolder = selectedVersions[card.id] || 'cards';
+      cardImage.src = `${imageFolder}/${card.id}.png`;
       cardImage.alt = card.title;
       cardCategory.textContent = card.category;
       cardTitle.textContent = card.title;
