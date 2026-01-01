@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alchemy Deck - Version Selector</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #1a1612;
+      color: #eee;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      background: #2a2420;
+      border-radius: 10px;
+      height: 8px;
+      margin: 15px auto;
+      max-width: 400px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, #d4af37, #f4cf47);
+      height: 100%;
+      transition: width 0.3s;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d4af37;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+      gap: 30px;
+    }
+
+    .card-compare {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      color: #d4af37;
+      font-size: 1.1rem;
+    }
+
+    .card-category {
+      font-size: 0.7rem;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .versions {
+      display: flex;
+      gap: 15px;
+    }
+
+    .version {
+      flex: 1;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 3px solid transparent;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .version:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .version.selected {
+      border-color: #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .version img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .version-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.8);
+      padding: 8px;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .version.selected .version-label {
+      background: rgba(212, 175, 55, 0.9);
+      color: #1a1612;
+      font-weight: 600;
+    }
+
+    .version-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(0,0,0,0.7);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .v1 .version-tag { background: #6366f1; }
+    .v2 .version-tag { background: #10b981; }
+
+    .actions {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af37, #e5c048);
+      color: #1a1612;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-secondary {
+      background: #2a2a2a;
+      color: #ccc;
+    }
+
+    .btn-secondary:hover {
+      background: #333;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 6px 14px;
+      border: 1px solid #333;
+      background: transparent;
+      color: #777;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      border-color: #d4af37;
+      color: #d4af37;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px;
+      color: #666;
+    }
+
+    @media (max-width: 700px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .versions {
+        flex-direction: column;
+      }
+      .version img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Select Card Versions for Print</h1>
+      <p class="subtitle">Click to select your preferred version for each card</p>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num" id="selectedCount">0</div>
+          <div class="stat-label">Selected</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="v1Count">0</div>
+          <div class="stat-label">Version 1</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="v2Count">0</div>
+          <div class="stat-label">Version 2</div>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All (34)</button>
+        <button class="filter-btn" data-filter="unselected">Unselected</button>
+        <button class="filter-btn" data-filter="v1">Version 1</button>
+        <button class="filter-btn" data-filter="v2">Version 2</button>
+      </div>
+    </header>
+
+    <div class="card-grid" id="cardGrid"></div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="resetSelections()">Reset</button>
+      <button class="btn btn-secondary" onclick="selectAllV2()">Select All V2</button>
+      <button class="btn btn-primary" onclick="exportSelections()">Export for Print</button>
+    </div>
+  </div>
+
+  <script>
+    const cards = [
+      { id: "stage-01", title: "Nigredo", category: "Stage" },
+      { id: "stage-02", title: "Albedo", category: "Stage" },
+      { id: "stage-03", title: "Citrinitas", category: "Stage" },
+      { id: "stage-04", title: "Rubedo", category: "Stage" },
+      { id: "op-01", title: "Calcination", category: "Operation" },
+      { id: "op-02", title: "Dissolution", category: "Operation" },
+      { id: "op-03", title: "Separation", category: "Operation" },
+      { id: "op-04", title: "Conjunction", category: "Operation" },
+      { id: "op-05", title: "Fermentation", category: "Operation" },
+      { id: "op-06", title: "Distillation", category: "Operation" },
+      { id: "op-07", title: "Coagulation", category: "Operation" },
+      { id: "elem-01", title: "Fire", category: "Element" },
+      { id: "elem-02", title: "Water", category: "Element" },
+      { id: "elem-03", title: "Air", category: "Element" },
+      { id: "elem-04", title: "Earth", category: "Element" },
+      { id: "elem-05", title: "Quintessence", category: "Element" },
+      { id: "prin-01", title: "Sulphur", category: "Principle" },
+      { id: "prin-02", title: "Mercury", category: "Principle" },
+      { id: "prin-03", title: "Salt", category: "Principle" },
+      { id: "vessel-01", title: "Athanor", category: "Vessel" },
+      { id: "vessel-02", title: "Alembic", category: "Vessel" },
+      { id: "vessel-03", title: "Crucible", category: "Vessel" },
+      { id: "vessel-04", title: "Retort", category: "Vessel" },
+      { id: "sage-01", title: "Hermes", category: "Sage" },
+      { id: "sage-02", title: "Paracelsus", category: "Sage" },
+      { id: "sage-03", title: "Boehme", category: "Sage" },
+      { id: "sage-04", title: "Ficino", category: "Sage" },
+      { id: "sage-05", title: "Sendivogius", category: "Sage" },
+      { id: "sage-06", title: "Agrippa", category: "Sage" },
+      { id: "arc-01", title: "Prima Materia", category: "Arcana" },
+      { id: "arc-02", title: "Lapis", category: "Arcana" },
+      { id: "arc-03", title: "Ouroboros", category: "Arcana" },
+      { id: "arc-04", title: "Rebis", category: "Arcana" },
+      { id: "arc-05", title: "Elixir", category: "Arcana" }
+    ];
+
+    // Version paths
+    const versions = {
+      v1: { path: "../assets/deck-artwork/", label: "V1: Original (Dec 30)", tag: "Original" },
+      v2: { path: "cards/", label: "V2: Research-Informed (Jan 1)", tag: "New" }
+    };
+
+    let selections = JSON.parse(localStorage.getItem('alchemyDeckSelections') || '{}');
+    let currentFilter = 'all';
+
+    function renderCards() {
+      const grid = document.getElementById('cardGrid');
+      let filtered = cards;
+
+      if (currentFilter === 'unselected') {
+        filtered = cards.filter(c => !selections[c.id]);
+      } else if (currentFilter === 'v1') {
+        filtered = cards.filter(c => selections[c.id] === 'v1');
+      } else if (currentFilter === 'v2') {
+        filtered = cards.filter(c => selections[c.id] === 'v2');
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty-state">No cards match this filter</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(card => `
+        <div class="card-compare" data-id="${card.id}">
+          <div class="card-header">
+            <div>
+              <div class="card-category">${card.category}</div>
+              <div class="card-title">${card.title}</div>
+            </div>
+          </div>
+          <div class="versions">
+            <div class="version v1 ${selections[card.id] === 'v1' ? 'selected' : ''}" onclick="selectVersion('${card.id}', 'v1')">
+              <span class="version-tag">${versions.v1.tag}</span>
+              <img src="${versions.v1.path}${card.id}.png" alt="${card.title} V1" loading="lazy">
+              <div class="version-label">${versions.v1.label}</div>
+            </div>
+            <div class="version v2 ${selections[card.id] === 'v2' ? 'selected' : ''}" onclick="selectVersion('${card.id}', 'v2')">
+              <span class="version-tag">${versions.v2.tag}</span>
+              <img src="${versions.v2.path}${card.id}.png" alt="${card.title} V2" loading="lazy">
+              <div class="version-label">${versions.v2.label}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function selectVersion(cardId, version) {
+      if (selections[cardId] === version) {
+        delete selections[cardId]; // Toggle off
+      } else {
+        selections[cardId] = version;
+      }
+      localStorage.setItem('alchemyDeckSelections', JSON.stringify(selections));
+      renderCards();
+      updateStats();
+    }
+
+    function updateStats() {
+      const selected = Object.keys(selections).length;
+      const v1 = Object.values(selections).filter(v => v === 'v1').length;
+      const v2 = Object.values(selections).filter(v => v === 'v2').length;
+
+      document.getElementById('selectedCount').textContent = selected;
+      document.getElementById('v1Count').textContent = v1;
+      document.getElementById('v2Count').textContent = v2;
+      document.getElementById('progressFill').style.width = `${(selected / 34) * 100}%`;
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === filter);
+      });
+      renderCards();
+    }
+
+    function resetSelections() {
+      if (confirm('Reset all selections?')) {
+        selections = {};
+        localStorage.setItem('alchemyDeckSelections', JSON.stringify(selections));
+        renderCards();
+        updateStats();
+      }
+    }
+
+    function selectAllV2() {
+      cards.forEach(card => {
+        selections[card.id] = 'v2';
+      });
+      localStorage.setItem('alchemyDeckSelections', JSON.stringify(selections));
+      renderCards();
+      updateStats();
+    }
+
+    function exportSelections() {
+      const exportData = {
+        exported: new Date().toISOString(),
+        totalCards: 34,
+        selected: Object.keys(selections).length,
+        selections: cards.map(card => ({
+          id: card.id,
+          title: card.title,
+          category: card.category,
+          selectedVersion: selections[card.id] || null,
+          imagePath: selections[card.id] ?
+            (selections[card.id] === 'v1' ? versions.v1.path : versions.v2.path) + card.id + '.png' : null
+        }))
+      };
+
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `alchemy-deck-selections-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+    }
+
+    // Event listeners
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => setFilter(btn.dataset.filter));
+    });
+
+    // Init
+    renderCards();
+    updateStats();
+  </script>
+</body>
+</html>
