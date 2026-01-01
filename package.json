@@ -2,9 +2,11 @@
   "name": "alchemy-deck",
   "version": "1.0.0",
   "description": "Oracle deck for transformation based on alchemical tradition",
-  "type": "module",
   "scripts": {
     "generate": "node src/generate-images.js",
+    "generate:print": "node src/generate-print-images.js",
+    "pdf": "node src/generate-pdf.js",
+    "prodigi": "node src/prodigi.js",
     "dev": "npx serve docs"
   },
   "keywords": [
@@ -15,6 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "pdf-lib": "^1.17.1",
     "replicate": "^0.25.2"
   }
 }
