@@ -400,61 +400,6 @@
       font-family: 'Cinzel', serif;
     }
 
-    .submit-section {
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .name-input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #333;
-      background: #1a1a1a;
-      color: #eee;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 0.9rem;
-    }
-
-    .name-input:focus {
-      outline: none;
-      border-color: #d4af37;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .button-row .export-btn {
-      flex: 1;
-    }
-
-    .submit-btn {
-      background: #4ade80 !important;
-    }
-
-    .submit-btn:hover {
-      background: #22c55e !important;
-    }
-
-    .submit-btn:disabled {
-      background: #666 !important;
-      cursor: not-allowed;
-    }
-
-    .submit-status {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      text-align: center;
-    }
-
-    .submit-status.success { color: #4ade80; }
-    .submit-status.error { color: #f87171; }
-    .submit-status.loading { color: #fbbf24; }
-
     .keyboard-hint {
       text-align: center;
       color: #555;
@@ -580,19 +525,20 @@
           <div class="stat-label">Rejected</div>
         </div>
       </div>
-      <div class="submit-section">
-        <input type="text" id="reviewerName" placeholder="Your name" class="name-input">
-        <div class="button-row">
-          <button class="export-btn" id="exportBtn">Export JSON</button>
-          <button class="export-btn submit-btn" id="submitBtn">Submit Review</button>
-        </div>
-        <div id="submitStatus" class="submit-status"></div>
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <input type="text" id="reviewerName" placeholder="Your name" style="padding: 10px 14px; border: 1px solid #333; background: #1a1a1a; color: #eee; border-radius: 6px; font-size: 0.9rem; width: 150px;">
+        <button class="export-btn" id="submitBtn">Submit to Sheet</button>
+        <button class="export-btn" id="exportBtn" style="background: #2a2a2a; color: #ccc;">Export JSON</button>
       </div>
+      <div id="submitStatus" style="margin-top: 10px; font-size: 0.85rem; color: #888;"></div>
     </div>
   </div>
 
   <script>
     const BASE_STYLE = "Detailed alchemical engraving illustration, hand-tinted with muted earth tones and gold accents, copper and sepia coloring, mystical Renaissance style, intricate linework, esoteric symbolism, aged parchment texture, high detail, centered composition, no text or letters";
+
+    // Google Apps Script URL - deploy the script and paste URL here
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
 
     // Selected image versions from user review (2026-01-01)
     // v1 = cards-v1/, v2 = cards/, v3 = cards-v3/
@@ -1074,72 +1020,69 @@
       a.click();
     }
 
-    // Supabase submission
-    const SUPABASE_URL = 'https://gtgltxaixpnclilmkshj.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0Z2x0eGFpeHBuY2xpbG1rc2hqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyMjQ4NzksImV4cCI6MjA4MDgwMDg3OX0.2LaOhUrz4_QpLyhS-Q1CnK0MTxDu8_TPJ_JDGdxCh_E';
-
-    async function submitToSupabase() {
-      const nameInput = document.getElementById('reviewerName');
-      const submitBtn = document.getElementById('submitBtn');
+    async function submitToGoogleSheets() {
       const statusEl = document.getElementById('submitStatus');
+      const reviewerName = document.getElementById('reviewerName').value.trim();
 
-      const name = nameInput.value.trim();
-      if (!name) {
-        statusEl.textContent = 'Please enter your name';
-        statusEl.className = 'submit-status error';
+      if (!reviewerName) {
+        statusEl.style.color = '#f87171';
+        statusEl.textContent = 'Please enter your name first.';
+        return;
+      }
+
+      if (GOOGLE_SCRIPT_URL.includes('YOUR_SCRIPT_ID_HERE')) {
+        statusEl.style.color = '#f87171';
+        statusEl.textContent = 'Google Script URL not configured. See google-apps-script.js for setup.';
         return;
       }
 
       const reviewedCount = Object.keys(reviews).filter(k => reviews[k].rating).length;
       if (reviewedCount === 0) {
-        statusEl.textContent = 'Please review at least one card';
-        statusEl.className = 'submit-status error';
+        statusEl.style.color = '#f87171';
+        statusEl.textContent = 'Please review at least one card before submitting.';
         return;
       }
 
-      submitBtn.disabled = true;
+      statusEl.style.color = '#fbbf24';
       statusEl.textContent = 'Submitting...';
-      statusEl.className = 'submit-status loading';
 
-      const data = {
-        reviewer: name,
-        approved_count: Object.values(reviews).filter(r => r.rating === 'up').length,
-        needs_work_count: Object.values(reviews).filter(r => r.rating === 'meh').length,
-        rejected_count: Object.values(reviews).filter(r => r.rating === 'down').length,
-        reviews: Object.entries(reviews).map(([id, r]) => ({
-          id,
-          rating: r.rating,
-          comment: r.comment || ''
-        })).filter(r => r.rating)
+      const submitData = {
+        reviewer: reviewerName,
+        submitted: new Date().toISOString(),
+        summary: {
+          total: cards.length,
+          approved: Object.values(reviews).filter(r => r.rating === 'up').length,
+          needsWork: Object.values(reviews).filter(r => r.rating === 'meh').length,
+          rejected: Object.values(reviews).filter(r => r.rating === 'down').length,
+          unreviewed: cards.filter(c => !reviews[c.id]?.rating).length
+        },
+        reviews: reviews
       };
 
       try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/alchemy_reviews`, {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-            'Prefer': 'return=minimal'
-          },
-          body: JSON.stringify(data)
+          mode: 'no-cors', // Required for Google Apps Script
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submitData)
         });
 
-        if (response.ok) {
-          statusEl.textContent = 'Submitted successfully!';
-          statusEl.className = 'submit-status success';
-        } else {
-          const err = await response.text();
-          throw new Error(err);
-        }
-      } catch (err) {
-        statusEl.textContent = 'Error submitting. Try Export JSON instead.';
-        statusEl.className = 'submit-status error';
-        console.error(err);
-      } finally {
-        submitBtn.disabled = false;
+        // no-cors means we can't read the response, but if it didn't throw, it likely worked
+        statusEl.style.color = '#4ade80';
+        statusEl.textContent = `Submitted! Thank you, ${reviewerName}.`;
+
+        // Save the name for next time
+        localStorage.setItem('alchemyDeckReviewerName', reviewerName);
+      } catch (error) {
+        statusEl.style.color = '#f87171';
+        statusEl.textContent = 'Error submitting. Please try again or export JSON instead.';
+        console.error('Submit error:', error);
       }
     }
+
+    // Restore saved reviewer name
+    const savedName = localStorage.getItem('alchemyDeckReviewerName');
+    if (savedName) document.getElementById('reviewerName').value = savedName;
 
     document.querySelectorAll('.rating-btn').forEach(btn => btn.addEventListener('click', () => saveReview(btn.dataset.rating)));
     document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
@@ -1148,7 +1091,7 @@
     prevBtn.addEventListener('click', () => { saveInputs(); if (currentIndex > 0) { currentIndex--; updateDisplay(); } });
     nextBtn.addEventListener('click', () => { saveInputs(); if (currentIndex < filteredCards.length - 1) { currentIndex++; updateDisplay(); } });
     document.getElementById('exportBtn').addEventListener('click', exportReviews);
-    document.getElementById('submitBtn').addEventListener('click', submitToSupabase);
+    document.getElementById('submitBtn').addEventListener('click', submitToGoogleSheets);
 
     document.addEventListener('keydown', (e) => {
       if (e.target === commentInput || e.target === revisedPromptEl) return;
