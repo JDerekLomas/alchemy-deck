@@ -517,20 +517,98 @@ Paracelsus revolutionized alchemy by proposing three principles underlying all m
 
 ## Key Sources
 
-| Author | Work | Date | Source Library Link |
-|--------|------|------|---------------------|
-| Michael Maier | *Atalanta Fugiens* | 1618 | [Link](https://sourcelibrary.org/book/6952d0c377f38f6761bc585e) |
-| Michael Sendivogius | *New Chemical Light* | 1628 | [Link](https://sourcelibrary.org/book/690986dccf28baa1b4cae0e3) |
-| Cornelius Drebbel | *Two Treatises* | 1628 | [DOI](https://doi.org/10.5281/zenodo.18053504) |
-| Heinrich Khunrath | *Amphitheater of Eternal Wisdom* | 1609 | [Link](https://sourcelibrary.org/book/69487f16b75c15feb90b27ef) |
-| Hermes Trismegistus | *Pymander* | 1532 | [Link](https://sourcelibrary.org/book/68fb0dc412055a03a58d3281) |
-| Paracelsus | *Book of Meteors* | 1566 | [Link](https://sourcelibrary.org/book/6867bf5a009d20a23245ac0d) |
-| Jacob Boehme | *Aurora* | 1612 | [Link](https://sourcelibrary.org/book/6867c580aadfee9e955eca92) |
-| Marsilio Ficino | *On Pleasure* | 1497 | [Link](https://sourcelibrary.org/book/685a9b1bcdbe778e22823a64) |
-| Johann Hellwig | *Curious Physics* | 1714 | [Link](https://sourcelibrary.org/book/dbdc472a-b39f-4005-abb4-654428f7bf61) |
-| Anonymous | *Rosicrucian MS* | 17th c. | [Link](https://sourcelibrary.org/book/d850a255-4633-43d5-8383-7c67a7e55144) |
-| Oswald Croll | *Basilica Chymica* | 1609 | [Link](https://sourcelibrary.org/book/6952d05477f38f6761bc511e) |
-| Hermann Conring | *On Hermetic Medicine* | 1648 | [Link](https://sourcelibrary.org/book/6909a2e7cf28baa1b4caec93) |
+### Primary Alchemical Texts
+
+| Author | Work | Date | Pages | Source Library Link |
+|--------|------|------|-------|---------------------|
+| Michael Maier | *Atalanta Fugiens* | 1618 | 387 | [Link](https://sourcelibrary.org/book/6952d0c377f38f6761bc585e) |
+| Michael Sendivogius | *New Chemical Light* | 1628 | 209 | [Link](https://sourcelibrary.org/book/690986dccf28baa1b4cae0e3) |
+| Cornelius Drebbel | *Two Treatises* | 1628 | 69 | [DOI](https://doi.org/10.5281/zenodo.18053504) |
+| Heinrich Khunrath | *Amphitheater of Eternal Wisdom* | 1609 | 615 | [Link](https://sourcelibrary.org/book/69487f16b75c15feb90b27ef) |
+| Various | *Musaeum Hermeticum* | 1678 | 882 | [Link](https://sourcelibrary.org/book/695203a5ab34727b1f041c53) |
+| Oswald Croll | *Basilica Chymica* | 1609 | 855 | [Link](https://sourcelibrary.org/book/6952d05477f38f6761bc511e) |
+
+### Hermetic & Philosophical Texts
+
+| Author | Work | Date | Pages | Source Library Link |
+|--------|------|------|-------|---------------------|
+| Hermes Trismegistus | *Pymander* | 1532 | 237 | [Link](https://sourcelibrary.org/book/68fb0dc412055a03a58d3281) |
+| Heinrich Cornelius Agrippa | *Three Books of Occult Philosophy* | 1550 | 616 | [Link](https://sourcelibrary.org/book/694bf8d2343422769f237558) |
+| Marsilio Ficino | *On Pleasure* | 1497 | 40 | [Link](https://sourcelibrary.org/book/685a9b1bcdbe778e22823a64) |
+| Hermann Conring | *On Hermetic Medicine* | 1648 | 93 | [Link](https://sourcelibrary.org/book/6909a2e7cf28baa1b4caec93) |
+| Julius Firmicus Maternus | *Eight Books on Astronomy* | 1533 | 497 | [Link](https://sourcelibrary.org/book/68d5571a110616ec557a3708) |
+
+### Paracelsian & Mystical Texts
+
+| Author | Work | Date | Pages | Source Library Link |
+|--------|------|------|-------|---------------------|
+| Paracelsus | *Book of Meteors* | 1566 | 113 | [Link](https://sourcelibrary.org/book/6867bf5a009d20a23245ac0d) |
+| Jacob Boehme | *Aurora* | 1612 | 225 | [Link](https://sourcelibrary.org/book/6867c580aadfee9e955eca92) |
+| Johann Hellwig | *Curious Physics* | 1714 | 90 | [Link](https://sourcelibrary.org/book/dbdc472a-b39f-4005-abb4-654428f7bf61) |
+| Anonymous | *Rosicrucian MS* | 17th c. | 91 | [Link](https://sourcelibrary.org/book/d850a255-4633-43d5-8383-7c67a7e55144) |
+
+---
+
+## Additional Quotes by Topic
+
+### On the Practice of Alchemy
+
+> "Let no commerce intervene between you and this spirit, unless you have first exact knowledge and understanding of it."
+> —*Musaeum Hermeticum* (1678), "Aquarium of the Wise", p. 100
+
+> "Begin all your endeavor with prayers poured out to God, and with divine aid... and then you will fear nothing at all."
+> —*Musaeum Hermeticum*, p. 100
+
+### On the Source of Occult Virtues
+
+> "God is primarily the end and origin of all virtues, impressing the seal of Ideas upon His ministering Intelligences; who, as faithful executors, consign things entrusted to them with ideal virtue to the heavens and stars."
+> —Agrippa, *Three Books of Occult Philosophy* (1550), p. 50
+
+> "Form and virtue proceed first from Ideas; then from presiding and governing Intelligences; afterwards from disposing celestial aspects."
+> —Agrippa, *Three Books of Occult Philosophy*, p. 50
+
+### On Sublimation and the Hermetic Bird
+
+> "If you multiply this Hermetic Bird with Art, you will be the King of the entire Alchemical Arcane."
+> —Drebbel, *Two Treatises* (1628), p. 12
+
+### On Coagulation
+
+> "Dissolve your metal or mineral, without losing any of its spirits, in distilled vinegar: let it slowly coagulate in a warm place."
+> —Drebbel, *Two Treatises*, p. 59
+
+> "It coagulates the spirit into a crystalline substance."
+> —Drebbel, *Two Treatises*, p. 48
+
+### On the Alchemical Operations
+
+> "In our water, through it, the operations of Sublimations, Distillations, Solutions, Calcinations, Fixations and the rest are perfected, as if in an artificial vessel. Which is the greatest secret."
+> —*Rosicrucian MS* (17th c.), p. 45
+
+### On the Emerald Tablet
+
+> "He is the powerful one, praised by Hermes in the Emerald Tablet. He is the true living Mercurius, not called living because he becomes a base metal, but because in him is the living fire."
+> —Hellwig, *Curious Physics* (1714), p. 31
+
+> "The so-called Emerald Tablet, purportedly containing the secret of the prima materia."
+> —Conring, *On Hermetic Medicine* (1648), p. 37
+
+---
+
+## Further Reading
+
+The Source Library contains over 116 translated texts from the Renaissance and Early Modern period. Key categories include:
+
+- **Alchemy** - Practical laboratory alchemy and spiritual transformation
+- **Hermeticism** - Corpus Hermeticum, Asclepius, and related texts
+- **Christian Kabbalah** - Reuchlin, Agrippa, and mystical Judaism
+- **Neoplatonism** - Ficino, Pico, and the Florentine Academy
+- **Natural Magic** - Sympathies, correspondences, and hidden virtues
+- **Paracelsian Medicine** - Iatrochemistry and alchemical healing
+- **Rosicrucianism** - The Rosicrucian manifestos and related works
+- **Theurgy** - Iamblichus, Proclus, and divine ascent
+
+Browse all at: https://sourcelibrary.org
 
 ---
 
