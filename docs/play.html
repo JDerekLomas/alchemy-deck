@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alchemy Deck - How to Play</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: #1a1612;
+      color: #e8e0d5;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: #d4af37;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #a89078;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #d4af37;
+      letter-spacing: 0.05em;
+      margin: 50px 0 25px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #e8e0d5;
+      margin: 30px 0 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    /* Mode Cards */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .mode-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 12px;
+      padding: 25px 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .mode-card:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-3px);
+    }
+
+    .mode-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .mode-card .name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: #d4af37;
+      margin-bottom: 8px;
+    }
+
+    .mode-card .meta {
+      font-size: 0.85rem;
+      color: #8b7355;
+      margin-bottom: 12px;
+    }
+
+    .mode-card .desc {
+      font-size: 0.95rem;
+      color: #a89078;
+    }
+
+    /* Spreads */
+    .spread {
+      background: rgba(0,0,0,0.3);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 25px 0;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .spread-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .spread-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: #d4af37;
+    }
+
+    .spread-meta {
+      font-size: 0.85rem;
+      color: #8b7355;
+      background: rgba(212, 175, 55, 0.1);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .spread-layout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0;
+      min-height: 180px;
+    }
+
+    .card-slot {
+      width: 60px;
+      height: 100px;
+      border: 2px dashed rgba(212, 175, 55, 0.4);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: #8b7355;
+      text-align: center;
+      padding: 5px;
+      background: rgba(0,0,0,0.3);
+      margin: 5px;
+    }
+
+    .card-slot.active {
+      border-color: #d4af37;
+      background: rgba(212, 175, 55, 0.1);
+      color: #d4af37;
+    }
+
+    .spread-positions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .position {
+      font-size: 0.9rem;
+    }
+
+    .position .num {
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      margin-right: 8px;
+    }
+
+    .position .meaning {
+      color: #a89078;
+    }
+
+    /* Opus spread special layout */
+    .opus-layout {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .opus-layout .card-slot {
+      position: relative;
+    }
+
+    .opus-layout .card-slot::after {
+      content: '';
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      width: 8px;
+      height: 2px;
+      background: rgba(212, 175, 55, 0.4);
+    }
+
+    .opus-layout .card-slot:last-child::after {
+      display: none;
+    }
+
+    /* Vessel spread */
+    .vessel-layout {
+      display: grid;
+      grid-template-areas:
+        ". heat ."
+        "container . matter"
+        ". process ."
+        ". gold .";
+      gap: 10px;
+      justify-items: center;
+    }
+
+    .vessel-layout .slot-heat { grid-area: heat; }
+    .vessel-layout .slot-container { grid-area: container; }
+    .vessel-layout .slot-matter { grid-area: matter; }
+    .vessel-layout .slot-process { grid-area: process; }
+    .vessel-layout .slot-gold { grid-area: gold; }
+
+    /* Oracle Lens */
+    .oracle-lens {
+      background: linear-gradient(135deg, #2a2420 0%, #1a1612 100%);
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .lens-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: #d4af37;
+      margin-bottom: 25px;
+    }
+
+    .lens-slots {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 30px;
+    }
+
+    .lens-slot {
+      width: 70px;
+      height: 110px;
+      border: 2px dashed rgba(212, 175, 55, 0.5);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #8b7355;
+    }
+
+    .lens-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lens-option {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: #a89078;
+      padding: 4px 0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lens-option:hover {
+      color: #d4af37;
+    }
+
+    .lens-option.revealed {
+      color: #d4af37;
+      font-size: 1.1rem;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+
+    .lens-instruction {
+      margin-top: 25px;
+      font-style: italic;
+      color: #8b7355;
+      font-size: 0.9rem;
+    }
+
+    /* Output Types */
+    .outputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .output-type {
+      background: rgba(255,255,255,0.02);
+      border-left: 3px solid;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .output-type.reflection { border-color: #60a5fa; }
+    .output-type.story { border-color: #c084fc; }
+    .output-type.plan { border-color: #4ade80; }
+    .output-type.design { border-color: #f472b6; }
+    .output-type.closure { border-color: #94a3b8; }
+    .output-type.ideas { border-color: #fbbf24; }
+    .output-type.transformation { border-color: #e63946; }
+    .output-type.horoscope { border-color: #38bdf8; }
+
+    .output-type .name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .output-type.reflection .name { color: #60a5fa; }
+    .output-type.story .name { color: #c084fc; }
+    .output-type.plan .name { color: #4ade80; }
+    .output-type.design .name { color: #f472b6; }
+    .output-type.closure .name { color: #94a3b8; }
+    .output-type.ideas .name { color: #fbbf24; }
+    .output-type.transformation .name { color: #e63946; }
+    .output-type.horoscope .name { color: #38bdf8; }
+
+    .output-type .desc {
+      font-size: 0.9rem;
+      color: #a89078;
+      margin-bottom: 10px;
+    }
+
+    .output-type .example {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #6b5b4f;
+      background: rgba(0,0,0,0.2);
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    /* Quick Start */
+    .quick-start {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.02) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .quick-start h3 {
+      color: #d4af37;
+      margin-top: 0;
+    }
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+      align-items: flex-start;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: #d4af37;
+      background: rgba(212, 175, 55, 0.15);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      padding-top: 5px;
+    }
+
+    .step-content strong {
+      color: #e8e0d5;
+    }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #8b7355;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav a:hover {
+      color: #d4af37;
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    /* Interactive demo */
+    .demo-section {
+      background: rgba(0,0,0,0.3);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px 0;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .draw-btn {
+      background: linear-gradient(135deg, #d4af37, #e5c048);
+      color: #1a1612;
+      border: none;
+      padding: 14px 32px;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .draw-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .drawn-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 25px 0;
+      min-height: 160px;
+    }
+
+    .drawn-card {
+      width: 90px;
+      height: 150px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .drawn-card:hover {
+      transform: scale(1.05);
+    }
+
+    .drawn-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .drawn-card .back {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2a2420, #1a1612);
+      border: 2px solid #d4af37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .interpretation {
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+      font-size: 1rem;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .interpretation.visible {
+      display: block;
+    }
+
+    .output-selector {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .output-btn {
+      background: transparent;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #a89078;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .output-btn:hover, .output-btn.active {
+      border-color: #d4af37;
+      color: #d4af37;
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 15px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .modes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lens-slots {
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>How to Play</h1>
+      <p>The Alchemy Deck offers many paths through the Great Work</p>
+    </header>
+
+    <!-- Quick Start -->
+    <div class="quick-start">
+      <h3>Quick Start</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-content">
+            <strong>Choose your mode</strong> — How much time do you have? What depth are you seeking?
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-content">
+            <strong>Select a spread</strong> — The layout gives structure to your reading
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-content">
+            <strong>Draw your cards</strong> — Shuffle and place them in position
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-content">
+            <strong>Choose your lens</strong> — What kind of output do you want? Reflection, story, plan?
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-content">
+            <strong>Receive the Work</strong> — Let the oracle speak through the cards
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Play Modes -->
+    <h2>Play Modes</h2>
+    <p>Choose your level of engagement based on time, energy, and depth of inquiry.</p>
+
+    <div class="modes-grid">
+      <div class="mode-card">
+        <div class="icon">&#9672;</div>
+        <div class="name">Spark</div>
+        <div class="meta">1 card &middot; 30 seconds</div>
+        <div class="desc">Daily draw. A single insight to carry with you.</div>
+      </div>
+
+      <div class="mode-card">
+        <div class="icon">&#9651;</div>
+        <div class="name">Triad</div>
+        <div class="meta">3 cards &middot; 5 minutes</div>
+        <div class="desc">Classic three-card reading. Question, obstacle, path.</div>
+      </div>
+
+      <div class="mode-card">
+        <div class="icon">&#10070;</div>
+        <div class="name">Work</div>
+        <div class="meta">5-7 cards &middot; 15 minutes</div>
+        <div class="desc">Deep spread for significant questions or transitions.</div>
+      </div>
+
+      <div class="mode-card">
+        <div class="icon">&#11044;</div>
+        <div class="name">Opus</div>
+        <div class="meta">Open &middot; 30+ minutes</div>
+        <div class="desc">Full creative ritual. The complete Great Work.</div>
+      </div>
+    </div>
+
+    <!-- Spreads -->
+    <h2>Alchemical Spreads</h2>
+
+    <div class="spread">
+      <div class="spread-header">
+        <div class="spread-title">The Opus</div>
+        <div class="spread-meta">4 cards &middot; The Great Work</div>
+      </div>
+      <div class="spread-layout">
+        <div class="opus-layout">
+          <div class="card-slot active">1<br>Nigredo</div>
+          <div class="card-slot">2<br>Albedo</div>
+          <div class="card-slot">3<br>Citrinitas</div>
+          <div class="card-slot">4<br>Rubedo</div>
+        </div>
+      </div>
+      <div class="spread-positions">
+        <div class="position"><span class="num">1</span><span class="meaning">What is dying or ending</span></div>
+        <div class="position"><span class="num">2</span><span class="meaning">What is purifying or clarifying</span></div>
+        <div class="position"><span class="num">3</span><span class="meaning">What is awakening or illuminating</span></div>
+        <div class="position"><span class="num">4</span><span class="meaning">What is completing or integrating</span></div>
+      </div>
+    </div>
+
+    <div class="spread">
+      <div class="spread-header">
+        <div class="spread-title">Solve et Coagula</div>
+        <div class="spread-meta">2 cards &middot; Dissolve and crystallize</div>
+      </div>
+      <div class="spread-layout">
+        <div class="card-slot">1<br>Solve</div>
+        <div style="width: 40px; display: flex; align-items: center; justify-content: center; color: #d4af37;">&#8644;</div>
+        <div class="card-slot">2<br>Coagula</div>
+      </div>
+      <div class="spread-positions">
+        <div class="position"><span class="num">1</span><span class="meaning">What to dissolve, release, let go</span></div>
+        <div class="position"><span class="num">2</span><span class="meaning">What to crystallize, manifest, make real</span></div>
+      </div>
+    </div>
+
+    <div class="spread">
+      <div class="spread-header">
+        <div class="spread-title">The Three Principles</div>
+        <div class="spread-meta">3 cards &middot; Soul, spirit, body</div>
+      </div>
+      <div class="spread-layout">
+        <div class="card-slot">1<br>Sulphur</div>
+        <div class="card-slot active">2<br>Mercury</div>
+        <div class="card-slot">3<br>Salt</div>
+      </div>
+      <div class="spread-positions">
+        <div class="position"><span class="num">1</span><span class="meaning">Sulphur: What the soul desires, the fire within</span></div>
+        <div class="position"><span class="num">2</span><span class="meaning">Mercury: What is changing, the messenger</span></div>
+        <div class="position"><span class="num">3</span><span class="meaning">Salt: What gives form, the body of the matter</span></div>
+      </div>
+    </div>
+
+    <div class="spread">
+      <div class="spread-header">
+        <div class="spread-title">The Vessel</div>
+        <div class="spread-meta">5 cards &middot; The alchemical container</div>
+      </div>
+      <div class="spread-layout">
+        <div class="vessel-layout">
+          <div class="card-slot slot-heat">2<br>Heat</div>
+          <div class="card-slot slot-container">1<br>Vessel</div>
+          <div class="card-slot slot-matter">3<br>Matter</div>
+          <div class="card-slot slot-process">4<br>Process</div>
+          <div class="card-slot slot-gold active">5<br>Gold</div>
+        </div>
+      </div>
+      <div class="spread-positions">
+        <div class="position"><span class="num">1</span><span class="meaning">The container: what holds this work</span></div>
+        <div class="position"><span class="num">2</span><span class="meaning">The heat: what catalyzes change</span></div>
+        <div class="position"><span class="num">3</span><span class="meaning">The matter: what is being transformed</span></div>
+        <div class="position"><span class="num">4</span><span class="meaning">The process: how change unfolds</span></div>
+        <div class="position"><span class="num">5</span><span class="meaning">The gold: what emerges</span></div>
+      </div>
+    </div>
+
+    <div class="spread">
+      <div class="spread-header">
+        <div class="spread-title">The Conjunction</div>
+        <div class="spread-meta">2 cards &middot; Sacred marriage</div>
+      </div>
+      <div class="spread-layout">
+        <div class="card-slot">&#9737;<br>Sol</div>
+        <div style="width: 50px; display: flex; align-items: center; justify-content: center; color: #d4af37; font-size: 1.5rem;">&#10084;</div>
+        <div class="card-slot">&#9789;<br>Luna</div>
+      </div>
+      <div class="spread-positions">
+        <div class="position"><span class="num">&#9737;</span><span class="meaning">Solar force: conscious, active, masculine</span></div>
+        <div class="position"><span class="num">&#9789;</span><span class="meaning">Lunar force: unconscious, receptive, feminine</span></div>
+      </div>
+    </div>
+
+    <!-- Oracle Lens -->
+    <h2>The Oracle Lens</h2>
+    <p>Before your reading, choose how you want the oracle to speak. Each lens shapes the interpretation differently.</p>
+
+    <div class="oracle-lens">
+      <div class="lens-title">ORACLE LENS</div>
+      <div class="lens-slots">
+        <div class="lens-slot">Place<br>card<br>here</div>
+        <div class="lens-slot">Place<br>card<br>here</div>
+      </div>
+      <div class="lens-options">
+        <div class="lens-option" data-lens="reflection">REFLECTION</div>
+        <div class="lens-option" data-lens="story">STORY</div>
+        <div class="lens-option" data-lens="plan">PLAN</div>
+        <div class="lens-option" data-lens="design">DESIGN</div>
+        <div class="lens-option" data-lens="closure">CLOSURE</div>
+        <div class="lens-option" data-lens="ideas">IDEAS</div>
+        <div class="lens-option" data-lens="transformation">TRANSFORMATION</div>
+        <div class="lens-option" data-lens="horoscope">HOROSCOPE</div>
+      </div>
+      <div class="lens-instruction">
+        Place two cards to cover all but your chosen lens
+      </div>
+    </div>
+
+    <!-- Output Types -->
+    <h2>Output Types</h2>
+    <p>Each lens asks the oracle to speak in a different voice, offering different kinds of wisdom.</p>
+
+    <div class="outputs-grid">
+      <div class="output-type reflection">
+        <div class="name">Reflection</div>
+        <div class="desc">Journaling prompts and questions to sit with. Opens inner dialogue.</div>
+        <div class="example">"What part of yourself have you been avoiding? Where does this resistance live in your body?"</div>
+      </div>
+
+      <div class="output-type story">
+        <div class="name">Story</div>
+        <div class="desc">Narrative, myth, parable. The cards become characters in a tale.</div>
+        <div class="example">"The alchemist descended into the cave where the black sun waited. There, in the darkness, she found..."</div>
+      </div>
+
+      <div class="output-type plan">
+        <div class="name">Plan</div>
+        <div class="desc">Concrete steps, strategy, actions. Translates wisdom into doing.</div>
+        <div class="example">"First: clear the space. Second: name what must end. Third: sit with the emptiness before filling it."</div>
+      </div>
+
+      <div class="output-type design">
+        <div class="name">Design</div>
+        <div class="desc">Visual direction, mood, aesthetic. For creative projects.</div>
+        <div class="example">"Deep indigo transitioning to gold. Geometric forms dissolving at edges. The feeling of dawn after a long night."</div>
+      </div>
+
+      <div class="output-type closure">
+        <div class="name">Closure</div>
+        <div class="desc">Processing endings, grief, letting go. Honoring what was.</div>
+        <div class="example">"This ending is not a failure. The vessel served its purpose. Now: gratitude, release, and space for what comes."</div>
+      </div>
+
+      <div class="output-type ideas">
+        <div class="name">Ideas</div>
+        <div class="desc">Brainstorm, possibilities, creative sparks. Generative mode.</div>
+        <div class="example">"What if you combined the opposite? What if the obstacle IS the path? What if you started from the end?"</div>
+      </div>
+
+      <div class="output-type transformation">
+        <div class="name">Transformation</div>
+        <div class="desc">Growth arc, shadow work, becoming. The deep change.</div>
+        <div class="example">"The fire you fear is the fire you need. What you're protecting is already gone. Step into the crucible."</div>
+      </div>
+
+      <div class="output-type horoscope">
+        <div class="name">Horoscope</div>
+        <div class="desc">Predictive, advisory. The cards suggest what may come.</div>
+        <div class="example">"This week: old patterns resurface for final clearing. By Friday, clarity arrives. Trust the timing."</div>
+      </div>
+    </div>
+
+    <!-- Interactive Demo -->
+    <h2>Try It</h2>
+    <div class="demo-section">
+      <p style="text-align: center; color: #a89078;">Draw a single card and choose your lens</p>
+
+      <button class="draw-btn" id="drawBtn">Draw a Card</button>
+
+      <div class="drawn-cards" id="drawnCards">
+        <!-- Cards appear here -->
+      </div>
+
+      <div class="output-selector" id="outputSelector" style="display: none;">
+        <button class="output-btn" data-output="reflection">Reflection</button>
+        <button class="output-btn" data-output="story">Story</button>
+        <button class="output-btn" data-output="plan">Plan</button>
+        <button class="output-btn" data-output="ideas">Ideas</button>
+        <button class="output-btn" data-output="transformation">Transformation</button>
+      </div>
+
+      <div class="interpretation" id="interpretation"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="review.html">Review Cards</a>
+      <a href="print.html">Print Sheet</a>
+      <a href="select.html">Version Selector</a>
+    </nav>
+  </div>
+
+  <script>
+    // Card data (simplified for demo)
+    const cards = [
+      { id: "stage-01", title: "Nigredo", category: "Stage", folder: "cards", prompt: "The first stage of transformation. Something must die for the new to be born." },
+      { id: "stage-02", title: "Albedo", category: "Stage", folder: "cards-v3", prompt: "Purification after darkness. The impurities wash away, revealing what was hidden." },
+      { id: "stage-03", title: "Citrinitas", category: "Stage", folder: "cards-v1", prompt: "Solar consciousness awakens. After purification comes illumination." },
+      { id: "stage-04", title: "Rubedo", category: "Stage", folder: "cards", prompt: "The Great Work complete. Opposites unite, the self becomes whole." },
+      { id: "op-01", title: "Calcination", category: "Operation", folder: "cards-v1", prompt: "Reduction by fire. Ego attachments, false identities—all fuel for the flames." },
+      { id: "op-02", title: "Dissolution", category: "Operation", folder: "cards-v1", prompt: "Letting go into the waters. Rigid structures soften, defenses melt." },
+      { id: "op-03", title: "Separation", category: "Operation", folder: "cards", prompt: "Sorting the essential from the inessential. Discernment is the blade." },
+      { id: "op-04", title: "Conjunction", category: "Operation", folder: "cards-v3", prompt: "The sacred marriage within. What was separated reunites at a higher level." },
+      { id: "op-05", title: "Fermentation", category: "Operation", folder: "cards", prompt: "New life from decay. Crisis becomes catalyst." },
+      { id: "op-06", title: "Distillation", category: "Operation", folder: "cards", prompt: "Repeated cycles of purification. Each pass extracts more essence." },
+      { id: "op-07", title: "Coagulation", category: "Operation", folder: "cards", prompt: "Spirit takes form. Insight becomes action, vision becomes creation." },
+      { id: "elem-01", title: "Fire", category: "Element", folder: "cards-v1", prompt: "The principle of transformation and will. Where do you need more fire?" },
+      { id: "elem-02", title: "Water", category: "Element", folder: "cards-v1", prompt: "The principle of feeling and intuition. What seeks to flow?" },
+      { id: "elem-03", title: "Air", category: "Element", folder: "cards", prompt: "The principle of mind and communication. What thoughts seek expression?" },
+      { id: "elem-04", title: "Earth", category: "Element", folder: "cards-v1", prompt: "The principle of matter and manifestation. What needs grounding?" },
+      { id: "elem-05", title: "Quintessence", category: "Element", folder: "cards", prompt: "The fifth element, beyond the four. What transcends the situation?" },
+      { id: "prin-01", title: "Sulphur", category: "Principle", folder: "cards", prompt: "The combustible principle—what burns, desires, and animates." },
+      { id: "prin-02", title: "Mercury", category: "Principle", folder: "cards", prompt: "The volatile principle—what moves, mediates, and transforms." },
+      { id: "prin-03", title: "Salt", category: "Principle", folder: "cards", prompt: "The fixed principle—what remains, preserves, and gives form." },
+      { id: "vessel-01", title: "Athanor", category: "Vessel", folder: "cards", prompt: "The furnace of slow, steady heat. What requires patient attention?" },
+      { id: "vessel-02", title: "Alembic", category: "Vessel", folder: "cards", prompt: "The vessel of distillation. What is the essential truth?" },
+      { id: "vessel-03", title: "Crucible", category: "Vessel", folder: "cards", prompt: "The vessel of trial by fire. What is being tested?" },
+      { id: "vessel-04", title: "Retort", category: "Vessel", folder: "cards", prompt: "The vessel of circulation. What keeps returning?" },
+      { id: "sage-01", title: "Hermes", category: "Sage", folder: "cards", prompt: "As above, so below. What pattern reflects a larger truth?" },
+      { id: "sage-02", title: "Paracelsus", category: "Sage", folder: "cards", prompt: "Nature is the teacher. What does direct experience teach?" },
+      { id: "sage-03", title: "Boehme", category: "Sage", folder: "cards", prompt: "The divine spark in ordinary life. Where is the sacred in your everyday?" },
+      { id: "sage-04", title: "Ficino", category: "Sage", folder: "cards", prompt: "Beauty leads the soul upward. What beauty is calling you?" },
+      { id: "sage-05", title: "Sendivogius", category: "Sage", folder: "cards-v1", prompt: "Work with nature, not against it. What is the natural path?" },
+      { id: "sage-06", title: "Agrippa", category: "Sage", folder: "cards", prompt: "Hidden correspondences connect all things. What influences this?" },
+      { id: "arc-01", title: "Prima Materia", category: "Arcana", folder: "cards", prompt: "The raw material before the work. What potential awaits transformation?" },
+      { id: "arc-02", title: "Lapis", category: "Arcana", folder: "cards", prompt: "The goal of the Great Work. What does completion look like?" },
+      { id: "arc-03", title: "Ouroboros", category: "Arcana", folder: "cards", prompt: "The serpent eating its tail. What renews itself through apparent death?" },
+      { id: "arc-04", title: "Rebis", category: "Arcana", folder: "cards", prompt: "The union of opposites. What dualities seek reconciliation?" },
+      { id: "arc-05", title: "Elixir", category: "Arcana", folder: "cards", prompt: "The universal medicine. What healing is needed?" }
+    ];
+
+    const interpretations = {
+      reflection: (card) => `<strong>${card.title}</strong> asks you to pause.<br><br>${card.prompt}<br><br>Sit with this: What arises when you consider this card? What does your body tell you? Write for five minutes without stopping.`,
+      story: (card) => `<strong>The ${card.title}</strong><br><br>Once, in the time before time was counted, there lived an alchemist who sought the secret of ${card.title.toLowerCase()}. ${card.prompt.replace(/\?/g, '.')} And so the work began, in darkness and in silence, where all true transformations take root...`,
+      plan: (card) => `<strong>${card.title} — Action Steps</strong><br><br>1. Acknowledge where you are: ${card.prompt.split('.')[0].toLowerCase()}<br>2. Clear space for the work ahead<br>3. Name one concrete action you can take today<br>4. Set a checkpoint to assess progress<br>5. Trust the process, even when you cannot see the outcome`,
+      ideas: (card) => `<strong>${card.title} sparks:</strong><br><br>• What if you approached this backwards?<br>• ${card.prompt}<br>• Combine this with its opposite<br>• What would a child do?<br>• What would you do if failure was impossible?<br>• Start from the end state and work backward`,
+      transformation: (card) => `<strong>${card.title}</strong> calls you to the fire.<br><br>${card.prompt}<br><br>The transformation requires letting go of who you were to become who you are meant to be. This is not comfortable. This is not quick. But it is necessary, and you are ready, or you would not have drawn this card.`
+    };
+
+    let drawnCard = null;
+
+    document.getElementById('drawBtn').addEventListener('click', () => {
+      drawnCard = cards[Math.floor(Math.random() * cards.length)];
+
+      document.getElementById('drawnCards').innerHTML = `
+        <div class="drawn-card">
+          <img src="${drawnCard.folder}/${drawnCard.id}.png" alt="${drawnCard.title}">
+        </div>
+      `;
+
+      document.getElementById('outputSelector').style.display = 'flex';
+      document.getElementById('interpretation').classList.remove('visible');
+      document.getElementById('interpretation').innerHTML = '';
+
+      document.querySelectorAll('.output-btn').forEach(btn => btn.classList.remove('active'));
+    });
+
+    document.querySelectorAll('.output-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!drawnCard) return;
+
+        document.querySelectorAll('.output-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const outputType = btn.dataset.output;
+        const interp = document.getElementById('interpretation');
+        interp.innerHTML = interpretations[outputType](drawnCard);
+        interp.classList.add('visible');
+      });
+    });
+
+    // Oracle lens hover effect
+    document.querySelectorAll('.lens-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.lens-option').forEach(o => o.classList.remove('revealed'));
+        opt.classList.add('revealed');
+      });
+    });
+  </script>
+</body>
+</html>
