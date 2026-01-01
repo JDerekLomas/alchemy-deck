@@ -356,15 +356,21 @@
       margin-top: 8px;
       padding-top: 8px;
       border-top: 1px solid rgba(212, 175, 55, 0.2);
+      color: rgba(255,255,255,0.85);
     }
 
     .prompt-card .position {
       margin-bottom: 4px;
+      color: rgba(255,255,255,0.85);
     }
 
     .prompt-card .position-num {
       color: #d4af37;
       font-weight: 600;
+    }
+
+    .prompt-card strong {
+      color: #d4af37;
     }
 
     /* Print styles */
@@ -407,18 +413,18 @@
   <div class="page">
     <!-- STAGES -->
     <div class="card stage nigredo">
-      <div class="artwork"><div class="placeholder">I</div></div>
+      <div class="artwork"><img src="cards/stage-01.png" alt="Nigredo" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Nigredo</div>
         <div class="subtitle">Blackening</div>
       </div>
       <div class="prompt-area">The dark night. What must die for transformation to begin? What shadow must you face?</div>
-      <div class="quote">"The beginning of our work is in the blackness."</div>
+      <div class="quote">"Let it be digested to blackness." —Drebbel</div>
     </div>
 
     <div class="card stage albedo">
-      <div class="artwork"><div class="placeholder">II</div></div>
+      <div class="artwork"><img src="cards/stage-02.png" alt="Albedo" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Albedo</div>
@@ -429,18 +435,18 @@
     </div>
 
     <div class="card stage citrinitas">
-      <div class="artwork"><div class="placeholder">III</div></div>
+      <div class="artwork"><img src="cards/stage-03.png" alt="Citrinitas" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Citrinitas</div>
         <div class="subtitle">Yellowing</div>
       </div>
       <div class="prompt-area">The dawning. What wisdom is emerging? What is coming into consciousness?</div>
-      <div class="quote">"In time all reverts to the same perfection." —Drebbel</div>
+      <div class="quote">"The dawn breaks, the breakthrough-maker reveals himself." —Böhme</div>
     </div>
 
     <div class="card stage rubedo">
-      <div class="artwork"><div class="placeholder">IV</div></div>
+      <div class="artwork"><img src="cards/stage-04.png" alt="Rubedo" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Stage</div>
         <div class="title">Rubedo</div>
@@ -452,7 +458,7 @@
 
     <!-- OPERATIONS -->
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">1</div></div>
+      <div class="artwork"><img src="cards/op-01.png" alt="Calcination" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Calcination</div>
@@ -463,7 +469,7 @@
     </div>
 
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">2</div></div>
+      <div class="artwork"><img src="cards/op-02.png" alt="Dissolution" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Dissolution</div>
@@ -474,7 +480,7 @@
     </div>
 
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">3</div></div>
+      <div class="artwork"><img src="cards/op-03.png" alt="Separation" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Separation</div>
@@ -485,18 +491,18 @@
     </div>
 
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">4</div></div>
+      <div class="artwork"><img src="cards/op-04.png" alt="Conjunction" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Conjunction</div>
         <div class="subtitle">Uniting</div>
       </div>
       <div class="prompt-area">Marriage of opposites. What opposites seek union? What must be joined?</div>
-      <div class="quote">"From two comes one, and no further." —Sendivogius</div>
+      <div class="quote">"Water joins together everything that is dissolved." —Sendivogius</div>
     </div>
 
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">5</div></div>
+      <div class="artwork"><img src="cards/op-05.png" alt="Fermentation" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Fermentation</div>
@@ -510,7 +516,7 @@
   <!-- Page 2: Operations (2) + Elements (5) + Principles (2) -->
   <div class="page">
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">6</div></div>
+      <div class="artwork"><img src="cards/op-06.png" alt="Distillation" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Distillation</div>
@@ -521,7 +527,7 @@
     </div>
 
     <div class="card operation">
-      <div class="artwork"><div class="placeholder">7</div></div>
+      <div class="artwork"><img src="cards/op-07.png" alt="Coagulation" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Operation</div>
         <div class="title">Coagulation</div>
@@ -533,7 +539,7 @@
 
     <!-- ELEMENTS -->
     <div class="card element fire">
-      <div class="artwork"><div class="placeholder">△</div></div>
+      <div class="artwork"><img src="cards/elem-01.png" alt="Fire" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Fire</div>
@@ -544,7 +550,7 @@
     </div>
 
     <div class="card element water">
-      <div class="artwork"><div class="placeholder">▽</div></div>
+      <div class="artwork"><img src="cards/elem-02.png" alt="Water" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Water</div>
@@ -555,7 +561,7 @@
     </div>
 
     <div class="card element air">
-      <div class="artwork"><div class="placeholder">△̲</div></div>
+      <div class="artwork"><img src="cards/elem-03.png" alt="Air" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Air</div>
@@ -566,18 +572,18 @@
     </div>
 
     <div class="card element earth">
-      <div class="artwork"><div class="placeholder">▽̲</div></div>
+      <div class="artwork"><img src="cards/elem-04.png" alt="Earth" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Earth</div>
         <div class="subtitle">Body</div>
       </div>
       <div class="prompt-area">The grounding principle. What is the material reality? What needs grounding?</div>
-      <div class="quote">"What comes from earth, returns to earth." —Drebbel</div>
+      <div class="quote">"Earth receives the Tincture." —Sendivogius</div>
     </div>
 
     <div class="card element quintessence">
-      <div class="artwork"><div class="placeholder">✧</div></div>
+      <div class="artwork"><img src="cards/elem-05.png" alt="Quintessence" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Element</div>
         <div class="title">Quintessence</div>
@@ -589,20 +595,21 @@
 
     <!-- PRINCIPLES -->
     <div class="card principle">
-      <div class="artwork"><div class="placeholder">☉</div></div>
+      <div class="artwork"><img src="cards/prin-01.png" alt="Sulphur" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Principle</div>
         <div class="title">Sulphur</div>
         <div class="subtitle">Soul</div>
       </div>
       <div class="prompt-area">The combustible principle. What does the soul desire? What animates this?</div>
+      <div class="quote">"Fire separates, purifies, digests, and colors." —Sendivogius</div>
     </div>
   </div>
 
   <!-- Page 3: Principles (2) + Vessels (4) + Sages (3) -->
   <div class="page">
     <div class="card principle">
-      <div class="artwork"><div class="placeholder">☿</div></div>
+      <div class="artwork"><img src="cards/prin-02.png" alt="Mercury" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Principle</div>
         <div class="title">Mercury</div>
@@ -613,7 +620,7 @@
     </div>
 
     <div class="card principle">
-      <div class="artwork"><div class="placeholder">⊕</div></div>
+      <div class="artwork"><img src="cards/prin-03.png" alt="Salt" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Principle</div>
         <div class="title">Salt</div>
@@ -625,59 +632,63 @@
 
     <!-- VESSELS -->
     <div class="card vessel">
-      <div class="artwork"><div class="placeholder">⌂</div></div>
+      <div class="artwork"><img src="cards/vessel-01.png" alt="Athanor" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Athanor</div>
         <div class="subtitle">The Furnace</div>
       </div>
       <div class="prompt-area">Sustained heat over time. What requires sustained attention? Where is patience needed?</div>
+      <div class="quote">"Apply a gentle fire, increasing by degrees." —Rosicrucian MS</div>
     </div>
 
     <div class="card vessel">
-      <div class="artwork"><div class="placeholder">⚗</div></div>
+      <div class="artwork"><img src="cards/vessel-02.png" alt="Alembic" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Alembic</div>
         <div class="subtitle">The Still</div>
       </div>
       <div class="prompt-area">The vessel of distillation. What needs distilling? How to extract the essence?</div>
+      <div class="quote">"Distillation is the purification of liquids." —Rosicrucian MS</div>
     </div>
 
     <div class="card vessel">
-      <div class="artwork"><div class="placeholder">⊓</div></div>
+      <div class="artwork"><img src="cards/vessel-03.png" alt="Crucible" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Crucible</div>
         <div class="subtitle">The Test</div>
       </div>
       <div class="prompt-area">The vessel of trial. What is being tested? What must withstand the fire?</div>
+      <div class="quote">"Reveal the eternal gold of the human soul." —Hilarionus</div>
     </div>
 
     <div class="card vessel">
-      <div class="artwork"><div class="placeholder">↺</div></div>
+      <div class="artwork"><img src="cards/vessel-04.png" alt="Retort" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Vessel</div>
         <div class="title">Retort</div>
         <div class="subtitle">The Return</div>
       </div>
       <div class="prompt-area">The vessel of circulation. What needs to circulate? What must return to its source?</div>
+      <div class="quote">"It always begins there where it ends." —Hermes</div>
     </div>
 
     <!-- SAGES -->
     <div class="card sage">
-      <div class="artwork"><div class="placeholder">☥</div></div>
+      <div class="artwork"><img src="cards/sage-01.png" alt="Hermes" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Hermes</div>
         <div class="subtitle">Trismegistus</div>
       </div>
       <div class="prompt-area">The thrice-great. How does the macrocosm mirror the microcosm?</div>
-      <div class="quote">"As above, so below."</div>
+      <div class="quote">"Man bore the image of his father." —Pymander</div>
     </div>
 
     <div class="card sage">
-      <div class="artwork"><div class="placeholder">⚕</div></div>
+      <div class="artwork"><img src="cards/sage-02.png" alt="Paracelsus" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Paracelsus</div>
@@ -691,17 +702,18 @@
   <!-- Page 4: Sages (4) + Arcana (5) -->
   <div class="page">
     <div class="card sage">
-      <div class="artwork"><div class="placeholder">✦</div></div>
+      <div class="artwork"><img src="cards/sage-03.png" alt="Boehme" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Boehme</div>
         <div class="subtitle">The Mystic</div>
       </div>
       <div class="prompt-area">Divine spark in all things. What is the divine spark here? What vision is possible?</div>
+      <div class="quote">"The soul is a spark of the divine air." —Khunrath</div>
     </div>
 
     <div class="card sage">
-      <div class="artwork"><div class="placeholder">⚹</div></div>
+      <div class="artwork"><img src="cards/sage-04.png" alt="Ficino" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Ficino</div>
@@ -712,7 +724,7 @@
     </div>
 
     <div class="card sage">
-      <div class="artwork"><div class="placeholder">☀</div></div>
+      <div class="artwork"><img src="cards/sage-05.png" alt="Sendivogius" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Sendivogius</div>
@@ -723,18 +735,19 @@
     </div>
 
     <div class="card sage">
-      <div class="artwork"><div class="placeholder">⬡</div></div>
+      <div class="artwork"><img src="cards/sage-06.png" alt="Agrippa" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Sage</div>
         <div class="title">Agrippa</div>
         <div class="subtitle">The Magus</div>
       </div>
       <div class="prompt-area">Hidden philosophy. What hidden forces are at work? What correspondences apply?</div>
+      <div class="quote">"Whence come the hidden virtues of things." —Agrippa</div>
     </div>
 
     <!-- ARCANA -->
     <div class="card arcana">
-      <div class="artwork"><div class="placeholder">○</div></div>
+      <div class="artwork"><img src="cards/arc-01.png" alt="Prima Materia" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Prima Materia</div>
@@ -745,7 +758,7 @@
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><div class="placeholder">◆</div></div>
+      <div class="artwork"><img src="cards/arc-02.png" alt="Lapis" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Lapis</div>
@@ -756,33 +769,36 @@
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><div class="placeholder">◯</div></div>
+      <div class="artwork"><img src="cards/arc-03.png" alt="Ouroboros" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Ouroboros</div>
         <div class="subtitle">Eternal Return</div>
       </div>
       <div class="prompt-area">The serpent eating its tail. What cycle is completing? What contains its own renewal?</div>
+      <div class="quote">"It always begins there where it ends." —Hermes</div>
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><div class="placeholder">☿☉</div></div>
+      <div class="artwork"><img src="cards/arc-04.png" alt="Rebis" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Rebis</div>
         <div class="subtitle">The Double</div>
       </div>
       <div class="prompt-area">Union of sun and moon. What dualities seek resolution? What would integration look like?</div>
+      <div class="quote">"He wished to create, and fell to the sphere of generation." —Hermes</div>
     </div>
 
     <div class="card arcana">
-      <div class="artwork"><div class="placeholder">⚱</div></div>
+      <div class="artwork"><img src="cards/arc-05.png" alt="Elixir" onerror="this.style.display='none'"></div>
       <div class="text-panel">
         <div class="category">Arcana</div>
         <div class="title">Elixir</div>
         <div class="subtitle">The Medicine</div>
       </div>
       <div class="prompt-area">Universal medicine. What is the medicine needed? What would heal this?</div>
+      <div class="quote">"Medicine heals the body, music the spirit, theology the soul." —Ficino</div>
     </div>
   </div>
 
@@ -802,6 +818,9 @@
       <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">
         Draw four cards. Read each through its position's alchemical stage.
       </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
+        "The dawn breaks, the breakthrough-maker of the innermost birth reveals himself." —Böhme
+      </div>
     </div>
 
     <div class="prompt-card">
@@ -817,6 +836,9 @@
       <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">
         Focus on a situation in flux. Draw three cards for the transformation dynamics.
       </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
+        "When gold matures, it gives seed or tincture." —Sendivogius
+      </div>
     </div>
 
     <div class="prompt-card">
@@ -831,6 +853,9 @@
       <div class="prompt-text" style="margin-top: 8px; font-size: 8px;">
         Draw two cards. Consider how they mirror and inform each other.
       </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
+        "Man is from heaven and earth, upon upper and lower creatures." —Paracelsus
+      </div>
     </div>
 
     <div class="prompt-card">
@@ -843,6 +868,9 @@
         <strong>Day:</strong> Notice where its themes appear in your experience.
         <br><br>
         <strong>Evening:</strong> Journal what you observed. What transformation is present?
+      </div>
+      <div class="prompt-text" style="margin-top: 8px; font-size: 7px; font-style: italic; color: #d4af37;">
+        "What I say to you, I say to all: watch." —Böhme
       </div>
     </div>
 
@@ -862,6 +890,9 @@
         My question was about [situation].
         <br><br>
         Help me interpret this spread using alchemical symbolism and the transformation process."
+      </div>
+      <div class="prompt-text" style="margin-top: 6px; font-size: 7px; font-style: italic; color: #d4af37;">
+        "Our knowledge is piecework, and not at once perfect." —Böhme
       </div>
     </div>
 

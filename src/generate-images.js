@@ -326,10 +326,10 @@ async function main() {
       failed++;
     }
 
-    // Rate limiting - wait between requests
+    // Rate limiting - wait between requests (10s to avoid throttling)
     if (cardsToGenerate.indexOf(card) < cardsToGenerate.length - 1) {
-      console.log('  Waiting 2s...');
-      await new Promise(r => setTimeout(r, 2000));
+      console.log('  Waiting 10s (rate limit)...');
+      await new Promise(r => setTimeout(r, 10000));
     }
   }
 
