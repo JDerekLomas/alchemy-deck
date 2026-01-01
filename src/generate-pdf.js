@@ -7,9 +7,9 @@ const fs = require('fs');
 const path = require('path');
 const { PDFDocument, rgb } = require('pdf-lib');
 
-// Card dimensions in points (72 points = 1 inch)
-const CARD_WIDTH_PT = 2.5 * 72;   // 180 points
-const CARD_HEIGHT_PT = 3.5 * 72;  // 252 points
+// Card dimensions in points (72 points = 1 inch) - TAROT SIZE
+const CARD_WIDTH_PT = 2.75 * 72;   // 198 points
+const CARD_HEIGHT_PT = 4.75 * 72;  // 342 points
 const BLEED_PT = 3 * 2.834645669; // 3mm in points (~8.5 pt)
 const CROP_MARK_LENGTH = 10;
 const CROP_MARK_OFFSET = 5;
@@ -38,9 +38,9 @@ async function createPrintPDF() {
 
   const pdfDoc = await PDFDocument.create();
 
-  // Calculate cards per page (3 columns x 3 rows = 9 cards per page)
-  const COLS = 3;
-  const ROWS = 3;
+  // Calculate cards per page (2 columns x 2 rows = 4 cards per page for tarot size)
+  const COLS = 2;
+  const ROWS = 2;
   const CARDS_PER_PAGE = COLS * ROWS;
 
   const cardWithBleed = {

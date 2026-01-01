@@ -1,11 +1,11 @@
 /**
  * Generate print-ready card images at 300 DPI with proper bleed
  *
- * Specifications:
- * - Card size: 63.5 × 89 mm (2.5" × 3.5")
+ * Specifications (TAROT SIZE):
+ * - Card size: 70 × 120 mm (2.75" × 4.75")
  * - Bleed: 3mm per side
- * - Total with bleed: 69.5 × 95 mm
- * - At 300 DPI: 822 × 1122 pixels
+ * - Total with bleed: 76 × 126 mm
+ * - At 300 DPI: 898 × 1488 pixels
  * - Safe zone: 5mm from edge (keep text/important elements inside)
  */
 
@@ -16,9 +16,9 @@ const path = require('path');
 const replicate = new Replicate();
 const MODEL = "black-forest-labs/flux-1.1-pro";
 
-// Print dimensions
-const PRINT_WIDTH = 822;   // pixels at 300 DPI with bleed
-const PRINT_HEIGHT = 1122; // pixels at 300 DPI with bleed
+// Print dimensions (TAROT SIZE)
+const PRINT_WIDTH = 898;   // pixels at 300 DPI with bleed
+const PRINT_HEIGHT = 1488; // pixels at 300 DPI with bleed
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'assets', 'print-ready');
 const DOCS_DIR = path.join(__dirname, '..', 'docs', 'cards-print');
