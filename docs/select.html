@@ -173,6 +173,7 @@
     .v1 .version-tag { background: #6366f1; }
     .v2 .version-tag { background: #10b981; }
     .v3 .version-tag { background: #f59e0b; }
+    .v4 .version-tag { background: #ec4899; }
 
     .versions.three-versions .version img {
       height: 280px;
@@ -286,6 +287,10 @@
           <div class="stat-num" id="v3Count">0</div>
           <div class="stat-label">V3</div>
         </div>
+        <div class="stat">
+          <div class="stat-num" id="v4Count">0</div>
+          <div class="stat-label">V4</div>
+        </div>
       </div>
 
       <div class="filter-bar">
@@ -294,7 +299,7 @@
         <button class="filter-btn" data-filter="v1">V1</button>
         <button class="filter-btn" data-filter="v2">V2</button>
         <button class="filter-btn" data-filter="v3">V3</button>
-        <button class="filter-btn" data-filter="hasV3">Has V3</button>
+        <button class="filter-btn" data-filter="v4">V4 (Square)</button>
       </div>
     </header>
 
@@ -302,7 +307,8 @@
 
     <div class="actions">
       <button class="btn btn-secondary" onclick="resetSelections()">Reset</button>
-      <button class="btn btn-secondary" onclick="selectAllV2()">Select All V2</button>
+      <button class="btn btn-secondary" onclick="selectAllV2()">All V2</button>
+      <button class="btn btn-secondary" onclick="selectAllV4()">All V4 (Square)</button>
       <button class="btn btn-primary" onclick="exportSelections()">Export for Print</button>
     </div>
   </div>
@@ -349,11 +355,16 @@
     const versions = {
       v1: { path: "cards-v1/", label: "V1: Original (Dec 30)", tag: "V1" },
       v2: { path: "cards/", label: "V2: Research (Jan 1)", tag: "V2" },
-      v3: { path: "cards-v3/", label: "V3: Fixed Style", tag: "V3" }
+      v3: { path: "cards-v3/", label: "V3: Fixed Style", tag: "V3" },
+      v4: { path: "cards-v4/", label: "V4: Square 1:1 (Jan 2)", tag: "V4" }
     };
 
     // Cards with V3 versions (regenerated with better prompts)
     const hasV3 = ['stage-02', 'op-04'];
+
+    // Cards with V4 versions (square 1:1 aspect ratio for 60/40 layout)
+    // Will be all 34 once generation completes
+    const hasV4 = [];
 
     let selections = JSON.parse(localStorage.getItem('alchemyDeckSelections') || '{}');
     let currentFilter = 'all';
@@ -370,8 +381,8 @@
         filtered = cards.filter(c => selections[c.id] === 'v2');
       } else if (currentFilter === 'v3') {
         filtered = cards.filter(c => selections[c.id] === 'v3');
-      } else if (currentFilter === 'hasV3') {
-        filtered = cards.filter(c => hasV3.includes(c.id));
+      } else if (currentFilter === 'v4') {
+        filtered = cards.filter(c => selections[c.id] === 'v4');
       }
 
       if (filtered.length === 0) {
@@ -381,6 +392,8 @@
 
       grid.innerHTML = filtered.map(card => {
         const showV3 = hasV3.includes(card.id);
+        const showV4 = hasV4.length === 0 || hasV4.includes(card.id); // Show v4 for all if empty (all cards have v4)
+        const numVersions = 2 + (showV3 ? 1 : 0) + (showV4 ? 1 : 0);
         return `
         <div class="card-compare" data-id="${card.id}">
           <div class="card-header">
@@ -389,7 +402,7 @@
               <div class="card-title">${card.title}</div>
             </div>
           </div>
-          <div class="versions ${showV3 ? 'three-versions' : ''}">
+          <div class="versions ${numVersions >= 3 ? 'three-versions' : ''}">
             <div class="version v1 ${selections[card.id] === 'v1' ? 'selected' : ''}" onclick="selectVersion('${card.id}', 'v1')">
               <span class="version-tag">${versions.v1.tag}</span>
               <img src="${versions.v1.path}${card.id}.png" alt="${card.title} V1" loading="lazy">
@@ -405,6 +418,13 @@
               <span class="version-tag">${versions.v3.tag}</span>
               <img src="${versions.v3.path}${card.id}.png" alt="${card.title} V3" loading="lazy">
               <div class="version-label">${versions.v3.label}</div>
+            </div>
+            ` : ''}
+            ${showV4 ? `
+            <div class="version v4 ${selections[card.id] === 'v4' ? 'selected' : ''}" onclick="selectVersion('${card.id}', 'v4')">
+              <span class="version-tag">${versions.v4.tag}</span>
+              <img src="${versions.v4.path}${card.id}.png" alt="${card.title} V4" loading="lazy" onerror="this.parentElement.style.display='none'">
+              <div class="version-label">${versions.v4.label}</div>
             </div>
             ` : ''}
           </div>
@@ -428,11 +448,13 @@
       const v1 = Object.values(selections).filter(v => v === 'v1').length;
       const v2 = Object.values(selections).filter(v => v === 'v2').length;
       const v3 = Object.values(selections).filter(v => v === 'v3').length;
+      const v4 = Object.values(selections).filter(v => v === 'v4').length;
 
       document.getElementById('selectedCount').textContent = selected;
       document.getElementById('v1Count').textContent = v1;
       document.getElementById('v2Count').textContent = v2;
       document.getElementById('v3Count').textContent = v3;
+      document.getElementById('v4Count').textContent = v4;
       document.getElementById('progressFill').style.width = `${(selected / 34) * 100}%`;
     }
 
@@ -462,6 +484,15 @@
       updateStats();
     }
 
+    function selectAllV4() {
+      cards.forEach(card => {
+        selections[card.id] = 'v4';
+      });
+      localStorage.setItem('alchemyDeckSelections', JSON.stringify(selections));
+      renderCards();
+      updateStats();
+    }
+
     function exportSelections() {
       const exportData = {
         exported: new Date().toISOString(),
@@ -472,8 +503,7 @@
           title: card.title,
           category: card.category,
           selectedVersion: selections[card.id] || null,
-          imagePath: selections[card.id] ?
-            (selections[card.id] === 'v1' ? versions.v1.path : versions.v2.path) + card.id + '.png' : null
+          imagePath: selections[card.id] ? versions[selections[card.id]].path + card.id + '.png' : null
         }))
       };
 
