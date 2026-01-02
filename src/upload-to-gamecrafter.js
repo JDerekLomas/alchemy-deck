@@ -268,9 +268,15 @@ async function main() {
   console.log('ALCHEMY DECK - Upload to The Game Crafter');
   console.log('='.repeat(50));
 
-  // Get credentials
-  const username = await prompt('TGC Username: ');
-  const password = await prompt('TGC Password: ');
+  // Get credentials from env or args
+  const username = process.env.TGC_USERNAME || process.argv[2];
+  const password = process.env.TGC_PASSWORD || process.argv[3];
+
+  if (!username || !password) {
+    console.error('Usage: TGC_USERNAME=x TGC_PASSWORD=y node upload-to-gamecrafter.js');
+    console.error('   or: node upload-to-gamecrafter.js <username> <password>');
+    process.exit(1);
+  }
 
   console.log('\n1. Creating session...');
   const session = await apiPost('/session', {
