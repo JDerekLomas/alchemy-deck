@@ -67,7 +67,7 @@
     }
 
     .card {
-      width: 2.75in;
+      width: 2.85in;   /* 3:5 aspect to match print (900×1500) */
       height: 4.75in;
       border-radius: 0.125in;
       overflow: hidden;
@@ -98,15 +98,15 @@
       object-position: center;
     }
 
-    /* Text proportions scaled from print (900×1500px → 264×456px, scale 0.293) */
+    /* Text proportions scaled from print (900×1500px → 274×456px, scale 0.304) */
     .card .text-panel {
-      padding: 8px 11px 5px;  /* print: 28px 36px 16px */
+      padding: 9px 11px 5px;  /* print: 28px 36px 16px */
       border-top: 2px solid rgba(212, 175, 55, 0.5);
     }
 
     .card .category {
       font-family: 'Cinzel', serif;
-      font-size: 6.5px;  /* print: 22px */
+      font-size: 7px;  /* print: 22px */
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -115,7 +115,7 @@
 
     .card .title {
       font-family: 'Cinzel', serif;
-      font-size: 15px;  /* print: 52px */
+      font-size: 16px;  /* print: 52px */
       font-weight: 600;
       color: #fff;
       line-height: 1.1;
@@ -147,7 +147,7 @@
       font-style: italic;
       color: #d4af37;
       font-size: 7px;  /* print: 24px */
-      padding: 5px 11px 8px;  /* print: 18px 36px 28px */
+      padding: 6px 11px 9px;  /* print: 18px 36px 28px */
       border-top: 1px solid rgba(212, 175, 55, 0.25);
       line-height: 1.35;
       letter-spacing: 0.01em;
