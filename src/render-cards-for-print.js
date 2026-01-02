@@ -26,16 +26,17 @@ const cardIds = [
   'arc-01', 'arc-02', 'arc-03', 'arc-04', 'arc-05'
 ];
 
-// Selected versions
+// Selected versions - use V4 (square 1:1) for all cards
+// Version options: "cards" (v2), "cards-v1", "cards-v3", "cards-v4"
 const selectedVersions = {
-  "stage-01": "cards", "stage-02": "cards-v3", "stage-03": "cards-v1", "stage-04": "cards",
-  "op-01": "cards-v1", "op-02": "cards-v1", "op-03": "cards", "op-04": "cards-v3",
-  "op-05": "cards", "op-06": "cards", "op-07": "cards",
-  "elem-01": "cards-v1", "elem-02": "cards-v1", "elem-03": "cards", "elem-04": "cards-v1", "elem-05": "cards",
-  "prin-01": "cards", "prin-02": "cards", "prin-03": "cards",
-  "vessel-01": "cards", "vessel-02": "cards", "vessel-03": "cards", "vessel-04": "cards",
-  "sage-01": "cards", "sage-02": "cards", "sage-03": "cards", "sage-04": "cards", "sage-05": "cards-v1", "sage-06": "cards",
-  "arc-01": "cards", "arc-02": "cards", "arc-03": "cards", "arc-04": "cards", "arc-05": "cards"
+  "stage-01": "cards-v4", "stage-02": "cards-v4", "stage-03": "cards-v4", "stage-04": "cards-v4",
+  "op-01": "cards-v4", "op-02": "cards-v4", "op-03": "cards-v4", "op-04": "cards-v4",
+  "op-05": "cards-v4", "op-06": "cards-v4", "op-07": "cards-v4",
+  "elem-01": "cards-v4", "elem-02": "cards-v4", "elem-03": "cards-v4", "elem-04": "cards-v4", "elem-05": "cards-v4",
+  "prin-01": "cards-v4", "prin-02": "cards-v4", "prin-03": "cards-v4",
+  "vessel-01": "cards-v4", "vessel-02": "cards-v4", "vessel-03": "cards-v4", "vessel-04": "cards-v4",
+  "sage-01": "cards-v4", "sage-02": "cards-v4", "sage-03": "cards-v4", "sage-04": "cards-v4", "sage-05": "cards-v4", "sage-06": "cards-v4",
+  "arc-01": "cards-v4", "arc-02": "cards-v4", "arc-03": "cards-v4", "arc-04": "cards-v4", "arc-05": "cards-v4"
 };
 
 // Card data (matching print.html)
