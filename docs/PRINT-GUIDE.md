@@ -7,14 +7,43 @@
 - Images: **900×1500 pixels** (300 DPI with bleed for 2.75×4.75" tarot cards)
 - Format: PNG or JPG, RGB color mode
 
+### Card Layout Proportions
+- **Card total:** 900×1500 px (2.75×4.75 in)
+- **Artwork area:** 60% = 900×900 px (2.85 in) — ideal image: **1:1 square**
+- **Text area:** 40% = 900×600 px (1.90 in)
+  - Category/title/subtitle panel (~170px)
+  - Prompt text (~330px, flex)
+  - Quote with attribution (~100px)
+
+### Category Colors (one per set)
+| Category | Background | Accent | Cards |
+|----------|------------|--------|-------|
+| Stage | #2d1f3d → #1f1629 | #c084fc (Purple) | 4 |
+| Operation | #4d2a10 → #3d2008 | #ff8c42 (Orange) | 7 |
+| Element | #1a3d3a → #132d2b | #4ecdc4 (Teal) | 5 |
+| Principle | #4a3d10 → #3d3008 | #ffd166 (Gold) | 3 |
+| Vessel | #3d2a1a → #2d1f13 | #d4a574 (Copper) | 4 |
+| Sage | #1a2a3d → #131f2d | #60a5fa (Blue) | 6 |
+| Arcana | #3d1a3d → #2d132d | #e879f9 (Magenta) | 5 |
+
+### Elements & Platonic Solids
+| Element | Solid | Faces | Symbolism |
+|---------|-------|-------|-----------|
+| Fire | Tetrahedron | 4 | Sharpest, most active |
+| Water | Icosahedron | 20 | Flows, many faces |
+| Air | Octahedron | 8 | Light, balanced |
+| Earth | Cube | 6 | Stable, grounded |
+| Quintessence | Dodecahedron | 12 | Heavenly, encompasses all |
+
 ### API Credentials
 - API Key ID: `E4963FEA-E76C-11F0-B4B8-3F982389BF0E`
 - Username: `dlomas`
 
-### Current Upload (Jan 2026)
-- Game ID: `1F1DD2DE-E76F-11F0-B3D7-9405CF0A6439`
-- Deck ID: `213385BE-E76F-11F0-B3D7-8505CF0A6439`
-- URL: https://www.thegamecrafter.com/make/games/1F1DD2DE-E76F-11F0-B3D7-9405CF0A6439
+### Current Upload (Jan 2, 2026) - Full Card Layout
+- Game ID: `73C4EB9E-E772-11F0-B4B8-8C5D2389BF0E`
+- Deck ID: `75AE6110-E772-11F0-B3D7-392ECF0A6439`
+- URL: https://www.thegamecrafter.com/make/games/73C4EB9E-E772-11F0-B4B8-8C5D2389BF0E
+- Cards include: artwork, category, title, subtitle, prompt text, and source quote
 
 ### Pricing
 - $0.284 per card
@@ -38,7 +67,23 @@ Images are stored in `/docs/`:
 
 ## Process to Re-upload
 
-### 1. Resize Images (if needed)
+### 1. Render Full Card Layouts
+Cards need the complete layout with artwork, text, and styling - not just raw images.
+
+```bash
+# Render all cards with Puppeteer (900x1500 with full layout)
+node src/render-cards-for-print.js
+```
+
+This creates cards in `docs/cards-tgc/` with:
+- Artwork at top (from selected version: cards, cards-v1, cards-v3)
+- Category badge
+- Title and subtitle
+- Prompt text
+- Source quote
+
+### 2. Resize Raw Images (if needed)
+If you only need to resize raw artwork (no text overlay):
 ```bash
 cd docs
 mkdir -p cards-tgc
@@ -47,7 +92,7 @@ for f in cards/*.png; do
 done
 ```
 
-### 2. Run Upload Script
+### 3. Run Upload Script
 ```bash
 npm install
 TGC_USERNAME="dlomas" TGC_PASSWORD="xxx" npm run upload:tgc
@@ -62,7 +107,7 @@ require('./src/upload-to-gamecrafter.js');
 "
 ```
 
-### 3. Set Card Back
+### 4. Set Card Back
 Upload a 900×1500 card back image via the TGC web interface or API.
 
 ## Generating New Images

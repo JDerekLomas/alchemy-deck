@@ -83,7 +83,7 @@
     }
 
     .card .artwork {
-      height: 2.75in;
+      height: 2.85in;  /* 60% of 4.75in card height */
       overflow: hidden;
       background: linear-gradient(135deg, #2a2420 0%, #1a1612 100%);
       display: flex;
@@ -152,45 +152,27 @@
       letter-spacing: 0.01em;
     }
 
-    /* Category colors */
-    .card.stage .text-panel, .card.stage .prompt-area { background: linear-gradient(to bottom, #2d1f3d, #1f1629); }
-    .card.stage .category { color: #c084fc; }
-    .card.stage.nigredo .text-panel, .card.stage.nigredo .prompt-area { background: linear-gradient(to bottom, #1a1a1a, #0d0d0d); }
-    .card.stage.nigredo .category { color: #666; }
-    .card.stage.albedo .text-panel, .card.stage.albedo .prompt-area { background: linear-gradient(to bottom, #3d3d3d, #2a2a2a); }
-    .card.stage.albedo .category { color: #e0e0e0; }
-    .card.stage.citrinitas .text-panel, .card.stage.citrinitas .prompt-area { background: linear-gradient(to bottom, #4d4020, #3d3018); }
-    .card.stage.citrinitas .category { color: #f5c542; }
-    .card.stage.rubedo .text-panel, .card.stage.rubedo .prompt-area { background: linear-gradient(to bottom, #4d1a20, #3d1018); }
-    .card.stage.rubedo .category { color: #e63946; }
+    /* Category colors - ONE color per set */
+    .card.stage .text-panel, .card.stage .prompt-area, .card.stage .quote { background: linear-gradient(to bottom, #2d1f3d, #1f1629); }
+    .card.stage .category { color: #c084fc; }  /* Purple */
 
-    .card.operation .text-panel, .card.operation .prompt-area { background: linear-gradient(to bottom, #4d2a10, #3d2008); }
-    .card.operation .category { color: #ff8c42; }
+    .card.operation .text-panel, .card.operation .prompt-area, .card.operation .quote { background: linear-gradient(to bottom, #4d2a10, #3d2008); }
+    .card.operation .category { color: #ff8c42; }  /* Orange */
 
-    .card.element .text-panel, .card.element .prompt-area { background: linear-gradient(to bottom, #1a3d3a, #132d2b); }
-    .card.element .category { color: #4ecdc4; }
-    .card.element.fire .text-panel, .card.element.fire .prompt-area { background: linear-gradient(to bottom, #4d1a1a, #3d1313); }
-    .card.element.fire .category { color: #e63946; }
-    .card.element.water .text-panel, .card.element.water .prompt-area { background: linear-gradient(to bottom, #1a2a4d, #132039); }
-    .card.element.water .category { color: #457b9d; }
-    .card.element.air .text-panel, .card.element.air .prompt-area { background: linear-gradient(to bottom, #2a3d4d, #1f2f3d); }
-    .card.element.air .category { color: #a8dadc; }
-    .card.element.earth .text-panel, .card.element.earth .prompt-area { background: linear-gradient(to bottom, #2d3d1a, #1f2d13); }
-    .card.element.earth .category { color: #606c38; }
-    .card.element.quintessence .text-panel, .card.element.quintessence .prompt-area { background: linear-gradient(to bottom, #2d1f4d, #1f1639); }
-    .card.element.quintessence .category { color: #6c5ce7; }
+    .card.element .text-panel, .card.element .prompt-area, .card.element .quote { background: linear-gradient(to bottom, #1a3d3a, #132d2b); }
+    .card.element .category { color: #4ecdc4; }  /* Teal */
 
-    .card.principle .text-panel, .card.principle .prompt-area { background: linear-gradient(to bottom, #4a3d10, #3d3008); }
-    .card.principle .category { color: #ffd166; }
+    .card.principle .text-panel, .card.principle .prompt-area, .card.principle .quote { background: linear-gradient(to bottom, #4a3d10, #3d3008); }
+    .card.principle .category { color: #ffd166; }  /* Gold */
 
-    .card.vessel .text-panel, .card.vessel .prompt-area { background: linear-gradient(to bottom, #3d2a1a, #2d1f13); }
-    .card.vessel .category { color: #d4a574; }
+    .card.vessel .text-panel, .card.vessel .prompt-area, .card.vessel .quote { background: linear-gradient(to bottom, #3d2a1a, #2d1f13); }
+    .card.vessel .category { color: #d4a574; }  /* Copper */
 
-    .card.sage .text-panel, .card.sage .prompt-area { background: linear-gradient(to bottom, #1a2a3d, #131f2d); }
-    .card.sage .category { color: #60a5fa; }
+    .card.sage .text-panel, .card.sage .prompt-area, .card.sage .quote { background: linear-gradient(to bottom, #1a2a3d, #131f2d); }
+    .card.sage .category { color: #60a5fa; }  /* Blue */
 
-    .card.arcana .text-panel, .card.arcana .prompt-area { background: linear-gradient(to bottom, #3d1a3d, #2d132d); }
-    .card.arcana .category { color: #e879f9; }
+    .card.arcana .text-panel, .card.arcana .prompt-area, .card.arcana .quote { background: linear-gradient(to bottom, #3d1a3d, #2d132d); }
+    .card.arcana .category { color: #e879f9; }  /* Magenta */
 
     /* === RATING PANEL === */
     .rating-panel {

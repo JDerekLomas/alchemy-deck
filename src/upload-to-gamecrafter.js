@@ -16,43 +16,19 @@ const readline = require('readline');
 const API_BASE = 'https://www.thegamecrafter.com/api';
 const API_KEY = process.env.TGC_API_KEY || 'E4963FEA-E76C-11F0-B4B8-3F982389BF0E';
 
-// Card definitions with selected versions
-const selectedVersions = {
-  "stage-01": "cards",
-  "stage-02": "cards-v3",
-  "stage-03": "cards-v1",
-  "stage-04": "cards",
-  "op-01": "cards-v1",
-  "op-02": "cards-v1",
-  "op-03": "cards",
-  "op-04": "cards-v3",
-  "op-05": "cards",
-  "op-06": "cards",
-  "op-07": "cards",
-  "elem-01": "cards-v1",
-  "elem-02": "cards-v1",
-  "elem-03": "cards",
-  "elem-04": "cards-v1",
-  "elem-05": "cards",
-  "prin-01": "cards",
-  "prin-02": "cards",
-  "prin-03": "cards",
-  "vessel-01": "cards",
-  "vessel-02": "cards",
-  "vessel-03": "cards",
-  "vessel-04": "cards",
-  "sage-01": "cards",
-  "sage-02": "cards",
-  "sage-03": "cards",
-  "sage-04": "cards",
-  "sage-05": "cards-v1",
-  "sage-06": "cards",
-  "arc-01": "cards",
-  "arc-02": "cards",
-  "arc-03": "cards",
-  "arc-04": "cards",
-  "arc-05": "cards"
-};
+// All cards now come from cards-tgc (rendered with full layout)
+const CARDS_FOLDER = 'cards-tgc';
+
+// Card IDs in order
+const cardIds = [
+  "stage-01", "stage-02", "stage-03", "stage-04",
+  "op-01", "op-02", "op-03", "op-04", "op-05", "op-06", "op-07",
+  "elem-01", "elem-02", "elem-03", "elem-04", "elem-05",
+  "prin-01", "prin-02", "prin-03",
+  "vessel-01", "vessel-02", "vessel-03", "vessel-04",
+  "sage-01", "sage-02", "sage-03", "sage-04", "sage-05", "sage-06",
+  "arc-01", "arc-02", "arc-03", "arc-04", "arc-05"
+];
 
 const cardNames = {
   "stage-01": "Nigredo",
@@ -297,29 +273,32 @@ async function main() {
     designerId = user.designers[0].id;
     console.log(`   Designer: ${designerId}`);
   } else {
-    console.log('   Creating designer...');
+    console.log('   No designer found, creating one...');
     const designer = await apiPost('/designer', {
       session_id: sessionId,
-      name: user.username,
+      name: `${user.username}_designer`,
       user_id: user.id
     });
     designerId = designer.id;
     console.log(`   Designer created: ${designerId}`);
   }
 
-  console.log('\n3. Creating game...');
+  // Create game with unique timestamp to avoid duplicate name errors
+  const timestamp = new Date().toISOString().slice(0, 10);
+  const gameName = `Alchemy Deck ${timestamp}`;
+  console.log(`\n3. Creating game: ${gameName}...`);
   const game = await apiPost('/game', {
     session_id: sessionId,
-    name: 'Alchemy Deck',
+    name: gameName,
     designer_id: designerId,
-    description: 'A 34-card oracle deck based on authentic alchemical texts and symbols.'
+    description: 'A 34-card oracle deck based on authentic alchemical texts and symbols. Cards include artwork, titles, prompts, and quotes from primary alchemical sources.'
   });
   console.log(`   Game: ${game.id} - ${game.name}`);
 
   console.log('\n4. Creating folder for images...');
   const folder = await apiPost('/folder', {
     session_id: sessionId,
-    name: 'Alchemy Deck Images',
+    name: `Alchemy Deck Images ${timestamp}`,
     user_id: user.id
   });
   console.log(`   Folder: ${folder.id}`);
@@ -332,14 +311,12 @@ async function main() {
   });
   console.log(`   Deck: ${deck.id}`);
 
-  console.log('\n6. Uploading card images...');
-  const cardIds = Object.keys(selectedVersions);
+  console.log('\n6. Uploading card images from cards-tgc (rendered with text)...');
   const uploadedFiles = {};
 
   for (let i = 0; i < cardIds.length; i++) {
     const cardId = cardIds[i];
-    const folder_name = selectedVersions[cardId];
-    const filePath = path.join(DOCS_DIR, folder_name, `${cardId}.png`);
+    const filePath = path.join(DOCS_DIR, CARDS_FOLDER, `${cardId}.png`);
     const cardName = cardNames[cardId];
 
     if (!fs.existsSync(filePath)) {
@@ -361,17 +338,23 @@ async function main() {
   }
 
   console.log('\n7. Adding cards to deck...');
-  const cardsToCreate = Object.entries(uploadedFiles).map(([cardId, fileId]) => ({
-    name: cardNames[cardId],
-    face_id: fileId
-  }));
-
-  // Bulk create cards (up to 100 at a time)
-  const bulkResult = await apiPost(`/tarotdeck/${deck.id}/cards`, {
-    session_id: sessionId,
-    cards: JSON.stringify(cardsToCreate)
-  });
-  console.log(`   Created ${cardsToCreate.length} cards`);
+  let cardsCreated = 0;
+  for (const [cardId, fileId] of Object.entries(uploadedFiles)) {
+    try {
+      await apiPost('/tarotcard', {
+        session_id: sessionId,
+        deck_id: deck.id,
+        name: cardNames[cardId],
+        face_id: fileId
+      });
+      cardsCreated++;
+      console.log(`   [${cardsCreated}/${Object.keys(uploadedFiles).length}] Created ${cardNames[cardId]}`);
+    } catch (err) {
+      console.log(`   ✗ ${cardNames[cardId]}: ${err.message}`);
+    }
+    await new Promise(r => setTimeout(r, 200));
+  }
+  console.log(`   Created ${cardsCreated} cards`);
 
   console.log('\n' + '='.repeat(50));
   console.log('UPLOAD COMPLETE!');
