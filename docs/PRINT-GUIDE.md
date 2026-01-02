@@ -39,11 +39,12 @@
 - API Key ID: `E4963FEA-E76C-11F0-B4B8-3F982389BF0E`
 - Username: `dlomas`
 
-### Current Upload (Jan 2, 2026) - Full Card Layout
-- Game ID: `73C4EB9E-E772-11F0-B4B8-8C5D2389BF0E`
-- Deck ID: `75AE6110-E772-11F0-B3D7-392ECF0A6439`
-- URL: https://www.thegamecrafter.com/make/games/73C4EB9E-E772-11F0-B4B8-8C5D2389BF0E
-- Cards include: artwork, category, title, subtitle, prompt text, and source quote
+### Current Upload (Jan 2, 2026) - V4 Square Images
+- Game ID: `FD2BDF5E-E7F0-11F0-941C-1AFB6286B413`
+- Deck ID: `FF2363EA-E7F0-11F0-8E5C-3A2B2389BF0E`
+- URL: https://www.thegamecrafter.com/make/games/FD2BDF5E-E7F0-11F0-941C-1AFB6286B413
+- Cards include: V4 square artwork (1:1), category, title, subtitle, prompt text, source quote
+- Layout: 60% artwork / 40% text (no cropping)
 
 ### Pricing
 - $0.284 per card

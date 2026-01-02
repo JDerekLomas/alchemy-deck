@@ -273,14 +273,26 @@ async function main() {
     designerId = user.designers[0].id;
     console.log(`   Designer: ${designerId}`);
   } else {
-    console.log('   No designer found, creating one...');
-    const designer = await apiPost('/designer', {
-      session_id: sessionId,
-      name: `${user.username}_designer`,
-      user_id: user.id
-    });
-    designerId = designer.id;
-    console.log(`   Designer created: ${designerId}`);
+    console.log('   No designer found, trying to create or fetch...');
+    try {
+      const designer = await apiPost('/designer', {
+        session_id: sessionId,
+        name: `${user.username}_designer`,
+        user_id: user.id
+      });
+      designerId = designer.id;
+      console.log(`   Designer created: ${designerId}`);
+    } catch (err) {
+      // Designer likely exists, fetch user's designers directly
+      console.log('   Designer exists, fetching...');
+      const designersResp = await apiGet(`/user/${user.id}/designers?session_id=${sessionId}`);
+      if (designersResp.items && designersResp.items.length > 0) {
+        designerId = designersResp.items[0].id;
+        console.log(`   Designer found: ${designerId}`);
+      } else {
+        throw new Error('Could not find or create designer');
+      }
+    }
   }
 
   // Create game with unique timestamp to avoid duplicate name errors
